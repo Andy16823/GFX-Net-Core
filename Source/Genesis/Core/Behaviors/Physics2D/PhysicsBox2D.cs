@@ -1,5 +1,4 @@
-﻿using Assimp;
-using BulletSharp;
+﻿using BulletSharp;
 using Genesis.Math;
 using Genesis.Physics;
 using System;

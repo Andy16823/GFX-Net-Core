@@ -1,0 +1,453 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\core\\behaviors\\charactercontroller2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\core\\behaviors\\charactercontroller2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\core\\behaviors\\physics3d\\spherecollider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\core\\behaviors\\physics3d\\spherecollider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\core\\behaviors\\physics2d\\physicsbox2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\core\\behaviors\\physics2d\\physicsbox2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\graphics\\renderdevice\\betarenderer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\graphics\\renderdevice\\betarenderer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\core\\behaviors\\physics3d\\boxtrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\core\\behaviors\\physics3d\\boxtrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\core\\behaviors\\physics3d\\boxcollider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\core\\behaviors\\physics3d\\boxcollider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\core\\behaviors\\physics2d\\boxtrigger2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\core\\behaviors\\physics2d\\boxtrigger2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\physics\\physicshandler2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\physics\\physicshandler2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\physics\\raycast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\physics\\raycast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\physics\\aabb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\physics\\aabb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\core\\behaviors\\physics3d\\staticmeshbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\core\\behaviors\\physics3d\\staticmeshbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\core\\behaviors\\physics3d\\qubeconvexhull.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\core\\behaviors\\physics3d\\qubeconvexhull.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\core\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\core\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\core\\behaviors\\physics3d\\convexhullbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\core\\behaviors\\physics3d\\convexhullbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\core\\behaviors\\physics3d\\capsulecollider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\core\\behaviors\\physics3d\\capsulecollider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\core\\behaviors\\physics2d\\rigidbody2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\core\\behaviors\\physics2d\\rigidbody2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\core\\scene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\core\\scene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\physics\\physicshandler3d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\physics\\physicshandler3d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\graphics\\shapes\\rectshape.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\graphics\\shapes\\rectshape.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\graphics\\renderdevice\\glrenderer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\graphics\\renderdevice\\glrenderer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\core\\behaviors\\physics2d\\bufferedspritecollider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\core\\behaviors\\physics2d\\bufferedspritecollider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\core\\behaviors\\physics2d\\physicspolygon2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\core\\behaviors\\physics2d\\physicspolygon2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\core\\behaviors\\3d\\thirdpersoncharactercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\core\\behaviors\\3d\\thirdpersoncharactercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\physics\\mouseray2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\physics\\mouseray2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\math\\vec3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\math\\vec3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\graphics\\physics\\bulletdebugrenderer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\graphics\\physics\\bulletdebugrenderer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|c:\\users\\andy\\documents\\gfx - net 8\\genesis\\genesis\\ui\\widget.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B6089B-BA05-4535-A071-538B918C3AD4}|Genesis\\Genesis.csproj|solutionrelative:genesis\\ui\\widget.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BoxTrigger2D.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\Physics2D\\BoxTrigger2D.cs",
+              "RelativeDocumentMoniker": "Genesis\\Core\\Behaviors\\Physics2D\\BoxTrigger2D.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\Physics2D\\BoxTrigger2D.cs",
+              "RelativeToolTip": "Genesis\\Core\\Behaviors\\Physics2D\\BoxTrigger2D.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAAAgwCoAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.443Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CharacterController2D.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\CharacterController2D.cs",
+              "RelativeDocumentMoniker": "Genesis\\Core\\Behaviors\\CharacterController2D.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\CharacterController2D.cs",
+              "RelativeToolTip": "Genesis\\Core\\Behaviors\\CharacterController2D.cs",
+              "ViewState": "AQIAAL4AAAAAAAAAAADwv0UBAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.446Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Raycast.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Physics\\Raycast.cs",
+              "RelativeDocumentMoniker": "Genesis\\Physics\\Raycast.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Physics\\Raycast.cs",
+              "RelativeToolTip": "Genesis\\Physics\\Raycast.cs",
+              "ViewState": "AQIAAIwAAAAAAAAAAAAYwJYAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.448Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Aabb.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Physics\\Aabb.cs",
+              "RelativeDocumentMoniker": "Genesis\\Physics\\Aabb.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Physics\\Aabb.cs",
+              "RelativeToolTip": "Genesis\\Physics\\Aabb.cs",
+              "ViewState": "AQIAAEwAAAAAAAAAAAAwwDcAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.451Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "StaticMeshBehavior.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\Physics3D\\StaticMeshBehavior.cs",
+              "RelativeDocumentMoniker": "Genesis\\Core\\Behaviors\\Physics3D\\StaticMeshBehavior.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\Physics3D\\StaticMeshBehavior.cs",
+              "RelativeToolTip": "Genesis\\Core\\Behaviors\\Physics3D\\StaticMeshBehavior.cs",
+              "ViewState": "AQIAAGoAAAAAAAAAAAAmwEEAAAA/AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.453Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PhysicsBox2D.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\Physics2D\\PhysicsBox2D.cs",
+              "RelativeDocumentMoniker": "Genesis\\Core\\Behaviors\\Physics2D\\PhysicsBox2D.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\Physics2D\\PhysicsBox2D.cs",
+              "RelativeToolTip": "Genesis\\Core\\Behaviors\\Physics2D\\PhysicsBox2D.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAxwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.456Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BoxCollider.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\Physics3D\\BoxCollider.cs",
+              "RelativeDocumentMoniker": "Genesis\\Core\\Behaviors\\Physics3D\\BoxCollider.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\Physics3D\\BoxCollider.cs",
+              "RelativeToolTip": "Genesis\\Core\\Behaviors\\Physics3D\\BoxCollider.cs",
+              "ViewState": "AQIAABcAAAAAAAAAAAAqwCsAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.461Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BoxTrigger.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\Physics3D\\BoxTrigger.cs",
+              "RelativeDocumentMoniker": "Genesis\\Core\\Behaviors\\Physics3D\\BoxTrigger.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\Physics3D\\BoxTrigger.cs",
+              "RelativeToolTip": "Genesis\\Core\\Behaviors\\Physics3D\\BoxTrigger.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAAiwCgAAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.463Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SphereCollider.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\Physics3D\\SphereCollider.cs",
+              "RelativeDocumentMoniker": "Genesis\\Core\\Behaviors\\Physics3D\\SphereCollider.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\Physics3D\\SphereCollider.cs",
+              "RelativeToolTip": "Genesis\\Core\\Behaviors\\Physics3D\\SphereCollider.cs",
+              "ViewState": "AQIAAC4AAAAAAAAAAAD4vz8AAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.502Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BetaRenderer.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Graphics\\RenderDevice\\BetaRenderer.cs",
+              "RelativeDocumentMoniker": "Genesis\\Graphics\\RenderDevice\\BetaRenderer.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Graphics\\RenderDevice\\BetaRenderer.cs",
+              "RelativeToolTip": "Genesis\\Graphics\\RenderDevice\\BetaRenderer.cs",
+              "ViewState": "AQIAADQAAAAAAAAAAAAiwEEAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.239Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "QubeConvexHull.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\Physics3D\\QubeConvexHull.cs",
+              "RelativeDocumentMoniker": "Genesis\\Core\\Behaviors\\Physics3D\\QubeConvexHull.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\Physics3D\\QubeConvexHull.cs",
+              "RelativeToolTip": "Genesis\\Core\\Behaviors\\Physics3D\\QubeConvexHull.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.466Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Utils.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Utils.cs",
+              "RelativeDocumentMoniker": "Genesis\\Core\\Utils.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Utils.cs",
+              "RelativeToolTip": "Genesis\\Core\\Utils.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.468Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ConvexHullBehavior.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\Physics3D\\ConvexHullBehavior.cs",
+              "RelativeDocumentMoniker": "Genesis\\Core\\Behaviors\\Physics3D\\ConvexHullBehavior.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\Physics3D\\ConvexHullBehavior.cs",
+              "RelativeToolTip": "Genesis\\Core\\Behaviors\\Physics3D\\ConvexHullBehavior.cs",
+              "ViewState": "AQIAAGIAAAAAAAAAAAAcwHoAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.47Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "CapsuleCollider.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\Physics3D\\CapsuleCollider.cs",
+              "RelativeDocumentMoniker": "Genesis\\Core\\Behaviors\\Physics3D\\CapsuleCollider.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\Physics3D\\CapsuleCollider.cs",
+              "RelativeToolTip": "Genesis\\Core\\Behaviors\\Physics3D\\CapsuleCollider.cs",
+              "ViewState": "AQIAADcAAAAAAAAAAAAowEgAAABXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.473Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Rigidbody2D.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\Physics2D\\Rigidbody2D.cs",
+              "RelativeDocumentMoniker": "Genesis\\Core\\Behaviors\\Physics2D\\Rigidbody2D.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\Physics2D\\Rigidbody2D.cs",
+              "RelativeToolTip": "Genesis\\Core\\Behaviors\\Physics2D\\Rigidbody2D.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADoAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.476Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PhysicsHandler2D.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Physics\\PhysicsHandler2D.cs",
+              "RelativeDocumentMoniker": "Genesis\\Physics\\PhysicsHandler2D.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Physics\\PhysicsHandler2D.cs",
+              "RelativeToolTip": "Genesis\\Physics\\PhysicsHandler2D.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAwwC8AAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.48Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Scene.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Scene.cs",
+              "RelativeDocumentMoniker": "Genesis\\Core\\Scene.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Scene.cs",
+              "RelativeToolTip": "Genesis\\Core\\Scene.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.482Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "PhysicsHandler3D.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Physics\\PhysicsHandler3D.cs",
+              "RelativeDocumentMoniker": "Genesis\\Physics\\PhysicsHandler3D.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Physics\\PhysicsHandler3D.cs",
+              "RelativeToolTip": "Genesis\\Physics\\PhysicsHandler3D.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAAwwDIAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.485Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "RectShape.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Graphics\\Shapes\\RectShape.cs",
+              "RelativeDocumentMoniker": "Genesis\\Graphics\\Shapes\\RectShape.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Graphics\\Shapes\\RectShape.cs",
+              "RelativeToolTip": "Genesis\\Graphics\\Shapes\\RectShape.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.487Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "GLRenderer.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Graphics\\RenderDevice\\GLRenderer.cs",
+              "RelativeDocumentMoniker": "Genesis\\Graphics\\RenderDevice\\GLRenderer.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Graphics\\RenderDevice\\GLRenderer.cs",
+              "RelativeToolTip": "Genesis\\Graphics\\RenderDevice\\GLRenderer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.49Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "PhysicsPolygon2D.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\Physics2D\\PhysicsPolygon2D.cs",
+              "RelativeDocumentMoniker": "Genesis\\Core\\Behaviors\\Physics2D\\PhysicsPolygon2D.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\Physics2D\\PhysicsPolygon2D.cs",
+              "RelativeToolTip": "Genesis\\Core\\Behaviors\\Physics2D\\PhysicsPolygon2D.cs",
+              "ViewState": "AQIAAFsAAAAAAAAAAAAUwHEAAABHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.493Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ThirdpersonCharacterController.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\3D\\ThirdpersonCharacterController.cs",
+              "RelativeDocumentMoniker": "Genesis\\Core\\Behaviors\\3D\\ThirdpersonCharacterController.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\3D\\ThirdpersonCharacterController.cs",
+              "RelativeToolTip": "Genesis\\Core\\Behaviors\\3D\\ThirdpersonCharacterController.cs",
+              "ViewState": "AQIAAHcAAAAAAAAAAAAqwAAAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.495Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Vec3.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Math\\Vec3.cs",
+              "RelativeDocumentMoniker": "Genesis\\Math\\Vec3.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Math\\Vec3.cs",
+              "RelativeToolTip": "Genesis\\Math\\Vec3.cs",
+              "ViewState": "AQIAAM8BAAAAAAAAAAAuwGsCAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.499Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "BufferedSpriteCollider.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\Physics2D\\BufferedSpriteCollider.cs",
+              "RelativeDocumentMoniker": "Genesis\\Core\\Behaviors\\Physics2D\\BufferedSpriteCollider.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Core\\Behaviors\\Physics2D\\BufferedSpriteCollider.cs",
+              "RelativeToolTip": "Genesis\\Core\\Behaviors\\Physics2D\\BufferedSpriteCollider.cs",
+              "ViewState": "AQIAAGUAAAAAAAAAAAAQwHsAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.505Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "MouseRay2.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Physics\\MouseRay2.cs",
+              "RelativeDocumentMoniker": "Genesis\\Physics\\MouseRay2.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Physics\\MouseRay2.cs",
+              "RelativeToolTip": "Genesis\\Physics\\MouseRay2.cs",
+              "ViewState": "AQIAAEMAAAAAAAAAAAAgwCwAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.508Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "BulletDebugRenderer.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Graphics\\Physics\\BulletDebugRenderer.cs",
+              "RelativeDocumentMoniker": "Genesis\\Graphics\\Physics\\BulletDebugRenderer.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Graphics\\Physics\\BulletDebugRenderer.cs",
+              "RelativeToolTip": "Genesis\\Graphics\\Physics\\BulletDebugRenderer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.511Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Widget.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\UI\\Widget.cs",
+              "RelativeDocumentMoniker": "Genesis\\UI\\Widget.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\UI\\Widget.cs",
+              "RelativeToolTip": "Genesis\\UI\\Widget.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:39:24.514Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Drawing;
 using System.Reflection;
-using Assimp.Unmanaged;
 using Genesis.Graphics.Animation3D;
 
 namespace Genesis.Core.GameElements
