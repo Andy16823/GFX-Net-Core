@@ -26,3 +26,5 @@ E:\Conversion\Genesis\Genesis\obj\Release\net8.0-windows\ref\Genesis.dll
 E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\libbulletc-windows-x64.dll
 E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\libbulletc-windows-x86.dll
 E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\libbulletc.dll
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\Ijwhost.dll
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\System.Drawing.Common.dll

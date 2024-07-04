@@ -21,6 +21,11 @@
     <DocumentationFile>bin\Release\Genesis.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Extra\**" />
+    <EmbeddedResource Remove="Extra\**" />
+    <None Remove="Extra\**" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
@@ -71,13 +76,13 @@
       <HintPath>..\..\GlmSharp-master\GlmSharp\GlmSharp\bin\Release\net8.0\GlmSharp.dll</HintPath>
     </Reference>
     <Reference Include="NetGL">
-      <HintPath>..\..\..\NetGL - Kopie\x64\Release\NetGL.dll</HintPath>
+      <HintPath>..\..\NetGL\x64\Release\NetGL.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Extra\" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Update="Ijwhost.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="libbulletc-windows-x64.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -85,6 +90,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="libbulletc.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="System.Drawing.Common.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
