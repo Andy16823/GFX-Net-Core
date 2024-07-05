@@ -31,7 +31,7 @@ namespace Genesis.Core.Behaviors._3D
         /// <summary>
         /// Gets or sets the collider for the character.
         /// </summary>
-        public CapsuleCollider Collider { get; set; }
+        public CapsuleRigidBody Collider { get; set; }
 
         /// <summary>
         /// Gets or sets the speed of walking.
@@ -117,9 +117,9 @@ namespace Genesis.Core.Behaviors._3D
         /// <param name="mass">The mass.</param>
         public void CreatePhysics(PhysicHandler handler, Vec3 offset, float radius, float height, float mass)
         {
-            this.Collider = new CapsuleCollider();
+            this.Collider = new CapsuleRigidBody();
             this.Parent.AddBehavior(this.Collider);
-            this.Collider.CreateRigidBody(handler, offset, radius, height, mass);
+            this.Collider.CreateRigidBody(handler, radius, height, mass, offset);
             this.Collider.RigidBody.AngularFactor = System.Numerics.Vector3.Zero;
             Collider.OnCollide += (sce, game, co) =>
             {
@@ -222,12 +222,12 @@ namespace Genesis.Core.Behaviors._3D
                         IsRunning = true;
                     }
                     var fwd = Utils.GetForwardDirection(model.Rotation);
-                    velocity += (fwd.ToBulletVec3() * speed);
+                    velocity += (fwd.ToVector3() * speed);
                 }
                 else if (Input.IsKeyDown(Keys.S))
                 {
                     var fwd = Utils.GetForwardDirection(model.Rotation);
-                    velocity -= (fwd.ToBulletVec3() * speed);
+                    velocity -= (fwd.ToVector3() * speed);
                 }
                 if (this.IsRunning)
                 {
@@ -290,7 +290,7 @@ namespace Genesis.Core.Behaviors._3D
             // Add the input vector to the velocity
             if(this.inputVector != null)
             {
-                velocity += inputVector.ToBulletVec3();
+                velocity += inputVector.ToVector3();
                 inputVector = null;
             }
 

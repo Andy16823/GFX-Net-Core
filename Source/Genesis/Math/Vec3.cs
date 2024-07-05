@@ -611,7 +611,7 @@ namespace Genesis.Math
         /// Converts the vector to its BulletSharp equivalent.
         /// </summary>
         /// <returns>A BulletSharp Vector3 instance representing the same vector.</returns>
-        public System.Numerics.Vector3 ToBulletVec3()
+        public System.Numerics.Vector3 ToVector3()
         {
             return new Vector3(X, Y, Z);
         }

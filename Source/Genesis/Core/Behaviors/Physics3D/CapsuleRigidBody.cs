@@ -11,11 +11,29 @@ using static BulletSharp.Dbvt;
 
 namespace Genesis.Core.Behaviors.Physics3D
 {
-    public class CapsuleRigidBody : Physics.PhysicsBehavior
+    /// <summary>
+    /// Represents a Capsule RigidBody behavior for 3D physics.
+    /// </summary>
+    public class CapsuleRigidBody : Physics.RigidBodyBehavior3D
     {
-        public RigidBody RigidBody { get; set; }
-        public Vec3 Offset { get; set; }
+        /// <summary>
+        /// Creates a RigidBody with default capsule dimensions.
+        /// </summary>
+        /// <param name="physicHandler">The physics handler to manage this element.</param>
+        /// <param name="mass">The mass of the capsule.</param>
+        public override void CreateRigidBody(PhysicHandler physicHandler, float mass)
+        {
+            this.CreateRigidBody(physicHandler, 1.0f, 2.0f, mass);
+        }
 
+        /// <summary>
+        /// Creates a RigidBody with a capsule shape.
+        /// </summary>
+        /// <param name="physicsHandler">The physics handler to manage this element.</param>
+        /// <param name="radius">The radius of the capsule.</param>
+        /// <param name="height">The height of the capsule.</param>
+        /// <param name="mass">The mass of the capsule.</param>
+        /// <param name="offset">The offset of the capsule. Default is Vec3.Zero().</param>
         public void CreateRigidBody(PhysicHandler physicsHandler, float radius, float height, float mass, Vec3 offset = null)
         {
             if (offset == null)
@@ -30,7 +48,7 @@ namespace Genesis.Core.Behaviors.Physics3D
             var loaction = Utils.GetElementWorldLocation(Parent) + Offset;
             var rotation = Utils.GetElementWorldRotation(Parent);
 
-            var btTranslation = System.Numerics.Matrix4x4.CreateTranslation(loaction.ToBulletVec3());
+            var btTranslation = System.Numerics.Matrix4x4.CreateTranslation(loaction.ToVector3());
             var btRotation = System.Numerics.Matrix4x4.CreateRotationX(rotation.X) * System.Numerics.Matrix4x4.CreateRotationY(rotation.Y) * System.Numerics.Matrix4x4.CreateRotationZ(rotation.Z);
             var btTransform = btTranslation * btRotation;
 
@@ -41,76 +59,6 @@ namespace Genesis.Core.Behaviors.Physics3D
             RigidBody.ApplyGravity();
 
             physicsHandler.ManageElement(this);
-        }
-
-        public void Rotate(Vec3 value)
-        {
-            this.Rotate(value.X, value.Y, value.Z);
-        }
-
-        public void Rotate(float x, float y, float z)
-        {
-            System.Numerics.Matrix4x4 transform = this.RigidBody.WorldTransform;
-            System.Numerics.Quaternion rotation = System.Numerics.Quaternion.CreateFromYawPitchRoll(x, y, z);
-            transform.SetRotation(rotation, out transform);
-            this.RigidBody.WorldTransform = transform;
-        }
-
-        public void Translate(Vec3 value)
-        {
-            this.Rotate(value.X, value.Y, value.Z);
-        }
-
-        public void Translate(float x, float y, float z)
-        {
-            System.Numerics.Matrix4x4 translation = System.Numerics.Matrix4x4.CreateTranslation(x,y,z);
-            System.Numerics.Quaternion rotation = System.Numerics.Quaternion.CreateFromRotationMatrix(RigidBody.WorldTransform);
-            System.Numerics.Matrix4x4 rotationMatrix = System.Numerics.Matrix4x4.CreateFromQuaternion(rotation);
-            this.RigidBody.WorldTransform = translation * rotationMatrix;
-        }
-
-        public void SetAngularVelocity(Vec3 value)
-        {
-            this.RigidBody.AngularVelocity = value.ToBulletVec3();
-        }
-
-        public override object GetPhysicsObject()
-        {
-            return RigidBody;    
-        }
-
-        public override T GetPhysicsObject<T>()
-        {
-            return (T)(object)RigidBody;
-        }
-
-        public override void OnDestroy(Game game, GameElement parent)
-        {
-            
-        }
-
-        public override void OnInit(Game game, GameElement parent)
-        {
-            
-        }
-
-        public override void OnRender(Game game, GameElement parent)
-        {
-            
-        }
-
-        public override void OnUpdate(Game game, GameElement parent)
-        {
-            System.Numerics.Vector3 position = RigidBody.WorldTransform.Translation;
-            System.Numerics.Quaternion rotation = System.Numerics.Quaternion.CreateFromRotationMatrix(RigidBody.WorldTransform);
-            vec3 rotationVector = (vec3)glm.EulerAngles(new quat(rotation.X, rotation.Y, rotation.Z, rotation.W));
-
-            Vec3 newLocation = Utils.GetModelSpaceLocation(Parent, new Vec3(position.X, position.Y, position.Z));
-            Vec3 newRotation = Utils.GetModelSpaceRotation(Parent, new Vec3(rotationVector));
-
-            parent.Location = newLocation - Offset;
-            parent.Rotation = new Vec3(Utils.ToDegrees(newRotation.X), Utils.ToDegrees(newRotation.Y), Utils.ToDegrees(newRotation.Z));
-            RigidBody.Activate(true);
         }
     }
 }

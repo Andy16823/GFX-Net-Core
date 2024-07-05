@@ -27,12 +27,12 @@ namespace Genesis.Core.Behaviors.Physics2D
         /// <param name="halfExtends">Half extends of the box.</param>
         public void CreateCollider(PhysicHandler handler, Vec3 halfExtends)
         {
-            Box2DShape box2DShape = new Box2DShape(halfExtends.ToBulletVec3());
+            Box2DShape box2DShape = new Box2DShape(halfExtends.ToVector3());
 
             Vec3 location = this.Parent.Location;
             Vec3 rotation = this.Parent.Rotation;
 
-            var btTranslation = System.Numerics.Matrix4x4.CreateTranslation(location.ToBulletVec3());
+            var btTranslation = System.Numerics.Matrix4x4.CreateTranslation(location.ToVector3());
             var btRotation = System.Numerics.Matrix4x4.CreateRotationX(rotation.X) * System.Numerics.Matrix4x4.CreateRotationY(rotation.Y) * System.Numerics.Matrix4x4.CreateRotationZ(rotation.Z);
             var btStartTransform = btTranslation * btRotation;
 

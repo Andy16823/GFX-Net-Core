@@ -27,8 +27,8 @@ namespace Genesis.Physics
         {
             float aspect;
 
-            Vector3 cameraFront = Utils.CalculateCameraFront2(camera).ToBulletVec3();
-            Vector3 eye = camera.Location.ToBulletVec3();
+            Vector3 cameraFront = Utils.CalculateCameraFront2(camera).ToVector3();
+            Vector3 eye = camera.Location.ToVector3();
             Vector3 target = Vector3.Add(eye, cameraFront);
             float fov = 45.0f;
 

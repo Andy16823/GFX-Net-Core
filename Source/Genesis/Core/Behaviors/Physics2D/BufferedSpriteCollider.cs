@@ -72,14 +72,14 @@ namespace Genesis.Core.Behaviors.Physics2D
                     compoundShape.AddChildShape(boxtransform, box2DShape);
                 }
                 RigidBodyConstructionInfo info = new RigidBodyConstructionInfo(mass, null, compoundShape, compoundShape.CalculateLocalInertia(mass));
-                System.Numerics.Matrix4x4 transform = System.Numerics.Matrix4x4.CreateTranslation(bufferedSprite.Location.ToBulletVec3());
+                System.Numerics.Matrix4x4 transform = System.Numerics.Matrix4x4.CreateTranslation(bufferedSprite.Location.ToVector3());
                 System.Numerics.Matrix4x4 startTransform = transform;
                 info.MotionState = new DefaultMotionState(startTransform);
 
                 RigidBody = new BulletSharp.RigidBody(info);
                 RigidBody.UserObject = this.Parent;
-                RigidBody.LinearFactor = this.LinearFactor.ToBulletVec3();
-                RigidBody.AngularFactor = this.AngularFactor.ToBulletVec3();
+                RigidBody.LinearFactor = this.LinearFactor.ToVector3();
+                RigidBody.AngularFactor = this.AngularFactor.ToVector3();
                 //RigidBody.CollisionFlags = CollisionFlags.StaticObject;
 
                 handler.ManageElement(this);
@@ -119,7 +119,7 @@ namespace Genesis.Core.Behaviors.Physics2D
         /// </summary>
         public override void OnUpdate(Game game, GameElement parent)
         {
-            System.Numerics.Matrix4x4 transform = System.Numerics.Matrix4x4.CreateTranslation(Parent.Location.ToBulletVec3());
+            System.Numerics.Matrix4x4 transform = System.Numerics.Matrix4x4.CreateTranslation(Parent.Location.ToVector3());
             RigidBody.MotionState = new DefaultMotionState(transform);
             RigidBody.Activate(true);
         }

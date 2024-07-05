@@ -37,19 +37,19 @@ namespace Genesis.Core.Behaviors.Physics2D
         public void CreateRigidbody(PhysicHandler handler, float mass)
         {
             //var shape = new CapsuleShape(Parent.Size.X / 2, 1.5f);
-            var shape = new Box2DShape(Parent.Size.ToBulletVec3() / 2);
+            var shape = new Box2DShape(Parent.Size.ToVector3() / 2);
             RigidBodyConstructionInfo info = new RigidBodyConstructionInfo(mass, null, shape, shape.CalculateLocalInertia(mass));
 
             //Create the start matrix
             //Vec3 rotation = Utils.GetElementWorldRotation(this.Parent);
-            System.Numerics.Matrix4x4 transform = System.Numerics.Matrix4x4.CreateTranslation(Parent.Location.ToBulletVec3());
+            System.Numerics.Matrix4x4 transform = System.Numerics.Matrix4x4.CreateTranslation(Parent.Location.ToVector3());
             //BulletSharp.Math.Matrix rotMat = BulletSharp.Math.Matrix.RotationX(rotation.X) * BulletSharp.Math.Matrix.RotationY(rotation.Y) * BulletSharp.Math.Matrix.RotationZ(rotation.Z);
             System.Numerics.Matrix4x4 startTransform = transform;
 
             info.MotionState = new DefaultMotionState(startTransform);
             RigidBody = new BulletSharp.RigidBody(info);
-            RigidBody.LinearFactor = this.LinearFactor.ToBulletVec3();
-            RigidBody.AngularFactor = this.AngularFactor.ToBulletVec3();
+            RigidBody.LinearFactor = this.LinearFactor.ToVector3();
+            RigidBody.AngularFactor = this.AngularFactor.ToVector3();
             RigidBody.UserObject = this.Parent;
             this.RigidBody.ApplyGravity();
             handler.ManageElement(this);
@@ -60,7 +60,7 @@ namespace Genesis.Core.Behaviors.Physics2D
         /// </summary>
         public void UpdateRigidBody()
         {
-            System.Numerics.Matrix4x4 transform = System.Numerics.Matrix4x4.CreateTranslation(Parent.Location.ToBulletVec3());
+            System.Numerics.Matrix4x4 transform = System.Numerics.Matrix4x4.CreateTranslation(Parent.Location.ToVector3());
             RigidBody.MotionState = new DefaultMotionState(transform);
             RigidBody.Activate(true);
             //physicsBehavior.RigidBody.ActivationState = BulletSharp.ActivationState.DisableDeactivation;

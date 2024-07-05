@@ -165,6 +165,16 @@ namespace Genesis.Core
         }
 
         /// <summary>
+        /// Converts radians vector to degrees vector.
+        /// </summary>
+        /// <param name="value">The vector with the radians values.</param>
+        /// <returns>The vector with angle in degrees.</returns>
+        public static Vec3 ToDegrees(Vec3 value)
+        {
+            return new Vec3(ToDegrees(value.X), ToDegrees(value.Y), ToDegrees(value.Z));
+        }
+
+        /// <summary>
         /// Calculates the front vector of a camera using its location and rotation.
         /// </summary>
         /// <param name="camera">The camera.</param>
