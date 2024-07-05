@@ -3,6 +3,7 @@ using Genesis.Math;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -138,6 +139,9 @@ namespace Genesis.Core
         /// </summary>
         public void Start()
         {
+            var version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            System.Diagnostics.Debug.WriteLine("GFX .Net Version - Build " + version);
+            System.Diagnostics.Debug.WriteLine("=========================================");
             this.Run = true;
             GameThread = new Thread(() => { this.Loop(); });
             GameThread.Start();
