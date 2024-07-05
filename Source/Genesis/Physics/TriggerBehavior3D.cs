@@ -80,7 +80,7 @@ namespace Genesis.Physics
         /// <param name="value">The translation vector.</param>
         public virtual void Translate(Vec3 value)
         {
-            this.Rotate(value.X, value.Y, value.Z);
+            this.Translate(value.X, value.Y, value.Z);
         }
 
         /// <summary>

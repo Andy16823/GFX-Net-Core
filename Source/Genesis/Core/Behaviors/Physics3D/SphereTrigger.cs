@@ -1,0 +1,65 @@
+﻿using BulletSharp;
+using Genesis.Math;
+using Genesis.Physics;
+using GlmSharp;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Genesis.Core.Behaviors.Physics3D
+{
+    /// <summary>
+    /// Represents a Sphere trigger behavior for 3D physics.
+    /// </summary>
+    public class SphereTrigger : TriggerBehavior3D
+    {
+        /// <summary>
+        /// Creates a trigger with a sphere shape using the default radius (half of the parent's size).
+        /// </summary>
+        /// <param name="physicHandler">The physics handler to manage this element.</param>
+        public override void CreateTrigger(PhysicHandler physicHandler)
+        {
+            this.CreateTrigger(physicHandler, this.Parent.Size.X / 2);
+        }
+
+        /// <summary>
+        /// Creates a trigger with a sphere shape at the origin.
+        /// </summary>
+        /// <param name="handler">The physics handler to manage this element.</param>
+        /// <param name="radius">The radius of the sphere.</param>
+        public void CreateTrigger(PhysicHandler handler, float radius)
+        {
+            this.CreateTrigger(handler, Vec3.Zero(), radius);
+        }
+
+        /// <summary>
+        /// Creates a trigger with a sphere shape at the specified offset.
+        /// </summary>
+        /// <param name="handler">The physics handler to manage this element.</param>
+        /// <param name="offset">The offset from the parent element's location.</param>
+        /// <param name="radius">The radius of the sphere.</param>
+        public void CreateTrigger(PhysicHandler handler, Vec3 offset, float radius)
+        {
+            this.Offset = offset;
+
+            var element = this.Parent;
+            SphereShape sphereShape = new SphereShape(radius);
+
+            Vec3 location = Utils.GetElementWorldLocation(element);
+            Vec3 rotation = Utils.GetElementWorldRotation(element);
+
+            var btTranslation = System.Numerics.Matrix4x4.CreateTranslation(location.ToVector3() + offset.ToVector3());
+            var btRotation = System.Numerics.Matrix4x4.CreateRotationX(rotation.X) * System.Numerics.Matrix4x4.CreateRotationY(rotation.Y) * System.Numerics.Matrix4x4.CreateRotationZ(rotation.Z);
+            var btStartTransform = btTranslation * btRotation;
+
+            Trigger = new GhostObject();
+            Trigger.UserObject = element;
+            Trigger.CollisionShape = sphereShape;
+            Trigger.WorldTransform = btStartTransform;
+            handler.ManageElement(this);
+        }
+    }
+}

@@ -62,7 +62,8 @@ namespace Genesis.Core.GameElements
 
             Assimp.AssimpContext importer = new Assimp.AssimpContext();
             //importer.SetConfig(new Assimp.Configs.NormalSmoothingAngleConfig(66.0f));
-            var model = importer.ImportFile(path, Assimp.PostProcessPreset.TargetRealTimeQuality | Assimp.PostProcessSteps.PreTransformVertices);
+            //var model = importer.ImportFile(path, Assimp.PostProcessPreset.TargetRealTimeQuality | Assimp.PostProcessSteps.PreTransformVertices);
+            var model = importer.ImportFile(path, Assimp.PostProcessPreset.TargetRealTimeQuality | Assimp.PostProcessSteps.Triangulate);
 
             foreach (var material in model.Materials)
             {

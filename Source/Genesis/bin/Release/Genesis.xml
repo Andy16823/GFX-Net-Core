@@ -476,6 +476,12 @@
             <param name="game">The game instance.</param>
             <param name="parent">The parent GameElement of the behavior.</param>
         </member>
+        <member name="M:Genesis.Core.Behaviors.Physics2D.BoxCollider.CreateCollider(Genesis.Physics.PhysicHandler)">
+            <summary>
+            Creates a collider using the provided PhysicHandler.
+            </summary>
+            <param name="handler">The PhysicHandler responsible for managing physics elements.</param>
+        </member>
         <member name="T:Genesis.Core.Behaviors.Physics2D.BoxTrigger2D">
             <summary>
             Represents a 2D box trigger for physics interactions.
@@ -1081,6 +1087,32 @@
             <param name="offset">The offset from the parent element's location.</param>
             <param name="radius">The radius of the sphere.</param>
             <param name="mass">The mass of the sphere rigid body.</param>
+        </member>
+        <member name="T:Genesis.Core.Behaviors.Physics3D.SphereTrigger">
+            <summary>
+            Represents a Sphere trigger behavior for 3D physics.
+            </summary>
+        </member>
+        <member name="M:Genesis.Core.Behaviors.Physics3D.SphereTrigger.CreateTrigger(Genesis.Physics.PhysicHandler)">
+            <summary>
+            Creates a trigger with a sphere shape using the default radius (half of the parent's size).
+            </summary>
+            <param name="physicHandler">The physics handler to manage this element.</param>
+        </member>
+        <member name="M:Genesis.Core.Behaviors.Physics3D.SphereTrigger.CreateTrigger(Genesis.Physics.PhysicHandler,System.Single)">
+            <summary>
+            Creates a trigger with a sphere shape at the origin.
+            </summary>
+            <param name="handler">The physics handler to manage this element.</param>
+            <param name="radius">The radius of the sphere.</param>
+        </member>
+        <member name="M:Genesis.Core.Behaviors.Physics3D.SphereTrigger.CreateTrigger(Genesis.Physics.PhysicHandler,Genesis.Math.Vec3,System.Single)">
+            <summary>
+            Creates a trigger with a sphere shape at the specified offset.
+            </summary>
+            <param name="handler">The physics handler to manage this element.</param>
+            <param name="offset">The offset from the parent element's location.</param>
+            <param name="radius">The radius of the sphere.</param>
         </member>
         <member name="T:Genesis.Core.Behaviors.Physics3D.StaticMeshBehavior">
             <summary>
