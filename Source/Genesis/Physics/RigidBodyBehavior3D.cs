@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static BulletSharp.Dbvt;
 
 namespace Genesis.Physics
 {
@@ -51,7 +52,7 @@ namespace Genesis.Physics
         /// <param name="value">The translation vector.</param>
         public virtual void Translate(Vec3 value)
         {
-            this.Rotate(value.X, value.Y, value.Z);
+            this.Translate(value.X, value.Y, value.Z);
         }
 
         /// <summary>
@@ -63,9 +64,9 @@ namespace Genesis.Physics
         public virtual void Translate(float x, float y, float z)
         {
             System.Numerics.Matrix4x4 translation = System.Numerics.Matrix4x4.CreateTranslation(x, y, z);
-            System.Numerics.Quaternion rotation = System.Numerics.Quaternion.CreateFromRotationMatrix(RigidBody.WorldTransform);
-            System.Numerics.Matrix4x4 rotationMatrix = System.Numerics.Matrix4x4.CreateFromQuaternion(rotation);
-            this.RigidBody.WorldTransform = translation * rotationMatrix;
+            System.Numerics.Quaternion rotation = this.RigidBody.WorldTransform.GetRotation();
+            System.Numerics.Matrix4x4 rotaionMatrx = System.Numerics.Matrix4x4.CreateFromQuaternion(rotation);
+            this.RigidBody.WorldTransform = translation * rotaionMatrx;
         }
 
         /// <summary>
@@ -117,6 +118,7 @@ namespace Genesis.Physics
         {
             System.Numerics.Vector3 position = RigidBody.WorldTransform.Translation;
             System.Numerics.Quaternion rotation = System.Numerics.Quaternion.CreateFromRotationMatrix(RigidBody.WorldTransform);
+
             vec3 rotationVector = (vec3)glm.EulerAngles(new quat(rotation.X, rotation.Y, rotation.Z, rotation.W));
 
             Vec3 newLocation = Utils.GetModelSpaceLocation(Parent, new Vec3(position.X, position.Y, position.Z));

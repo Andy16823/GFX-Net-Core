@@ -959,5 +959,32 @@ namespace Genesis.Core
             //    return xCorrection;
             //}
         }
+
+        public static System.Numerics.Vector3 ExtractScaleFromMatrix(System.Numerics.Matrix4x4 matrix)
+        {
+            float scaleX = new System.Numerics.Vector3(matrix.M11, matrix.M12, matrix.M13).Length();
+            float scaleY = new System.Numerics.Vector3(matrix.M21, matrix.M22, matrix.M23).Length();
+            float scaleZ = new System.Numerics.Vector3(matrix.M31, matrix.M32, matrix.M33).Length();
+
+            return new System.Numerics.Vector3(scaleX, scaleY, scaleZ);
+        }
+
+        public static System.Numerics.Matrix4x4 BuildPhysicsMatrix(System.Numerics.Vector3 location, System.Numerics.Vector3 rotation, System.Numerics.Vector3 scale)
+        {
+            System.Numerics.Matrix4x4 translationMatrix = System.Numerics.Matrix4x4.CreateTranslation(location);
+            System.Numerics.Matrix4x4 rotaionMatrx = System.Numerics.Matrix4x4.CreateRotationX(rotation.X) * System.Numerics.Matrix4x4.CreateRotationY(rotation.Y) * System.Numerics.Matrix4x4.CreateRotationZ(rotation.Z);
+            System.Numerics.Matrix4x4 scaleMatrix = System.Numerics.Matrix4x4.CreateScale(scale);
+
+            return translationMatrix * rotaionMatrx * scaleMatrix;
+        }
+
+        public static System.Numerics.Matrix4x4 BuildPhysicsMatrix(System.Numerics.Vector3 location, System.Numerics.Quaternion rotation, System.Numerics.Vector3 scale)
+        {
+            System.Numerics.Matrix4x4 translationMatrix = System.Numerics.Matrix4x4.CreateTranslation(location);
+            System.Numerics.Matrix4x4 rotaionMatrx = System.Numerics.Matrix4x4.CreateFromQuaternion(rotation);
+            System.Numerics.Matrix4x4 scaleMatrix = System.Numerics.Matrix4x4.CreateScale(scale);
+
+            return translationMatrix * rotaionMatrx * scaleMatrix;
+        }
     }
 }
