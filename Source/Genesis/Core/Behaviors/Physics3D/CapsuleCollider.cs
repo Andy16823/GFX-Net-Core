@@ -47,10 +47,10 @@ namespace Genesis.Core.Behaviors.Physics3D
             var element = this.Parent;
             CapsuleShape capsuleShape = new CapsuleShape(radius, height);
 
-            Vec3 location = Utils.GetElementWorldLocation(element);
+            Vec3 location = Utils.GetElementWorldLocation(element) + Offset;
             Vec3 rotation = Utils.GetElementWorldRotation(element);
 
-            var btTranslation = System.Numerics.Matrix4x4.CreateTranslation(location.ToVector3() + Offset.ToVector3());
+            var btTranslation = System.Numerics.Matrix4x4.CreateTranslation(location.ToVector3());
             var btRotation = System.Numerics.Matrix4x4.CreateRotationX(rotation.X) * System.Numerics.Matrix4x4.CreateRotationY(rotation.Y) * System.Numerics.Matrix4x4.CreateRotationZ(rotation.Z);
             var btStartTransform = btTranslation * btRotation;
 

@@ -39,7 +39,7 @@ namespace Genesis.Core.Behaviors.Physics3D
             BoxShape boxShape = new BoxShape(boxHalfExtends.ToVector3());
             RigidBodyConstructionInfo info = new RigidBodyConstructionInfo(mass, null, boxShape, boxShape.CalculateLocalInertia(mass));
 
-            Vec3 location = Utils.GetElementWorldLocation(element);
+            Vec3 location = Utils.GetElementWorldLocation(element) + Offset;
             Vec3 rotation = Utils.GetElementWorldRotation(element);
 
             var btTranslation = System.Numerics.Matrix4x4.CreateTranslation(location.ToVector3());

@@ -22,7 +22,7 @@ namespace Genesis.Core.Behaviors.Physics2D
             var shape = new Box2DShape(Parent.Size.ToVector3() / 2);
 
             Vec3 rotation = this.Parent.Rotation;
-            System.Numerics.Matrix4x4 transformMatrix = System.Numerics.Matrix4x4.CreateTranslation(Parent.Location.ToVector3());
+            System.Numerics.Matrix4x4 transformMatrix = System.Numerics.Matrix4x4.CreateTranslation(Parent.Location.ToVector3() + Offset.ToVector3());
             System.Numerics.Matrix4x4 rotationMatrix = System.Numerics.Matrix4x4.CreateFromYawPitchRoll(rotation.X, rotation.Y, rotation.Z);
             System.Numerics.Matrix4x4 startTransform = transformMatrix * rotationMatrix;
 

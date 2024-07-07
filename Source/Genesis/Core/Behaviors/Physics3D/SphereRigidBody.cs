@@ -52,10 +52,10 @@ namespace Genesis.Core.Behaviors.Physics3D
             SphereShape sphereShape = new SphereShape(radius);
             RigidBodyConstructionInfo constructionInfo = new RigidBodyConstructionInfo(mass, null, sphereShape);
 
-            Vec3 location = Utils.GetElementWorldLocation(element);
+            Vec3 location = Utils.GetElementWorldLocation(element) + Offset;
             Vec3 rotation = Utils.GetElementWorldRotation(element);
 
-            var btTranslation = System.Numerics.Matrix4x4.CreateTranslation(location.ToVector3() + offset.ToVector3());
+            var btTranslation = System.Numerics.Matrix4x4.CreateTranslation(location.ToVector3());
             var btRotation = System.Numerics.Matrix4x4.CreateRotationX(rotation.X) * System.Numerics.Matrix4x4.CreateRotationY(rotation.Y) * System.Numerics.Matrix4x4.CreateRotationZ(rotation.Z);
             var btStartTransform = btTranslation * btRotation;
 
