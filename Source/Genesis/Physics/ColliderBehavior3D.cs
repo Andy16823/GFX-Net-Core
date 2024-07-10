@@ -12,17 +12,43 @@ using static BulletSharp.Dbvt;
 
 namespace Genesis.Physics
 {
+    /// <summary>
+    /// Represents a 3D collider behavior for physics simulations.
+    /// </summary>
+    /// <remarks>
+    /// Provides functionality to create and manage a collider in a 3D physics world.
+    /// </remarks>
     public abstract class ColliderBehavior3D : PhysicsBehavior
     {
+        /// <summary>
+        /// Gets or sets the collider object associated with this 3D collider behavior.
+        /// </summary>
         public CollisionObject Collider { get; set; }
+
+        /// <summary>
+        /// Gets or sets the offset of the collider relative to its parent's location.
+        /// </summary>
         public Vec3 Offset { get; set; } = Vec3.Zero();
+
+        /// <summary>
+        /// Gets or sets the physics handler associated with this 3D collider behavior.
+        /// </summary>
+        public PhysicHandler PhysicHandler { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ColliderBehavior3D"/> class with the specified physics handler.
+        /// </summary>
+        /// <param name="handler">The physics handler to associate with this 3D collider behavior.</param>
+        public ColliderBehavior3D(PhysicHandler handler)
+        {
+            this.PhysicHandler = handler;
+        }
 
         /// <summary>
         /// Abstract method to create the collider.
         /// Implement this method in derived classes to define the specific behavior for creating a collider.
         /// </summary>
-        /// <param name="physicHandler">The physics handler responsible for managing physics-related tasks.</param>
-        public abstract void CreateCollider(PhysicHandler physicHandler);
+        public abstract void CreateCollider();
 
         /// <summary>
         /// Translates the collider by the specified vector.
@@ -110,6 +136,17 @@ namespace Genesis.Physics
         }
 
         /// <summary>
+        /// Rendering method called during the render phase.
+        /// Override this method to provide custom rendering logic.
+        /// </summary>
+        /// <param name="game">The game instance.</param>
+        /// <param name="parent">The parent game element.</param>
+        public override void OnDestroy(Game game, GameElement parent)
+        {
+            PhysicHandler.RemoveElement(this);
+        }
+
+        /// <summary>
         /// Initialization method called when the behavior is initialized.
         /// Override this method to provide custom initialization logic.
         /// </summary>
@@ -127,17 +164,6 @@ namespace Genesis.Physics
         /// <param name="game">The game instance.</param>
         /// <param name="parent">The parent game element.</param>
         public override void OnRender(Game game, GameElement parent)
-        {
-            
-        }
-
-        /// <summary>
-        /// Rendering method called during the render phase.
-        /// Override this method to provide custom rendering logic.
-        /// </summary>
-        /// <param name="game">The game instance.</param>
-        /// <param name="parent">The parent game element.</param>
-        public override void OnDestroy(Game game, GameElement parent)
         {
             
         }

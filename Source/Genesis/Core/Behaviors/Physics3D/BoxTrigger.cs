@@ -12,19 +12,32 @@ namespace Genesis.Core.Behaviors.Physics3D
     /// <summary>
     /// Defines a box trigger behavior for 3D physics simulations.
     /// </summary>
+    /// <remarks>
+    /// Provides functionality to create and manage a box-shaped trigger for detecting collisions in a 3D physics world.
+    /// </remarks>
     public class BoxTrigger : TriggerBehavior3D
     {
-        public override void CreateTrigger(PhysicHandler handler)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BoxTrigger"/> class with the specified physics handler.
+        /// </summary>
+        /// <param name="handler">The physics handler to associate with this box trigger.</param>
+        public BoxTrigger(PhysicHandler handler) : base(handler)
         {
-            this.CreateTrigger(handler, Parent.Size.Half());
         }
 
         /// <summary>
-        /// Creates a box trigger with the specified parameters.
+        /// Creates a box trigger with the default half extends (half of the parent's size).
         /// </summary>
-        /// <param name="handler">The physics handler managing this trigger.</param>
+        public override void CreateTrigger()
+        {
+            this.CreateTrigger(Parent.Size.Half());
+        }
+
+        /// <summary>
+        /// Creates a box trigger with the specified half extends.
+        /// </summary>
         /// <param name="boxHalfExtends">The half extends of the box trigger.</param>
-        public void CreateTrigger(PhysicHandler handler, Vec3 boxHalfExtends)
+        public void CreateTrigger(Vec3 boxHalfExtends)
         {
             var element = this.Parent;
             BoxShape boxShape = new BoxShape(boxHalfExtends.ToVector3());
@@ -41,7 +54,7 @@ namespace Genesis.Core.Behaviors.Physics3D
             Trigger.WorldTransform = btStartTransform;
             Trigger.CollisionFlags = CollisionFlags.NoContactResponse;
 
-            handler.ManageElement(this);
+            PhysicHandler.ManageElement(this);
         }
     }
 }

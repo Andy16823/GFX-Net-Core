@@ -10,15 +10,27 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Genesis.Core.Behaviors.Physics2D
 {
+    /// <summary>
+    /// Represents a 2D box collider behavior for physics simulations.
+    /// </summary>
+    /// <remarks>
+    /// Provides functionality to create and manage a box-shaped collider in a 2D physics world.
+    /// </remarks>
     public class BoxCollider : ColliderBehavior2D
     {
         /// <summary>
-        /// Creates a collider using the provided PhysicHandler.
+        /// Initializes a new instance of the <see cref="BoxCollider"/> class with the specified physics handler.
         /// </summary>
-        /// <param name="handler">The PhysicHandler responsible for managing physics elements.</param>
-        public override void CreateCollider(PhysicHandler physicHandler)
+        /// <param name="handler">The physics handler to associate with this box collider.</param>
+        public BoxCollider(PhysicHandler handler) : base(handler)
         {
-            //var shape = new CapsuleShape(Parent.Size.X / 2, 1.5f);
+        }
+
+        /// <summary>
+        /// Creates a box collider with dimensions based on the parent's size and offset.
+        /// </summary>
+        public override void CreateCollider()
+        {
             var shape = new Box2DShape(Parent.Size.ToVector3() / 2);
 
             Vec3 rotation = this.Parent.Rotation;
@@ -30,7 +42,7 @@ namespace Genesis.Core.Behaviors.Physics2D
             Collider.CollisionShape = shape;
             Collider.UserObject = this.Parent;
             Collider.WorldTransform = startTransform;
-            physicHandler.ManageElement(this);
+            PhysicHandler.ManageElement(this);
         }
     }
 }
