@@ -14,6 +14,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Genesis.Core
 {
@@ -521,8 +522,8 @@ namespace Genesis.Core
                         var isCollider = propetery.Value<bool>();
                         if (isCollider)
                         {
-                            var collider = bufferedSprite.AddBehavior(new BufferedSpriteCollider());
-                            collider.CreateRigidBody(0f, (PhysicsHandler2D) this.PhysicHandler);
+                            var collider = bufferedSprite.AddBehavior(new BufferedSpriteCollider(this.PhysicHandler));
+                            collider.CreateCollider();
                         }
                         
                     }

@@ -571,59 +571,9 @@
             Represents a behavior for creating a physics collider for 2D sprites using BulletSharp.
             </summary>
         </member>
-        <member name="P:Genesis.Core.Behaviors.Physics2D.BufferedSpriteCollider.RigidBody">
-            <summary>
-            Gets or sets the rigid body associated with the collider.
-            </summary>
-        </member>
-        <member name="P:Genesis.Core.Behaviors.Physics2D.BufferedSpriteCollider.LinearFactor">
-            <summary>
-            Gets or sets the linear factor for the RigidBody's motion.
-            </summary>
-        </member>
-        <member name="P:Genesis.Core.Behaviors.Physics2D.BufferedSpriteCollider.AngularFactor">
-            <summary>
-            Gets or sets the angular factor for the RigidBody's rotation.
-            </summary>
-        </member>
-        <member name="M:Genesis.Core.Behaviors.Physics2D.BufferedSpriteCollider.GetPhysicsObject">
-            <summary>
-            Gets the physics object associated with the collider.
-            </summary>
-            <returns>The rigid body associated with the collider.</returns>
-        </member>
-        <member name="M:Genesis.Core.Behaviors.Physics2D.BufferedSpriteCollider.GetPhysicsObject``1">
-            <summary>
-            Gets the typed physics object associated with the collider.
-            </summary>
-            <typeparam name="T">Type of the physics object.</typeparam>
-            <returns>The typed rigid body associated with the collider.</returns>
-        </member>
-        <member name="M:Genesis.Core.Behaviors.Physics2D.BufferedSpriteCollider.CreateRigidBody(System.Single,Genesis.Physics.PhysicHandler)">
+        <member name="M:Genesis.Core.Behaviors.Physics2D.BufferedSpriteCollider.CreateCollider">
             <summary>
             Creates a rigid body for the collider.
-            </summary>
-            <param name="mass">The mass of the rigid body.</param>
-            <param name="handler">The physics handler for managing the collider.</param>
-        </member>
-        <member name="M:Genesis.Core.Behaviors.Physics2D.BufferedSpriteCollider.OnDestroy(Genesis.Core.Game,Genesis.Core.GameElement)">
-            <summary>
-            Placeholder for OnDestroy event. No implementation.
-            </summary>
-        </member>
-        <member name="M:Genesis.Core.Behaviors.Physics2D.BufferedSpriteCollider.OnInit(Genesis.Core.Game,Genesis.Core.GameElement)">
-            <summary>
-            Placeholder for OnInit event. No implementation.
-            </summary>
-        </member>
-        <member name="M:Genesis.Core.Behaviors.Physics2D.BufferedSpriteCollider.OnRender(Genesis.Core.Game,Genesis.Core.GameElement)">
-            <summary>
-            Placeholder for OnRender event. No implementation.
-            </summary>
-        </member>
-        <member name="M:Genesis.Core.Behaviors.Physics2D.BufferedSpriteCollider.OnUpdate(Genesis.Core.Game,Genesis.Core.GameElement)">
-            <summary>
-            Placeholder for OnUpdate event. No implementation.
             </summary>
         </member>
         <member name="P:Genesis.Core.Behaviors.Physics2D.PhysicsBox2D.RigidBody">
@@ -2587,6 +2537,17 @@
             <param name="location">The initial location of the sprite.</param>
             <param name="size">The size of the sprite.</param>
             <param name="texture">The texture for the sprite.</param>
+        </member>
+        <member name="M:Genesis.Core.GameElements.Sprite.#ctor(System.String,Genesis.Math.Vec3,Genesis.Math.Vec3,Genesis.Graphics.SpriteSheet,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genesis.Core.GameElements.Sprite"/> class.
+            </summary>
+            <param name="name">The name of the sprite.</param>
+            <param name="location">The location of the sprite.</param>
+            <param name="size">The size of the sprite.</param>
+            <param name="spriteSheet">The sprite sheet from which this sprite is sourced.</param>
+            <param name="col">The column index of the sprite in the sprite sheet.</param>
+            <param name="row">The row index of the sprite in the sprite sheet.</param>
         </member>
         <member name="M:Genesis.Core.GameElements.Sprite.Init(Genesis.Core.Game,Genesis.Graphics.IRenderDevice)">
             <summary>
@@ -6694,6 +6655,57 @@
             - Colors (r, g, b)
             - Texture coordinates (u, v)
             </remarks>
+        </member>
+        <member name="T:Genesis.Graphics.SpriteSheet">
+            <summary>
+            Represents a sprite sheet composed of tiles from a texture.
+            </summary>
+        </member>
+        <member name="P:Genesis.Graphics.SpriteSheet.Name">
+            <summary>
+            Gets or sets the name of the sprite sheet.
+            </summary>
+        </member>
+        <member name="P:Genesis.Graphics.SpriteSheet.TileResolution">
+            <summary>
+            Gets or sets the resolution of each tile in the sprite sheet.
+            </summary>
+        </member>
+        <member name="P:Genesis.Graphics.SpriteSheet.Texture">
+            <summary>
+            Gets or sets the texture used for the sprite sheet.
+            </summary>
+        </member>
+        <member name="P:Genesis.Graphics.SpriteSheet.UUID">
+            <summary>
+            Gets the UUID of the sprite sheet.
+            </summary>
+        </member>
+        <member name="P:Genesis.Graphics.SpriteSheet.Rows">
+            <summary>
+            Gets the number of rows in the sprite sheet.
+            </summary>
+        </member>
+        <member name="P:Genesis.Graphics.SpriteSheet.Columns">
+            <summary>
+            Gets the number of columns in the sprite sheet.
+            </summary>
+        </member>
+        <member name="M:Genesis.Graphics.SpriteSheet.#ctor(System.String,Genesis.Math.Vec3,Genesis.Graphics.Texture)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genesis.Graphics.SpriteSheet"/> class.
+            </summary>
+            <param name="name">The name of the sprite sheet.</param>
+            <param name="tileResolution">The resolution of each tile in the sprite sheet.</param>
+            <param name="texture">The texture used for the sprite sheet.</param>
+        </member>
+        <member name="M:Genesis.Graphics.SpriteSheet.GetSprite(System.Single,System.Single)">
+            <summary>
+            Retrieves the texture coordinates for the specified tile in the sprite sheet.
+            </summary>
+            <param name="col">Column index of the tile (starting from 0).</param>
+            <param name="row">Row index of the tile (starting from 0).</param>
+            <returns>The texture coordinates of the specified tile.</returns>
         </member>
         <member name="T:Genesis.Graphics.TexCoords">
             <summary>
