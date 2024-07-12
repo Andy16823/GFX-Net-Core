@@ -123,7 +123,8 @@ namespace Genesis.Core.Behaviors._3D
             this.Collider.RigidBody.AngularFactor = System.Numerics.Vector3.Zero;
             Collider.OnCollide += (sce, game, co) =>
             {
-                var btCollisionObject = (CollisionObject)co;
+                var physicsBehavior = co.GetBehavior<PhysicsBehavior>();
+                var btCollisionObject = (CollisionObject)physicsBehavior.GetPhysicsObject();
                 if (btCollisionObject.GetType() != typeof(GhostObject))
                 {
                     IsColliding = true;

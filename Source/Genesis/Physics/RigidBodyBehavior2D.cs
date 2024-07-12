@@ -80,7 +80,7 @@ namespace Genesis.Physics
             System.Numerics.Matrix4x4 translation = System.Numerics.Matrix4x4.CreateTranslation(x, y, 0);
             System.Numerics.Quaternion rotation = this.RigidBody.WorldTransform.GetRotation();
             System.Numerics.Matrix4x4 rotaionMatrx = System.Numerics.Matrix4x4.CreateFromQuaternion(rotation);
-            this.RigidBody.WorldTransform = translation * rotaionMatrx;
+            this.RigidBody.WorldTransform = rotaionMatrx * translation;
         }
 
         /// <summary>

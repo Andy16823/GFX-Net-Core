@@ -495,6 +495,52 @@
             Creates a box collider with dimensions based on the parent's size and offset.
             </summary>
         </member>
+        <member name="M:Genesis.Core.Behaviors.Physics2D.BoxCollider.CreateCollider(Genesis.Math.Vec3)">
+            <summary>
+            Creates a collision body (collider) for the current object.
+            </summary>
+            <param name="halfextends">
+            The half extents (length, width, height) of the box collider.
+            </param>
+            <remarks>
+            This method creates a box collider based on the provided half extents and the current 
+            position and rotation of the parent object. The collider is then managed by the physics handler.
+            </remarks>
+        </member>
+        <member name="T:Genesis.Core.Behaviors.Physics2D.BoxRigidBody">
+            <summary>
+            Represents a 2D box-shaped rigid body behavior in the physics system.
+            </summary>
+        </member>
+        <member name="P:Genesis.Core.Behaviors.Physics2D.BoxRigidBody.LinearFactor">
+            <summary>
+            Gets or sets the linear factor of the rigid body.
+            </summary>
+        </member>
+        <member name="P:Genesis.Core.Behaviors.Physics2D.BoxRigidBody.AngularFactor">
+            <summary>
+            Gets or sets the angular factor of the rigid body.
+            </summary>
+        </member>
+        <member name="M:Genesis.Core.Behaviors.Physics2D.BoxRigidBody.CreateRigidBody(System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genesis.Core.Behaviors.Physics2D.BoxRigidBody"/> class.
+            </summary>
+            <param name="handler">The physics handler.</param>
+        </member>
+        <member name="M:Genesis.Core.Behaviors.Physics2D.BoxRigidBody.#ctor(Genesis.Physics.PhysicHandler)">
+            <summary>
+            Creates the rigid body with the specified mass.
+            </summary>
+            <param name="mass">The mass of the rigid body.</param>
+        </member>
+        <member name="M:Genesis.Core.Behaviors.Physics2D.BoxRigidBody.CreateRigidBody(System.Single,Genesis.Math.Vec3)">
+            <summary>
+            Creates the rigid body with the specified mass and half extents.
+            </summary>
+            <param name="mass">The mass of the rigid body.</param>
+            <param name="halfextends">The half extents of the box shape.</param>
+        </member>
         <member name="T:Genesis.Core.Behaviors.Physics2D.BoxTrigger2D">
             <summary>
             Represents a 2D box trigger for physics interactions.
@@ -7613,18 +7659,18 @@
             Represents an abstract class for defining physics behavior in the game.
             </summary>
         </member>
-        <member name="F:Genesis.Physics.PhysicsBehavior.OnCollide">
+        <member name="E:Genesis.Physics.PhysicsBehavior.OnCollide">
             <summary>
             Event triggered when a collision occurs.
             </summary>
         </member>
-        <member name="M:Genesis.Physics.PhysicsBehavior.Collide(Genesis.Core.Scene,Genesis.Core.Game,BulletSharp.CollisionObject)">
+        <member name="M:Genesis.Physics.PhysicsBehavior.Collide(Genesis.Core.Scene,Genesis.Core.Game,Genesis.Core.GameElement)">
             <summary>
             Handles the collision event, invoking the OnCollide event if subscribed.
             </summary>
             <param name="scene">The scene where the collision occurred</param>
             <param name="game">The game associated with the collision</param>
-            <param name="collisionObject">The collision object involved in the event</param>
+            <param name="element">The collision object involved in the event</param>
         </member>
         <member name="M:Genesis.Physics.PhysicsBehavior.GetPhysicsObject">
             <summary>
@@ -7848,6 +7894,122 @@
             <param name="start">The start vector of the ray.</param>
             <param name="end">The end vector of the ray.</param>
             <returns>The direction vector of the ray.</returns>
+        </member>
+        <member name="T:Genesis.Physics.RigidBodyBehavior2D">
+            <summary>
+            Abstract class representing a 2D rigid body behavior in the physics system.
+            </summary>
+        </member>
+        <member name="P:Genesis.Physics.RigidBodyBehavior2D.RigidBody">
+            <summary>
+            Gets or sets the rigid body associated with this behavior.
+            </summary>
+        </member>
+        <member name="P:Genesis.Physics.RigidBodyBehavior2D.Offset">
+            <summary>
+            Gets or sets the offset for the rigid body.
+            </summary>
+        </member>
+        <member name="P:Genesis.Physics.RigidBodyBehavior2D.PhysicHandler">
+            <summary>
+            Gets or sets the physics handler associated with this behavior.
+            </summary>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior2D.#ctor(Genesis.Physics.PhysicHandler)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Genesis.Physics.RigidBodyBehavior2D"/> class.
+            </summary>
+            <param name="handler">The physics handler.</param>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior2D.CreateRigidBody(System.Single)">
+            <summary>
+            Creates the rigid body with the specified mass.
+            </summary>
+            <param name="mass">The mass of the rigid body.</param>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior2D.Rotate(System.Single)">
+            <summary>
+            Rotates the rigid body by the specified vector.
+            </summary>
+            <param name="value">The rotation vector.</param>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior2D.Translate(Genesis.Math.Vec3)">
+            <summary>
+            Rotates the rigid body around the z-axis by the specified angle.
+            </summary>
+            <param name="z">The rotation angle in radians.</param>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior2D.Translate(System.Single,System.Single)">
+            <summary>
+            Translates the rigid body by the specified vector.
+            </summary>
+            <param name="value">The translation vector.</param>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior2D.AngularVelocity(System.Single)">
+            <summary>
+            Translates the rigid body by the specified x and y values.
+            </summary>
+            <param name="x">The translation along the x-axis.</param>
+            <param name="y">The translation along the y-axis.</param>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior2D.AngularVelocity(Genesis.Math.Vec3)">
+            <summary>
+            Sets the angular velocity of the rigid body around the z-axis.
+            </summary>
+            <param name="z">The angular velocity around the z-axis.</param>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior2D.LinearVelocity(System.Single,System.Single)">
+            <summary>
+            Sets the angular velocity of the rigid body based on the specified vector.
+            </summary>
+            <param name="value">The angular velocity vector.</param>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior2D.LinearVelocity(Genesis.Math.Vec3)">
+            <summary>
+            Sets the linear velocity of the rigid body.
+            </summary>
+            <param name="x">The velocity along the x-axis.</param>
+            <param name="y">The velocity along the y-axis.</param>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior2D.GetPhysicsObject">
+            <summary>
+            Sets the linear velocity of the rigid body based on the specified vector.
+            </summary>
+            <param name="value">The linear velocity vector.</param>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior2D.GetPhysicsObject``1">
+            <summary>
+            Gets the physics object associated with this behavior.
+            </summary>
+            <returns>The physics object.</returns>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior2D.OnUpdate(Genesis.Core.Game,Genesis.Core.GameElement)">
+            <summary>
+            Gets the physics object associated with this behavior, cast to the specified type.
+            </summary>
+            <typeparam name="T">The type to cast the physics object to.</typeparam>
+            <returns>The physics object cast to the specified type.</returns>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior2D.OnDestroy(Genesis.Core.Game,Genesis.Core.GameElement)">
+            <summary>
+            Updates the physics behavior for the specified game and parent element.
+            </summary>
+            <param name="game">The game instance.</param>
+            <param name="parent">The parent game element.</param>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior2D.OnInit(Genesis.Core.Game,Genesis.Core.GameElement)">
+            <summary>
+            Destroys the physics behavior for the specified game and parent element.
+            </summary>
+            <param name="game">The game instance.</param>
+            <param name="parent">The parent game element.</param>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior2D.OnRender(Genesis.Core.Game,Genesis.Core.GameElement)">
+            <summary>
+            Initializes the physics behavior for the specified game and parent element.
+            </summary>
+            <param name="game">The game instance.</param>
+            <param name="parent">The parent game element.</param>
         </member>
         <member name="T:Genesis.Physics.RigidBodyBehavior3D">
             <summary>

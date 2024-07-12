@@ -495,6 +495,18 @@
             Creates a box collider with dimensions based on the parent's size and offset.
             </summary>
         </member>
+        <member name="M:Genesis.Core.Behaviors.Physics2D.BoxCollider.CreateCollider(Genesis.Math.Vec3)">
+            <summary>
+            Creates a collision body (collider) for the current object.
+            </summary>
+            <param name="halfextends">
+            The half extents (length, width, height) of the box collider.
+            </param>
+            <remarks>
+            This method creates a box collider based on the provided half extents and the current 
+            position and rotation of the parent object. The collider is then managed by the physics handler.
+            </remarks>
+        </member>
         <member name="T:Genesis.Core.Behaviors.Physics2D.BoxRigidBody">
             <summary>
             Represents a 2D box-shaped rigid body behavior in the physics system.
@@ -7647,18 +7659,18 @@
             Represents an abstract class for defining physics behavior in the game.
             </summary>
         </member>
-        <member name="F:Genesis.Physics.PhysicsBehavior.OnCollide">
+        <member name="E:Genesis.Physics.PhysicsBehavior.OnCollide">
             <summary>
             Event triggered when a collision occurs.
             </summary>
         </member>
-        <member name="M:Genesis.Physics.PhysicsBehavior.Collide(Genesis.Core.Scene,Genesis.Core.Game,BulletSharp.CollisionObject)">
+        <member name="M:Genesis.Physics.PhysicsBehavior.Collide(Genesis.Core.Scene,Genesis.Core.Game,Genesis.Core.GameElement)">
             <summary>
             Handles the collision event, invoking the OnCollide event if subscribed.
             </summary>
             <param name="scene">The scene where the collision occurred</param>
             <param name="game">The game associated with the collision</param>
-            <param name="collisionObject">The collision object involved in the event</param>
+            <param name="element">The collision object involved in the event</param>
         </member>
         <member name="M:Genesis.Physics.PhysicsBehavior.GetPhysicsObject">
             <summary>

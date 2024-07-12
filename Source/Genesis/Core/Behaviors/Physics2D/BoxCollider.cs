@@ -31,7 +31,22 @@ namespace Genesis.Core.Behaviors.Physics2D
         /// </summary>
         public override void CreateCollider()
         {
-            var shape = new Box2DShape(Parent.Size.ToVector3() / 2);
+            this.CreateCollider(Parent.Size.Half());
+        }
+
+        /// <summary>
+        /// Creates a collision body (collider) for the current object.
+        /// </summary>
+        /// <param name="halfextends">
+        /// The half extents (length, width, height) of the box collider.
+        /// </param>
+        /// <remarks>
+        /// This method creates a box collider based on the provided half extents and the current 
+        /// position and rotation of the parent object. The collider is then managed by the physics handler.
+        /// </remarks>
+        public void CreateCollider(Vec3 halfextends)
+        {
+            var shape = new Box2DShape(halfextends.ToVector3());
 
             Vec3 rotation = this.Parent.Rotation;
             System.Numerics.Matrix4x4 transformMatrix = System.Numerics.Matrix4x4.CreateTranslation(Parent.Location.ToVector3() + Offset.ToVector3());

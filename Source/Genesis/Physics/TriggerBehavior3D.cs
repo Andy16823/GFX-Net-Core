@@ -111,7 +111,7 @@ namespace Genesis.Physics
             System.Numerics.Matrix4x4 translation = System.Numerics.Matrix4x4.CreateTranslation(x, y, z);
             System.Numerics.Quaternion rotation = System.Numerics.Quaternion.CreateFromRotationMatrix(Trigger.WorldTransform);
             System.Numerics.Matrix4x4 rotationMatrix = System.Numerics.Matrix4x4.CreateFromQuaternion(rotation);
-            this.Trigger.WorldTransform = translation * rotationMatrix;
+            this.Trigger.WorldTransform = rotationMatrix * translation;
         }
 
         /// <summary>

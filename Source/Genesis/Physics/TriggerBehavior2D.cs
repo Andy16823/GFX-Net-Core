@@ -67,7 +67,7 @@ namespace Genesis.Physics
             var rotation = System.Numerics.Quaternion.CreateFromRotationMatrix(Trigger.WorldTransform);
             var rotationMatrix = System.Numerics.Matrix4x4.CreateFromQuaternion(rotation);
 
-            this.Trigger.WorldTransform = translationMatrix * rotationMatrix;
+            this.Trigger.WorldTransform = rotationMatrix * translationMatrix;
         }
 
         /// <summary>
