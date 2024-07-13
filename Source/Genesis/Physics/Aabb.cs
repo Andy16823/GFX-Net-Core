@@ -1,4 +1,5 @@
 ﻿using BulletSharp;
+using Genesis.Core;
 using Genesis.Math;
 using GlmSharp;
 using System;
@@ -32,6 +33,23 @@ namespace Genesis.Physics
         {
             this.Max = new Vec3(0);
             this.Min = new Vec3(0);
+        }
+        
+        /// <summary>
+        /// Creates an new Aabb for an game element using the elements dimensions
+        /// </summary>
+        /// <param name="element">The element for the Aabb</param>
+        public Aabb(GameElement element)
+        {
+            this.Min = Vec3.Zero();
+            this.Min.X = element.Location.X - (element.Size.X / 2);
+            this.Min.Y = element.Location.Y - (element.Size.Y / 2);
+            this.Min.Z = element.Location.Z - (element.Size.Z / 2);
+
+            this.Max = Vec3.Zero();
+            this.Max.X = element.Location.X + (element.Size.X / 2);
+            this.Max.Y = element.Location.Y + (element.Size.Y / 2);
+            this.Max.Z = element.Location.Z + (element.Size.Z / 2);
         }
 
         /// <summary>
