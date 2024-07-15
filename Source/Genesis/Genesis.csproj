@@ -64,7 +64,6 @@
     <Compile Remove="Core\GameElments\Sprite.cs" />
     <Compile Remove="Core\GameElments\Terrain2D.cs" />
     <Compile Remove="Core\GameElments\Terrain3D.cs" />
-    <Compile Remove="Graphics\Animation3D.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="BulletSharp">

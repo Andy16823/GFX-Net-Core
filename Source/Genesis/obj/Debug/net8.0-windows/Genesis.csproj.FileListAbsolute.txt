@@ -38,6 +38,11 @@ C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Debug\net8.0-windows\Lic
 C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Debug\net8.0-windows\Licences\NetGL.txt
 C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Debug\net8.0-windows\Licences\NewtonsoftJson.txt
 C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Debug\net8.0-windows\Licences\OpenObjectLoader.txt
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Debug\net8.0-windows\Native\Ijwhost.dll
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Debug\net8.0-windows\Native\libbulletc-windows-x64.dll
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Debug\net8.0-windows\Native\libbulletc-windows-x86.dll
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Debug\net8.0-windows\Native\libbulletc.dll
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Debug\net8.0-windows\Native\System.Drawing.Common.dll
 C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Debug\net8.0-windows\Genesis.deps.json
 C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Debug\net8.0-windows\Genesis.dll
 C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Debug\net8.0-windows\Genesis.pdb
@@ -57,8 +62,3 @@ C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\obj\Debug\net8.0-windows\Gen
 C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\obj\Debug\net8.0-windows\refint\Genesis.dll
 C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\obj\Debug\net8.0-windows\Genesis.pdb
 C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\obj\Debug\net8.0-windows\ref\Genesis.dll
-C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Debug\net8.0-windows\Native\Ijwhost.dll
-C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Debug\net8.0-windows\Native\libbulletc-windows-x64.dll
-C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Debug\net8.0-windows\Native\libbulletc-windows-x86.dll
-C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Debug\net8.0-windows\Native\libbulletc.dll
-C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Debug\net8.0-windows\Native\System.Drawing.Common.dll
