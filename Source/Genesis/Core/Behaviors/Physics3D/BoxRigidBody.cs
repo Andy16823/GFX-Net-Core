@@ -30,9 +30,9 @@ namespace Genesis.Core.Behaviors.Physics3D
         /// </summary>
         /// <param name="physicHandler">The physics handler to manage this rigid body.</param>
         /// <param name="mass">The mass of the rigid body.</param>
-        public override void CreateRigidBody(float mass)
+        public override void CreateRigidBody(float mass, int collisionGroup = -1, int collisionMask = -1)
         {
-            this.CreateRigidBody(this.Parent.Size.Half(), mass);
+            this.CreateRigidBody(this.Parent.Size.Half(), mass, collisionGroup, collisionMask);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Genesis.Core.Behaviors.Physics3D
         /// <param name="handler">The physics handler to manage this rigid body.</param>
         /// <param name="boxHalfExtends">Half extends of the box rigid body.</param>
         /// <param name="mass">Mass of the rigid body.</param>
-        public void CreateRigidBody(Vec3 boxHalfExtends, float mass)
+        public void CreateRigidBody(Vec3 boxHalfExtends, float mass, int collisionGroup = -1, int collisionMask = -1)
         {
             var element = this.Parent;
             BoxShape boxShape = new BoxShape(boxHalfExtends.ToVector3());
@@ -59,7 +59,7 @@ namespace Genesis.Core.Behaviors.Physics3D
             RigidBody.UserObject = element;
             RigidBody.ApplyGravity();
             
-            PhysicHandler.ManageElement(this);
+            PhysicHandler.ManageElement(this, collisionGroup, collisionMask);
         }
     }
 }

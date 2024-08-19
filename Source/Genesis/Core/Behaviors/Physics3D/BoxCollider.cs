@@ -27,16 +27,16 @@ namespace Genesis.Core.Behaviors.Physics3D
         /// <summary>
         /// Creates a box collider with default half extends.
         /// </summary>
-        public override void CreateCollider()
+        public override void CreateCollider(int collisionGroup = -1, int collisionMask = -1)
         {
-            this.CreateCollider(this.Parent.Size.Half());
+            this.CreateCollider(this.Parent.Size.Half(), collisionGroup, collisionMask);
         }
 
         /// <summary>
         /// Creates a box collider with specified half extends.
         /// </summary>
         /// <param name="boxHalfExtends">Half extends of the box collider.</param>
-        public void CreateCollider(Vec3 boxHalfExtends)
+        public void CreateCollider(Vec3 boxHalfExtends, int collisionGroup = -1, int collisionMask = -1)
         {
             var element = this.Parent;
             BoxShape boxShape = new BoxShape(boxHalfExtends.ToVector3());
@@ -53,7 +53,7 @@ namespace Genesis.Core.Behaviors.Physics3D
             Collider.CollisionShape = boxShape;
             Collider.WorldTransform = btStartTransform;
 
-            PhysicHandler.ManageElement(this);
+            PhysicHandler.ManageElement(this, collisionGroup, collisionMask);
         }
     }
 }

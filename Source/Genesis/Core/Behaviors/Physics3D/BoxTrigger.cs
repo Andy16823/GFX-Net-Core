@@ -28,16 +28,16 @@ namespace Genesis.Core.Behaviors.Physics3D
         /// <summary>
         /// Creates a box trigger with the default half extends (half of the parent's size).
         /// </summary>
-        public override void CreateTrigger()
+        public override void CreateTrigger(int collisionGroup = -1, int collisionMask = -1)
         {
-            this.CreateTrigger(Parent.Size.Half());
+            this.CreateTrigger(Parent.Size.Half(), collisionGroup, collisionMask);
         }
 
         /// <summary>
         /// Creates a box trigger with the specified half extends.
         /// </summary>
         /// <param name="boxHalfExtends">The half extends of the box trigger.</param>
-        public void CreateTrigger(Vec3 boxHalfExtends)
+        public void CreateTrigger(Vec3 boxHalfExtends, int collisionGroup = -1, int collisionMask = -1)
         {
             var element = this.Parent;
             BoxShape boxShape = new BoxShape(boxHalfExtends.ToVector3());
@@ -54,7 +54,7 @@ namespace Genesis.Core.Behaviors.Physics3D
             Trigger.WorldTransform = btStartTransform;
             Trigger.CollisionFlags = CollisionFlags.NoContactResponse;
 
-            PhysicHandler.ManageElement(this);
+            PhysicHandler.ManageElement(this, collisionGroup, collisionMask);
         }
     }
 }

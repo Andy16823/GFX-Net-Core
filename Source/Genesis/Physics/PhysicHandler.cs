@@ -58,7 +58,7 @@ namespace Genesis.Physics
         /// Manages physics interactions for a specific physics behavior.
         /// </summary>
         /// <param name="physicsBehavior">The physics behavior to manage</param>
-        public virtual void ManageElement(PhysicsBehavior physicsBehavior)
+        public virtual void ManageElement(PhysicsBehavior physicsBehavior, int collisionGroup = -1, int collisionMask = -1)
         {
             this.Callbacks.Add(physicsBehavior.GetPhysicsObject(), (scene, game, cObj) =>
             {

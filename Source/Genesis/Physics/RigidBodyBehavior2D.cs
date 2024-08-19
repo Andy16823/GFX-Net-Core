@@ -43,7 +43,7 @@ namespace Genesis.Physics
         /// Creates the rigid body with the specified mass.
         /// </summary>
         /// <param name="mass">The mass of the rigid body.</param>
-        public abstract void CreateRigidBody(float mass);
+        public abstract void CreateRigidBody(float mass, int collisionGroup = -1, int collisionMask = -1);
 
         public virtual void Rotate(Vec3 value)
         {

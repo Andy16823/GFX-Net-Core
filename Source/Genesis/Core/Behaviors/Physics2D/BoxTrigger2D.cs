@@ -29,16 +29,16 @@ namespace Genesis.Core.Behaviors.Physics2D
         /// <summary>
         /// Creates the trigger using the parent's size half extents.
         /// </summary>
-        public override void CreateTrigger()
+        public override void CreateTrigger(int collisionGroup = -1, int collisionMask = -1)
         {
-            this.CreateTrigger(Parent.Size.Half());
+            this.CreateTrigger(Parent.Size.Half(), collisionGroup, collisionMask);
         }
 
         /// <summary>
         /// Creates the trigger with the specified half extents.
         /// </summary>
         /// <param name="halfExtends">The half extents of the box trigger.</param>
-        public void CreateTrigger(Vec3 halfExtends)
+        public void CreateTrigger(Vec3 halfExtends, int collisionGroup = -1, int collisionMask = -1)
         {
             Box2DShape box2DShape = new Box2DShape(halfExtends.ToVector3());
 
@@ -55,7 +55,7 @@ namespace Genesis.Core.Behaviors.Physics2D
             this.Trigger.CollisionFlags = CollisionFlags.NoContactResponse;
             this.Trigger.UserObject = this.Parent;
 
-            PhysicHandler.ManageElement(this);
+            PhysicHandler.ManageElement(this, collisionGroup, collisionMask);
         }
 
         

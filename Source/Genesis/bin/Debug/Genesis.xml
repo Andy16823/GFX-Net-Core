@@ -503,12 +503,12 @@
             </summary>
             <param name="handler">The physics handler to associate with this box collider.</param>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics2D.BoxCollider.CreateCollider">
+        <member name="M:Genesis.Core.Behaviors.Physics2D.BoxCollider.CreateCollider(System.Int32,System.Int32)">
             <summary>
             Creates a box collider with dimensions based on the parent's size and offset.
             </summary>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics2D.BoxCollider.CreateCollider(Genesis.Math.Vec3)">
+        <member name="M:Genesis.Core.Behaviors.Physics2D.BoxCollider.CreateCollider(Genesis.Math.Vec3,System.Int32,System.Int32)">
             <summary>
             Creates a collision body (collider) for the current object.
             </summary>
@@ -535,7 +535,7 @@
             Gets or sets the angular factor of the rigid body.
             </summary>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics2D.BoxRigidBody.CreateRigidBody(System.Single)">
+        <member name="M:Genesis.Core.Behaviors.Physics2D.BoxRigidBody.CreateRigidBody(System.Single,System.Int32,System.Int32)">
             <summary>
             Initializes a new instance of the <see cref="T:Genesis.Core.Behaviors.Physics2D.BoxRigidBody"/> class.
             </summary>
@@ -547,7 +547,7 @@
             </summary>
             <param name="mass">The mass of the rigid body.</param>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics2D.BoxRigidBody.CreateRigidBody(System.Single,Genesis.Math.Vec3)">
+        <member name="M:Genesis.Core.Behaviors.Physics2D.BoxRigidBody.CreateRigidBody(System.Single,Genesis.Math.Vec3,System.Int32,System.Int32)">
             <summary>
             Creates the rigid body with the specified mass and half extents.
             </summary>
@@ -568,12 +568,12 @@
             </summary>
             <param name="handler">The physics handler to associate with this box trigger.</param>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics2D.BoxTrigger2D.CreateTrigger">
+        <member name="M:Genesis.Core.Behaviors.Physics2D.BoxTrigger2D.CreateTrigger(System.Int32,System.Int32)">
             <summary>
             Creates the trigger using the parent's size half extents.
             </summary>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics2D.BoxTrigger2D.CreateTrigger(Genesis.Math.Vec3)">
+        <member name="M:Genesis.Core.Behaviors.Physics2D.BoxTrigger2D.CreateTrigger(Genesis.Math.Vec3,System.Int32,System.Int32)">
             <summary>
             Creates the trigger with the specified half extents.
             </summary>
@@ -584,7 +584,7 @@
             Represents a behavior for creating a physics collider for 2D sprites using BulletSharp.
             </summary>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics2D.BufferedSpriteCollider.CreateCollider">
+        <member name="M:Genesis.Core.Behaviors.Physics2D.BufferedSpriteCollider.CreateCollider(System.Int32,System.Int32)">
             <summary>
             Creates a rigid body for the collider.
             </summary>
@@ -751,7 +751,7 @@
             Gets or sets whether physics is enabled.
             </summary>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics2D.Rigidbody2D.CreateRigidbody(System.Single,System.Single,System.Single)">
+        <member name="M:Genesis.Core.Behaviors.Physics2D.Rigidbody2D.CreateRigidbody(System.Single,System.Single,System.Single,System.Int32,System.Int32)">
             <summary>
             Creates a RigidBody with the specified mass using the provided PhysicHandler.
             </summary>
@@ -771,12 +771,12 @@
             </summary>
             <param name="handler">The physics handler to associate with this box collider.</param>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics3D.BoxCollider.CreateCollider">
+        <member name="M:Genesis.Core.Behaviors.Physics3D.BoxCollider.CreateCollider(System.Int32,System.Int32)">
             <summary>
             Creates a box collider with default half extends.
             </summary>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics3D.BoxCollider.CreateCollider(Genesis.Math.Vec3)">
+        <member name="M:Genesis.Core.Behaviors.Physics3D.BoxCollider.CreateCollider(Genesis.Math.Vec3,System.Int32,System.Int32)">
             <summary>
             Creates a box collider with specified half extends.
             </summary>
@@ -793,14 +793,14 @@
             </summary>
             <param name="handler">The physics handler to manage this rigid body.</param>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics3D.BoxRigidBody.CreateRigidBody(System.Single)">
+        <member name="M:Genesis.Core.Behaviors.Physics3D.BoxRigidBody.CreateRigidBody(System.Single,System.Int32,System.Int32)">
             <summary>
             Creates a box-shaped rigid body using the parent's size and the specified mass.
             </summary>
             <param name="physicHandler">The physics handler to manage this rigid body.</param>
             <param name="mass">The mass of the rigid body.</param>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics3D.BoxRigidBody.CreateRigidBody(Genesis.Math.Vec3,System.Single)">
+        <member name="M:Genesis.Core.Behaviors.Physics3D.BoxRigidBody.CreateRigidBody(Genesis.Math.Vec3,System.Single,System.Int32,System.Int32)">
             <summary>
             Creates a box-shaped rigid body with the specified half extends, mass, and physics handler.
             </summary>
@@ -822,12 +822,12 @@
             </summary>
             <param name="handler">The physics handler to associate with this box trigger.</param>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics3D.BoxTrigger.CreateTrigger">
+        <member name="M:Genesis.Core.Behaviors.Physics3D.BoxTrigger.CreateTrigger(System.Int32,System.Int32)">
             <summary>
             Creates a box trigger with the default half extends (half of the parent's size).
             </summary>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics3D.BoxTrigger.CreateTrigger(Genesis.Math.Vec3)">
+        <member name="M:Genesis.Core.Behaviors.Physics3D.BoxTrigger.CreateTrigger(Genesis.Math.Vec3,System.Int32,System.Int32)">
             <summary>
             Creates a box trigger with the specified half extends.
             </summary>
@@ -844,19 +844,19 @@
             </summary>
             <param name="handler">The physics handler to associate with this capsule collider.</param>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics3D.CapsuleCollider.CreateCollider">
+        <member name="M:Genesis.Core.Behaviors.Physics3D.CapsuleCollider.CreateCollider(System.Int32,System.Int32)">
             <summary>
             Creates a collider with a capsule shape using default dimensions.
             </summary>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics3D.CapsuleCollider.CreateCollider(System.Single,System.Single)">
+        <member name="M:Genesis.Core.Behaviors.Physics3D.CapsuleCollider.CreateCollider(System.Single,System.Single,System.Int32,System.Int32)">
             <summary>
             Creates a collider with a capsule shape at the origin.
             </summary>
             <param name="radius">The radius of the capsule.</param>
             <param name="height">The height of the capsule.</param>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics3D.CapsuleCollider.CreateCollider(Genesis.Math.Vec3,System.Single,System.Single)">
+        <member name="M:Genesis.Core.Behaviors.Physics3D.CapsuleCollider.CreateCollider(Genesis.Math.Vec3,System.Single,System.Single,System.Int32,System.Int32)">
             <summary>
             Creates a collider with a capsule shape at the specified offset.
             </summary>
@@ -875,13 +875,13 @@
             </summary>
             <param name="handler">The physics handler managing this rigid body.</param>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics3D.CapsuleRigidBody.CreateRigidBody(System.Single)">
+        <member name="M:Genesis.Core.Behaviors.Physics3D.CapsuleRigidBody.CreateRigidBody(System.Single,System.Int32,System.Int32)">
             <summary>
             Creates a RigidBody with default capsule dimensions.
             </summary>
             <param name="mass">The mass of the capsule.</param>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics3D.CapsuleRigidBody.CreateRigidBody(System.Single,System.Single,System.Single,Genesis.Math.Vec3)">
+        <member name="M:Genesis.Core.Behaviors.Physics3D.CapsuleRigidBody.CreateRigidBody(System.Single,System.Single,System.Single,Genesis.Math.Vec3,System.Int32,System.Int32)">
             <summary>
             Creates a RigidBody with a capsule shape.
             </summary>
@@ -953,7 +953,7 @@
             </summary>
             <param name="handler">The physics handler to associate with this convex hull collider.</param>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics3D.ConvexHullCollider.CreateCollider">
+        <member name="M:Genesis.Core.Behaviors.Physics3D.ConvexHullCollider.CreateCollider(System.Int32,System.Int32)">
             <summary>
             Creates a convex hull collider based on the shape of the parent element.
             </summary>
@@ -1021,18 +1021,18 @@
             </summary>
             <param name="handler">The physics handler to associate with this sphere collider.</param>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics3D.SphereCollider.CreateCollider">
+        <member name="M:Genesis.Core.Behaviors.Physics3D.SphereCollider.CreateCollider(System.Int32,System.Int32)">
             <summary>
             Creates a collider with a sphere shape using the default radius (half of the parent's size).
             </summary>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics3D.SphereCollider.CreateCollider(System.Single)">
+        <member name="M:Genesis.Core.Behaviors.Physics3D.SphereCollider.CreateCollider(System.Single,System.Int32,System.Int32)">
             <summary>
             Creates a collider with a sphere shape at the origin.
             </summary>
             <param name="radius">The radius of the sphere.</param>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics3D.SphereCollider.CreateCollider(Genesis.Math.Vec3,System.Single)">
+        <member name="M:Genesis.Core.Behaviors.Physics3D.SphereCollider.CreateCollider(Genesis.Math.Vec3,System.Single,System.Int32,System.Int32)">
             <summary>
             Creates a collider with a sphere shape at the specified offset.
             </summary>
@@ -1050,20 +1050,20 @@
             </summary>
             <param name="handler">The physics handler managing this rigid body.</param>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics3D.SphereRigidBody.CreateRigidBody(System.Single)">
+        <member name="M:Genesis.Core.Behaviors.Physics3D.SphereRigidBody.CreateRigidBody(System.Single,System.Int32,System.Int32)">
             <summary>
             Creates a rigid body with a sphere shape using the default radius (half of the parent's size).
             </summary>
             <param name="mass">The mass of the sphere rigid body.</param>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics3D.SphereRigidBody.CreateRigidBody(System.Single,System.Single)">
+        <member name="M:Genesis.Core.Behaviors.Physics3D.SphereRigidBody.CreateRigidBody(System.Single,System.Single,System.Int32,System.Int32)">
             <summary>
             Creates a rigid body with a sphere shape at the origin.
             </summary>
             <param name="radius">The radius of the sphere.</param>
             <param name="mass">The mass of the sphere rigid body.</param>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics3D.SphereRigidBody.CreateRigidBody(Genesis.Math.Vec3,System.Single,System.Single)">
+        <member name="M:Genesis.Core.Behaviors.Physics3D.SphereRigidBody.CreateRigidBody(Genesis.Math.Vec3,System.Single,System.Single,System.Int32,System.Int32)">
             <summary>
             Creates a rigid body with a sphere shape at the specified offset.
             </summary>
@@ -1085,18 +1085,18 @@
             </summary>
             <param name="handler">The physics handler to associate with this sphere trigger.</param>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics3D.SphereTrigger.CreateTrigger">
+        <member name="M:Genesis.Core.Behaviors.Physics3D.SphereTrigger.CreateTrigger(System.Int32,System.Int32)">
             <summary>
             Creates a trigger with a sphere shape using the default radius (half of the parent's size).
             </summary>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics3D.SphereTrigger.CreateTrigger(System.Single)">
+        <member name="M:Genesis.Core.Behaviors.Physics3D.SphereTrigger.CreateTrigger(System.Single,System.Int32,System.Int32)">
             <summary>
             Creates a trigger with a sphere shape at the origin.
             </summary>
             <param name="radius">The radius of the sphere.</param>
         </member>
-        <member name="M:Genesis.Core.Behaviors.Physics3D.SphereTrigger.CreateTrigger(Genesis.Math.Vec3,System.Single)">
+        <member name="M:Genesis.Core.Behaviors.Physics3D.SphereTrigger.CreateTrigger(Genesis.Math.Vec3,System.Single,System.Int32,System.Int32)">
             <summary>
             Creates a trigger with a sphere shape at the specified offset.
             </summary>
@@ -5254,6 +5254,11 @@
             Class representing a 3D mesh, including its geometry and material information.
             </summary>
         </member>
+        <member name="P:Genesis.Graphics.Mesh.Name">
+            <summary>
+            Name of the mesh
+            </summary>
+        </member>
         <member name="P:Genesis.Graphics.Mesh.Material">
             <summary>
             Index of the material associated with the mesh.
@@ -6807,6 +6812,12 @@
             </summary>
             <returns>A normalized Vec3 instance.</returns>
         </member>
+        <member name="M:Genesis.Math.Vec3.Length">
+            <summary>
+            Returns the vector length
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Genesis.Math.Vec3.Normalized(Genesis.Math.Vec3)">
             <summary>
             Returns a normalized version of the input vector.
@@ -6969,7 +6980,7 @@
             </summary>
             <param name="handler">The physics handler to associate with this 2D collider behavior.</param>
         </member>
-        <member name="M:Genesis.Physics.ColliderBehavior2D.CreateCollider">
+        <member name="M:Genesis.Physics.ColliderBehavior2D.CreateCollider(System.Int32,System.Int32)">
             <summary>
             Creates the collider.
             </summary>
@@ -7069,7 +7080,7 @@
             </summary>
             <param name="handler">The physics handler to associate with this 3D collider behavior.</param>
         </member>
-        <member name="M:Genesis.Physics.ColliderBehavior3D.CreateCollider">
+        <member name="M:Genesis.Physics.ColliderBehavior3D.CreateCollider(System.Int32,System.Int32)">
             <summary>
             Abstract method to create the collider.
             Implement this method in derived classes to define the specific behavior for creating a collider.
@@ -7147,6 +7158,95 @@
             <param name="game">The game instance.</param>
             <param name="parent">The parent game element.</param>
         </member>
+        <member name="T:Genesis.Physics.CollisionGroup">
+            <summary>
+            Defines different collision groups for physics interactions.
+            </summary>
+        </member>
+        <member name="F:Genesis.Physics.CollisionGroup.None">
+            <summary>
+            Represents no collision group.
+            </summary>
+        </member>
+        <member name="F:Genesis.Physics.CollisionGroup.StaticObject">
+            <summary>
+            Group for static objects that do not move.
+            </summary>
+        </member>
+        <member name="F:Genesis.Physics.CollisionGroup.Player">
+            <summary>
+            Group for player-controlled characters.
+            </summary>
+        </member>
+        <member name="F:Genesis.Physics.CollisionGroup.NPC">
+            <summary>
+            Group for non-player characters (NPCs).
+            </summary>
+        </member>
+        <member name="F:Genesis.Physics.CollisionGroup.Vehicle">
+            <summary>
+            Group for vehicles.
+            </summary>
+        </member>
+        <member name="F:Genesis.Physics.CollisionGroup.Projectile">
+            <summary>
+            Group for projectiles or other similar objects.
+            </summary>
+        </member>
+        <member name="F:Genesis.Physics.CollisionGroup.Trigger">
+            <summary>
+            Group for trigger volumes or sensors.
+            </summary>
+        </member>
+        <member name="F:Genesis.Physics.CollisionGroup.InteractiveObject">
+            <summary>
+            Group for interactive objects.
+            </summary>
+        </member>
+        <member name="F:Genesis.Physics.CollisionGroup.EnvironmentObject">
+            <summary>
+            Group for environmental objects.
+            </summary>
+        </member>
+        <member name="F:Genesis.Physics.CollisionGroup.Particles">
+            <summary>
+            Group for particle systems.
+            </summary>
+        </member>
+        <member name="F:Genesis.Physics.CollisionGroup.Collider">
+            <summary>
+            Group for collision detection components.
+            </summary>
+        </member>
+        <member name="F:Genesis.Physics.CollisionGroup.EditorEntity">
+            <summary>
+            Group for editor entities such as gizmos and debug objects.
+            </summary>
+        </member>
+        <member name="F:Genesis.Physics.CollisionGroup.All">
+            <summary>
+            Group representing all collision groups.
+            </summary>
+        </member>
+        <member name="T:Genesis.Physics.CollisionGroupExtensions">
+            <summary>
+            Provides extension methods for the <see cref="T:Genesis.Physics.CollisionGroup"/> enum.
+            </summary>
+        </member>
+        <member name="M:Genesis.Physics.CollisionGroupExtensions.GetGroup(Genesis.Physics.CollisionGroup)">
+            <summary>
+            Gets the integer value associated with a collision group.
+            </summary>
+            <param name="group">The collision group.</param>
+            <returns>The integer value of the collision group.</returns>
+        </member>
+        <member name="M:Genesis.Physics.CollisionGroupExtensions.GetCollisionMask(Genesis.Physics.CollisionGroup)">
+            <summary>
+            Gets the collision mask for the specified collision group, defining which other groups it collides with.
+            </summary>
+            <param name="group">The collision group.</param>
+            <returns>The collision mask for the collision group.</returns>
+        </member>
         <member name="T:Genesis.Physics.MouseRay2">
             <summary>
             Represents a class for calculating a ray based on mouse input.
@@ -7196,7 +7296,7 @@
             <param name="scene">The scene to process physics for</param>
             <param name="game">The game to process physics for</param>
         </member>
-        <member name="M:Genesis.Physics.PhysicHandler.ManageElement(Genesis.Physics.PhysicsBehavior)">
+        <member name="M:Genesis.Physics.PhysicHandler.ManageElement(Genesis.Physics.PhysicsBehavior,System.Int32,System.Int32)">
             <summary>
             Manages physics interactions for a specific physics behavior.
             </summary>
@@ -7289,7 +7389,7 @@
             <param name="scene">The current game scene.</param>
             <param name="game">The current game instance.</param>
         </member>
-        <member name="M:Genesis.Physics.PhysicsHandler2D.ManageElement(Genesis.Physics.PhysicsBehavior)">
+        <member name="M:Genesis.Physics.PhysicsHandler2D.ManageElement(Genesis.Physics.PhysicsBehavior,System.Int32,System.Int32)">
             <summary>
             Manages a physics behavior element by adding its RigidBody to the physics world.
             </summary>
@@ -7340,7 +7440,7 @@
             <param name="scene">The current game scene.</param>
             <param name="game">The current game instance.</param>
         </member>
-        <member name="M:Genesis.Physics.PhysicsHandler3D.ManageElement(Genesis.Physics.PhysicsBehavior)">
+        <member name="M:Genesis.Physics.PhysicsHandler3D.ManageElement(Genesis.Physics.PhysicsBehavior,System.Int32,System.Int32)">
             <summary>
             Manages a physics behavior element by adding its collision object to the physics world.
             </summary>
@@ -7510,7 +7610,7 @@
             </summary>
             <param name="handler">The physics handler.</param>
         </member>
-        <member name="M:Genesis.Physics.RigidBodyBehavior2D.CreateRigidBody(System.Single)">
+        <member name="M:Genesis.Physics.RigidBodyBehavior2D.CreateRigidBody(System.Single,System.Int32,System.Int32)">
             <summary>
             Creates the rigid body with the specified mass.
             </summary>
@@ -7626,7 +7726,7 @@
             </summary>
             <param name="handler">The physics handler to associate with this rigid body behavior.</param>
         </member>
-        <member name="M:Genesis.Physics.RigidBodyBehavior3D.CreateRigidBody(System.Single)">
+        <member name="M:Genesis.Physics.RigidBodyBehavior3D.CreateRigidBody(System.Single,System.Int32,System.Int32)">
             <summary>
             Abstract method to create the rigid body.
             Implement this method in derived classes to define the specific behavior for creating a rigid body.
@@ -7762,7 +7862,7 @@
             </summary>
             <param name="handler">The physics handler to associate with this trigger behavior.</param>
         </member>
-        <member name="M:Genesis.Physics.TriggerBehavior2D.CreateTrigger">
+        <member name="M:Genesis.Physics.TriggerBehavior2D.CreateTrigger(System.Int32,System.Int32)">
             <summary>
             Creates the trigger object using the specified physics handler.
             </summary>
@@ -7857,7 +7957,7 @@
             </summary>
             <param name="handler">The physics handler to associate with this 3D trigger behavior.</param>
         </member>
-        <member name="M:Genesis.Physics.TriggerBehavior3D.CreateTrigger">
+        <member name="M:Genesis.Physics.TriggerBehavior3D.CreateTrigger(System.Int32,System.Int32)">
             <summary>
             Creates the trigger associated with this behavior.
             </summary>

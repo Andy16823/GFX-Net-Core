@@ -29,9 +29,9 @@ namespace Genesis.Core.Behaviors.Physics2D
         /// <summary>
         /// Creates a box collider with dimensions based on the parent's size and offset.
         /// </summary>
-        public override void CreateCollider()
+        public override void CreateCollider(int collisionGroup = -1, int collisionMask = -1)
         {
-            this.CreateCollider(Parent.Size.Half());
+            this.CreateCollider(Parent.Size.Half(), collisionGroup, collisionMask);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Genesis.Core.Behaviors.Physics2D
         /// This method creates a box collider based on the provided half extents and the current 
         /// position and rotation of the parent object. The collider is then managed by the physics handler.
         /// </remarks>
-        public void CreateCollider(Vec3 halfextends)
+        public void CreateCollider(Vec3 halfextends, int collisionGroup = -1, int collisionMask = -1)
         {
             var shape = new Box2DShape(halfextends.ToVector3());
 
@@ -57,7 +57,7 @@ namespace Genesis.Core.Behaviors.Physics2D
             Collider.CollisionShape = shape;
             Collider.UserObject = this.Parent;
             Collider.WorldTransform = startTransform;
-            PhysicHandler.ManageElement(this);
+            PhysicHandler.ManageElement(this, collisionGroup, collisionMask);
         }
     }
 }

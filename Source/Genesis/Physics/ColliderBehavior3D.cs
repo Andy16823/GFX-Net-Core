@@ -48,7 +48,7 @@ namespace Genesis.Physics
         /// Abstract method to create the collider.
         /// Implement this method in derived classes to define the specific behavior for creating a collider.
         /// </summary>
-        public abstract void CreateCollider();
+        public abstract void CreateCollider(int collisionGroup = -1, int collisionMask = -1);
 
         /// <summary>
         /// Translates the collider by the specified vector.

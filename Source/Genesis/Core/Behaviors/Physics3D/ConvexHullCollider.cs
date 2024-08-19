@@ -26,7 +26,7 @@ namespace Genesis.Core.Behaviors.Physics3D
         /// <summary>
         /// Creates a convex hull collider based on the shape of the parent element.
         /// </summary>
-        public override void CreateCollider() 
+        public override void CreateCollider(int collisionGroup = -1, int collisionMask = -1) 
         {
             if (this.Parent.GetType() == typeof(Element3D))
             {
@@ -47,7 +47,7 @@ namespace Genesis.Core.Behaviors.Physics3D
                 this.Collider.WorldTransform = btworldTransform;
                 this.Collider.CollisionShape.LocalScaling = scale.ToVector3();
 
-                PhysicHandler.ManageElement(this);
+                PhysicHandler.ManageElement(this, collisionGroup, collisionMask);
             }
             else
             {

@@ -1,4 +1,5 @@
-﻿using Genesis.Graphics;
+﻿using Genesis.Core.GameElements;
+using Genesis.Graphics;
 using Genesis.Math;
 using Genesis.UI;
 using GlmSharp;
@@ -11,6 +12,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -667,7 +669,7 @@ namespace Genesis.Core
         /// <returns>The System.Drawing.Color representation.</returns>
         public static Color ConvertDrawingColor(float a, float r, float g, float b)
         {
-            return Color.FromArgb((int)a * 255, (int)r * 255, (int)g * 255, (int)b * 255);
+            return Color.FromArgb((int)(a * 255), (int)(r * 255), (int)(g * 255), (int)(b * 255));
         }
 
         /// <summary>
@@ -985,6 +987,46 @@ namespace Genesis.Core
             System.Numerics.Matrix4x4 scaleMatrix = System.Numerics.Matrix4x4.CreateScale(scale);
 
             return translationMatrix * rotaionMatrx * scaleMatrix;
+        }
+
+        public static int GetTriangleIndex(Element3D element, Vec3 hitpoint)
+        {
+            foreach (var mesh in element.Meshes)
+            {
+                for (int i = 0; i < mesh.Indicies.Count; i += 3)
+                {
+                    var v0 = new Vec3(mesh.Vericies[mesh.Indicies[i] * 3], mesh.Vericies[mesh.Indicies[i] * 3 + 1], mesh.Vericies[mesh.Indicies[i] * 3 + 2]);
+                    var v1 = new Vec3(mesh.Vericies[mesh.Indicies[i + 1] * 3], mesh.Vericies[mesh.Indicies[i + 1] * 3 + 1], mesh.Vericies[mesh.Indicies[i + 1] * 3 + 2]);
+                    var v2 = new Vec3(mesh.Vericies[mesh.Indicies[i + 2] * 3], mesh.Vericies[mesh.Indicies[i + 2] * 3 + 1], mesh.Vericies[mesh.Indicies[i + 2] * 3 + 2]);
+
+                    if (Utils.IsPointInTriangle(hitpoint.ToVector3(), v0.ToVector3(), v1.ToVector3(), v2.ToVector3()))
+                    {
+                        return i / 3; // Index des Dreiecks
+                    }
+
+                }
+            }
+            return -1;
+        }
+
+        public static bool IsPointInTriangle(Vector3 p, Vector3 a, Vector3 b, Vector3 c)
+        {
+            // Implementiere die Logik zur Überprüfung, ob ein Punkt in einem Dreieck liegt
+            var v0 = c - a;
+            var v1 = b - a;
+            var v2 = p - a;
+
+            var dot00 = Vector3.Dot(v0, v0);
+            var dot01 = Vector3.Dot(v0, v1);
+            var dot02 = Vector3.Dot(v0, v2);
+            var dot11 = Vector3.Dot(v1, v1);
+            var dot12 = Vector3.Dot(v1, v2);
+
+            var invDenom = 1 / (dot00 * dot11 - dot01 * dot01);
+            var u = (dot11 * dot02 - dot01 * dot12) * invDenom;
+            var v = (dot00 * dot12 - dot01 * dot02) * invDenom;
+
+            return (u >= 0) && (v >= 0) && (u + v < 1);
         }
     }
 }
