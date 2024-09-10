@@ -695,7 +695,7 @@ namespace Genesis.Core
                     {
                         vec3 cameraPosition = camera.Location.ToGlmVec3();
                         Vec3 cameraFront = Utils.CalculateCameraFront2(camera);
-                        p_mat = mat4.Perspective(Utils.ToRadians(45.0f), camera.Size.X / camera.Size.Y, camera.Near, camera.Far);
+                        p_mat = mat4.Perspective(Utils.ToRadians(camera.FOV), camera.Size.X / camera.Size.Y, camera.Near, camera.Far);
                         v_mat = mat4.LookAt(cameraPosition, cameraPosition + cameraFront.ToGlmVec3(), new vec3(0.0f, 1.0f, 0.0f));
                     }
                     else
@@ -738,7 +738,7 @@ namespace Genesis.Core
             {
                 vec3 cameraPosition = camera.Location.ToGlmVec3();
                 Vec3 cameraFront = Utils.CalculateCameraFront2(camera);
-                p_mat = mat4.Perspective(Utils.ToRadians(45.0f), camera.Size.X / camera.Size.Y, camera.Near, camera.Far);
+                p_mat = mat4.Perspective(Utils.ToRadians(camera.FOV), camera.Size.X / camera.Size.Y, camera.Near, camera.Far);
                 v_mat = mat4.LookAt(cameraPosition, cameraPosition + cameraFront.ToGlmVec3(), new vec3(0.0f, 1.0f, 0.0f));
             }
             else
@@ -774,7 +774,7 @@ namespace Genesis.Core
 
             vec3 cameraPosition = camera.Location.ToGlmVec3();
             Vec3 cameraFront = Utils.CalculateCameraFront2(camera);
-            var p_mat = mat4.Perspective(Utils.ToRadians(45.0f), camera.Size.X / camera.Size.Y, camera.Near, camera.Far);
+            var p_mat = mat4.Perspective(Utils.ToRadians(camera.FOV), camera.Size.X / camera.Size.Y, camera.Near, camera.Far);
             var v_mat = mat4.LookAt(cameraPosition, cameraPosition + cameraFront.ToGlmVec3(), new vec3(0.0f, 1.0f, 0.0f));
 
             mat4 viewProjectionMatrix = p_mat * v_mat;
@@ -1027,6 +1027,11 @@ namespace Genesis.Core
             var v = (dot00 * dot12 - dot01 * dot02) * invDenom;
 
             return (u >= 0) && (v >= 0) && (u + v < 1);
+        }
+
+        public static mat4 CalculateLightspaceMatrix(mat4 lightProjection, mat4 lightView)
+        {
+            return lightProjection * lightView;
         }
     }
 }

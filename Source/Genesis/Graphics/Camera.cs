@@ -53,6 +53,11 @@ namespace Genesis.Graphics
         public CameraType Type { get; set; }
 
         /// <summary>
+        /// Gets or sets the field of view (FOV) for the camera in degrees.
+        /// </summary>
+        public float FOV { get; set; } = 45.0f;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Camera"/> class with the specified location, size, near and far distances.
         /// </summary>
         /// <param name="location">The initial location of the camera in 3D space.</param>
@@ -206,6 +211,77 @@ namespace Genesis.Graphics
             var x = mouseX - (viewport.Width / 2) + camera.Location.X;
             var y = mouseY - (viewport.Height / 2) + camera.Location.Y;
             return new Vec3(x, y);
+        }
+
+        /// <summary>
+        /// Calculates the projection matrix for this camera based on the specified viewport.
+        /// </summary>
+        /// <param name="viewport">The viewport used to calculate the projection matrix.</param>
+        /// <returns>A <see cref="mat4"/> representing the projection matrix.</returns>
+        public mat4 GetProjectionMatrix(Viewport viewport)
+        {
+            return Camera.GetProjectionMatrix(this, viewport);
+        }
+
+        /// <summary>
+        /// Calculates the projection matrix for the specified camera based on the viewport and field of view.
+        /// </summary>
+        /// <param name="camera">The camera for which to calculate the projection matrix.</param>
+        /// <param name="viewport">The viewport used to calculate the projection matrix.</param>
+        /// <returns>A <see cref="mat4"/> representing the projection matrix.</returns>
+        public static mat4 GetProjectionMatrix(Camera camera, Viewport viewport)
+        {
+            float correction = camera.CalculateScreenCorrection(viewport);
+
+            if (camera.Type == CameraType.Ortho)
+            {
+                float halfWidth = (viewport.Width / 2) / correction;
+                float halfHeight = (viewport.Height / 2) / correction;
+                float left = camera.Location.X - halfWidth;
+                float right = camera.Location.X + halfWidth;
+                float bottom = camera.Location.Y - halfHeight;
+                float top = camera.Location.Y + halfHeight;
+                var p_mat = mat4.Ortho(left, right, bottom, top, 0.1f, 100.0f);
+                return p_mat;
+            }
+            else
+            {
+                float aspectRatio = (viewport.Width * correction) / (viewport.Height * correction);
+                vec3 cameraPosition = camera.Location.ToGlmVec3();
+                Vec3 cameraFront = Utils.CalculateCameraFront2(camera);
+                var p_mat = mat4.Perspective(Utils.ToRadians(camera.FOV), aspectRatio, camera.Near, camera.Far);
+                return p_mat;
+            }
+        }
+
+        /// <summary>
+        /// Calculates the view matrix for this camera.
+        /// </summary>
+        /// <returns>A <see cref="mat4"/> representing the view matrix.</returns>
+        public mat4 GetViewMatrix()
+        {
+            return Camera.GetViewMatrix(this);
+        }
+
+        /// <summary>
+        /// Calculates the view matrix for the specified camera.
+        /// </summary>
+        /// <param name="camera">The camera for which to calculate the view matrix.</param>
+        /// <returns>A <see cref="mat4"/> representing the view matrix.</returns>
+        public static mat4 GetViewMatrix(Camera camera)
+        {
+            if (camera.Type == CameraType.Ortho)
+            {
+                var v_mat = mat4.LookAt(new vec3(0f, 0f, 1f), new vec3(0f, 0f, 0f), new vec3(0f, 1f, 0f));
+                return v_mat;
+            }
+            else
+            {
+                vec3 cameraPosition = camera.Location.ToGlmVec3();
+                Vec3 cameraFront = Utils.CalculateCameraFront2(camera);
+                var v_mat = mat4.LookAt(cameraPosition, cameraPosition + cameraFront.ToGlmVec3(), new vec3(0.0f, 1.0f, 0.0f));
+                return v_mat;
+            }
         }
     }
 }

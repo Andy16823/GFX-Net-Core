@@ -39,6 +39,22 @@ namespace Genesis.Graphics
             return Utils.CalculateCameraFront2(this);
         }
 
+        public Vec3 CameraRight()
+        {
+            var forward = this.CameraFront().ToGlmVec3();
+            var right = vec3.Cross(new vec3(0, 1, 0), forward).Normalized;
+            return new Vec3(right);
+        }
+
+        public Vec3 CameraUp()
+        {
+            var forward = this.CameraFront().ToGlmVec3();
+            var right = vec3.Cross(new vec3(0, 1, 0), forward).Normalized;
+            var up = vec3.Cross(forward, right).Normalized;
+
+            return new Vec3(up);
+        }
+
         /// <summary>
         /// Moves the camera forward by a specified value.
         /// </summary>
@@ -150,6 +166,42 @@ namespace Genesis.Graphics
         public void LookAt(Vec3 vec3)
         {
             Utils.LookAt(this, vec3);
+        }
+
+        /// <summary>
+        /// ToDo: Change FOV
+        /// </summary>
+        /// <param name="viewport"></param>
+        /// <returns></returns>
+        public Frustum GetFrustum(Viewport viewport)
+        {
+            var cUp = this.CameraUp().ToGlmVec3();
+            var cRight = this.CameraRight().ToGlmVec3();
+
+            float correction = this.CalculateScreenCorrection(viewport);
+            float aspectRatio = (viewport.Width * correction) / (viewport.Height * correction);
+            float fov = glm.Radians(this.FOV);
+            float nearDist = this.Near;
+            float farDist = this.Far;
+            float hNear = (float)(2 * System.Math.Tan(fov / 2) * nearDist);
+            float wNear = hNear * aspectRatio;
+            float hFar = (float)(2 * System.Math.Tan(fov / 2) * farDist);
+            float wFar = hFar * aspectRatio;
+
+            Frustum frustum = new Frustum();
+            frustum.centerFar = this.Location.ToGlmVec3() + this.CameraFront().ToGlmVec3() * farDist;
+            frustum.topLeftFar = frustum.centerFar + (cUp * hFar / 2) - (cRight * wFar / 2);
+            frustum.topRightFar = frustum.centerFar + (cUp * hFar / 2) + (cRight * wFar / 2);
+            frustum.bottomLeftFar = frustum.centerFar - (cUp * hFar / 2) - (cRight * wFar / 2);
+            frustum.bottomRightFar = frustum.centerFar - (cUp * hFar / 2) + (cRight * wFar / 2);
+            frustum.centerNear = this.Location.ToGlmVec3() + this.CameraFront().ToGlmVec3() * nearDist;
+            frustum.topLeftNear = frustum.centerNear + (cUp * hNear / 2) - (cRight * wNear / 2);
+            frustum.topRightNear = frustum.centerNear + (cUp * hNear / 2) + (cRight * wNear / 2);
+            frustum.bottomLeftNear = frustum.centerNear - (cUp * hNear / 2) - (cRight * wNear / 2);
+            frustum.bottomRightNear = frustum.centerNear - (-cUp * hNear / 2) + (cRight * wNear / 2);
+            frustum.center = (frustum.centerFar - frustum.centerNear) * 0.5f;
+
+            return frustum;
         }
     }
 }

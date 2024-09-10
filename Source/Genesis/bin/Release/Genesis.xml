@@ -1517,6 +1517,12 @@
             Gets or sets the unique identifier for the game element.
             </summary>
         </member>
+        <member name="P:Genesis.Core.GameElement.CastShadows">
+            <summary>
+            Gets or sets a value indicating whether the 3D element casts shadows. 
+            Shadows are currently only supported for 3D elements.
+            </summary>
+        </member>
         <member name="M:Genesis.Core.GameElement.#ctor">
             <summary>
             Creates a new instance of the GameElement class.
@@ -3051,20 +3057,14 @@
             Represents a light source in the Genesis framework.
             </summary>
         </member>
-        <member name="M:Genesis.Core.Light.#ctor(System.String,Genesis.Math.Vec3)">
+        <member name="P:Genesis.Core.Light.CastShadows">
             <summary>
-            Creates a new instance of the Light class with the specified name and location.
+            Gets or sets a value indicating whether the light should cast shadows.
             </summary>
-            <param name="name">The name of the light.</param>
-            <param name="location">The 3D location of the light.</param>
-        </member>
-        <member name="M:Genesis.Core.Light.#ctor(System.String,Genesis.Math.Vec3,System.Single)">
-            <summary>
-            Creates a new instance of the Light class with the specified name, location and intensity.
-            </summary>
-            <param name="name">The name of the light.</param>
-            <param name="location">The 3D location of the light.</param>
-            <param name="intensity">The intensity of the light.</param>
+            <value>
+            <c>true</c> if the light casts shadows; otherwise, <c>false</c>.
+            This property controls whether shadows are rendered for this object during the shadow mapping process.
+            </value>
         </member>
         <member name="P:Genesis.Core.Light.LightColor">
             <summary>
@@ -3075,6 +3075,21 @@
             <summary>
             Gets or sets the intensity of the light.
             </summary>
+        </member>
+        <member name="M:Genesis.Core.Light.#ctor(System.String,Genesis.Math.Vec3,System.Boolean)">
+            <summary>
+            Creates a new instance of the Light class with the specified name and location.
+            </summary>
+            <param name="name">The name of the light.</param>
+            <param name="location">The 3D location of the light.</param>
+        </member>
+        <member name="M:Genesis.Core.Light.#ctor(System.String,Genesis.Math.Vec3,System.Single,System.Boolean)">
+            <summary>
+            Creates a new instance of the Light class with the specified name, location and intensity.
+            </summary>
+            <param name="name">The name of the light.</param>
+            <param name="location">The 3D location of the light.</param>
+            <param name="intensity">The intensity of the light.</param>
         </member>
         <member name="M:Genesis.Core.Light.GetLightDirection(Genesis.Graphics.Camera)">
             <summary>
@@ -3502,6 +3517,23 @@
             <summary>
             Gets or sets the skybox used in the scene (optional).
             </summary>
+        </member>
+        <member name="P:Genesis.Core.Scene3D.ShadowMap">
+            <summary>
+            Gets or sets the framebuffer used for storing the shadow map.
+            </summary>
+            <value>
+            The framebuffer object that holds the shadow map texture. This is used during the shadow mapping process to store depth information from the perspective of the light source.
+            </value>
+        </member>
+        <member name="P:Genesis.Core.Scene3D.ShadowResolution">
+            <summary>
+            Gets or sets the resolution of the shadow map.
+            </summary>
+            <value>
+            A <see cref="T:Genesis.Math.Vec3"/> representing the width, height, and depth (unused) of the shadow map in pixels.
+            The default value is (1024, 1024, 0), where the third component is typically not used.
+            </value>
         </member>
         <member name="M:Genesis.Core.Scene3D.#ctor(System.String,Genesis.Core.Light)">
             <summary>
@@ -4474,6 +4506,11 @@
             Gets or sets the type of the camera, either orthographic or perspective.
             </summary>
         </member>
+        <member name="P:Genesis.Graphics.Camera.FOV">
+            <summary>
+            Gets or sets the field of view (FOV) for the camera in degrees.
+            </summary>
+        </member>
         <member name="M:Genesis.Graphics.Camera.#ctor(Genesis.Math.Vec3,Genesis.Math.Vec3,System.Single,System.Single)">
             <summary>
             Initializes a new instance of the <see cref="T:Genesis.Graphics.Camera"/> class with the specified location, size, near and far distances.
@@ -4557,6 +4594,34 @@
             <param name="mouseX">the screen x coordinate</param>
             <param name="mouseY">the screen y coordinate</param>
             <returns></returns>
+        </member>
+        <member name="M:Genesis.Graphics.Camera.GetProjectionMatrix(Genesis.Graphics.Viewport)">
+            <summary>
+            Calculates the projection matrix for this camera based on the specified viewport.
+            </summary>
+            <param name="viewport">The viewport used to calculate the projection matrix.</param>
+            <returns>A <see cref="T:GlmSharp.mat4"/> representing the projection matrix.</returns>
+        </member>
+        <member name="M:Genesis.Graphics.Camera.GetProjectionMatrix(Genesis.Graphics.Camera,Genesis.Graphics.Viewport)">
+            <summary>
+            Calculates the projection matrix for the specified camera based on the viewport and field of view.
+            </summary>
+            <param name="camera">The camera for which to calculate the projection matrix.</param>
+            <param name="viewport">The viewport used to calculate the projection matrix.</param>
+            <returns>A <see cref="T:GlmSharp.mat4"/> representing the projection matrix.</returns>
+        </member>
+        <member name="M:Genesis.Graphics.Camera.GetViewMatrix">
+            <summary>
+            Calculates the view matrix for this camera.
+            </summary>
+            <returns>A <see cref="T:GlmSharp.mat4"/> representing the view matrix.</returns>
+        </member>
+        <member name="M:Genesis.Graphics.Camera.GetViewMatrix(Genesis.Graphics.Camera)">
+            <summary>
+            Calculates the view matrix for the specified camera.
+            </summary>
+            <param name="camera">The camera for which to calculate the view matrix.</param>
+            <returns>A <see cref="T:GlmSharp.mat4"/> representing the view matrix.</returns>
         </member>
         <member name="T:Genesis.Graphics.Face">
             <summary>
@@ -4722,11 +4787,83 @@
             Gets or sets the ID of the texture associated with the framebuffer.
             </summary>
         </member>
+        <member name="P:Genesis.Graphics.Framebuffer.Propertys">
+            <summary>
+            Gets or sets the propertys for the framebuffer
+            </summary>
+        </member>
+        <member name="M:Genesis.Graphics.Framebuffer.#ctor">
+            <summary>
+            Creates an new framebuffer
+            </summary>
+        </member>
         <member name="M:Genesis.Graphics.Framebuffer.ToTexture">
             <summary>
             Converts the framebuffer to a texture.
             </summary>
             <returns>The converted texture.</returns>
+        </member>
+        <member name="F:Genesis.Graphics.Frustum.centerFar">
+            <summary>
+            Gets or sets the center point of the far plane of the frustum.
+            </summary>
+        </member>
+        <member name="F:Genesis.Graphics.Frustum.topLeftFar">
+            <summary>
+            Gets or sets the top-left corner of the far plane of the frustum.
+            </summary>
+        </member>
+        <member name="F:Genesis.Graphics.Frustum.topRightFar">
+            <summary>
+            Gets or sets the top-right corner of the far plane of the frustum.
+            </summary>
+        </member>
+        <member name="F:Genesis.Graphics.Frustum.bottomRightFar">
+            <summary>
+            Gets or sets the bottom-right corner of the far plane of the frustum.
+            </summary>
+        </member>
+        <member name="F:Genesis.Graphics.Frustum.bottomLeftFar">
+            <summary>
+            Gets or sets the bottom-left corner of the far plane of the frustum.
+            </summary>
+        </member>
+        <member name="F:Genesis.Graphics.Frustum.centerNear">
+            <summary>
+            Gets or sets the center point of the near plane of the frustum.
+            </summary>
+        </member>
+        <member name="F:Genesis.Graphics.Frustum.topLeftNear">
+            <summary>
+            Gets or sets the top-left corner of the near plane of the frustum.
+            </summary>
+        </member>
+        <member name="F:Genesis.Graphics.Frustum.topRightNear">
+            <summary>
+            Gets or sets the top-right corner of the near plane of the frustum.
+            </summary>
+        </member>
+        <member name="F:Genesis.Graphics.Frustum.bottomRightNear">
+            <summary>
+            Gets or sets the bottom-right corner of the near plane of the frustum.
+            </summary>
+        </member>
+        <member name="F:Genesis.Graphics.Frustum.bottomLeftNear">
+            <summary>
+            Gets or sets the bottom-left corner of the near plane of the frustum.
+            </summary>
+        </member>
+        <member name="F:Genesis.Graphics.Frustum.center">
+            <summary>
+            Gets or sets the center point of the frustum.
+            </summary>
+        </member>
+        <member name="M:Genesis.Graphics.Frustum.ToList(GlmSharp.mat4)">
+            <summary>
+            Transforms the frustum corners using the specified transformation matrix and returns them as a list of <see cref="T:GlmSharp.vec3"/> vectors.
+            </summary>
+            <param name="matrix">The transformation matrix to apply to the frustum corners.</param>
+            <returns>A <see cref="T:System.Collections.Generic.List`1"/> containing the transformed corners of the frustum.</returns>
         </member>
         <member name="T:Genesis.Graphics.Glyphe">
             <summary>
@@ -4804,6 +4941,46 @@
             </summary>
             <param name="verticies">The vertices for the static vertex buffer.</param>
             <returns>The ID of the created static vertex buffer.</returns>
+        </member>
+        <member name="M:Genesis.Graphics.IRenderDevice.BuildShadowMap(System.Int32,System.Int32)">
+            <summary>
+            Builds a framebuffer for rendering shadow maps.
+            </summary>
+            <param name="width">The width of the framebuffer.</param>
+            <param name="height">The height of the framebuffer.</param>
+            <returns>A framebuffer object configured for shadow mapping.</returns>
+        </member>
+        <member name="M:Genesis.Graphics.IRenderDevice.GenerateLightspaceMatrix(Genesis.Graphics.Camera,Genesis.Graphics.Viewport,Genesis.Core.Light)">
+            <summary>
+            Generates a matrix that transforms coordinates from world space to light space.
+            This matrix is used to project the scene from the perspective of the light source.
+            </summary>
+            <param name="viewport">The viewport from the current render target</param>
+            <param name="camera">The camera object used to generate the view matrix. This is typically a camera with a perspective or orthographic projection.</param>
+            <param name="lightSource">The light source used to compute the light space matrix. This includes information like position and direction of the light.</param>
+            <returns>A 4x4 matrix representing the light space transformation.</returns>
+        </member>
+        <member name="M:Genesis.Graphics.IRenderDevice.PrepareShadowPass(Genesis.Graphics.Framebuffer,GlmSharp.mat4)">
+            <summary>
+            Prepares the framebuffer and matrix for rendering shadows. This setup is necessary before rendering the scene to the shadow map.
+            </summary>
+            <param name="shadowmap">The framebuffer that will be used to render the shadow map.</param>
+            <param name="lightspaceMatrix">The matrix used to transform scene coordinates into light space for shadow mapping.</param>
+        </member>
+        <member name="M:Genesis.Graphics.IRenderDevice.RenderShadowmap(Genesis.Graphics.Framebuffer,GlmSharp.mat4,Genesis.Core.Scene3D)">
+            <summary>
+            Renders the scene from the perspective of the light source into the shadow map framebuffer. This creates the shadow map texture used for shadow testing.
+            </summary>
+            <param name="shadowmap">The framebuffer where the shadow map will be rendered.</param>
+            <param name="lightspaceMatrix">The matrix that transforms scene coordinates into light space.</param>
+            <param name="scene">The 3D scene to be rendered into the shadow map.</param>
+        </member>
+        <member name="M:Genesis.Graphics.IRenderDevice.FinishShadowPass(Genesis.Graphics.Viewport)">
+            <summary>
+            Completes the shadow pass by finalizing any state changes or cleanup required after rendering the shadow map.
+            This may involve restoring viewport settings or other post-processing tasks.
+            </summary>
+            <param name="viewport">The viewport object representing the final render area on the screen or in the context.</param>
         </member>
         <member name="M:Genesis.Graphics.IRenderDevice.BuildFramebuffer(System.Int32,System.Int32)">
             <summary>
@@ -5385,6 +5562,13 @@
             Adjusts the camera's orientation to look at a specified position.
             </summary>
             <param name="vec3">The position to look at.</param>
+        </member>
+        <member name="M:Genesis.Graphics.PerspectiveCamera.GetFrustum(Genesis.Graphics.Viewport)">
+            <summary>
+            ToDo: Change FOV
+            </summary>
+            <param name="viewport"></param>
+            <returns></returns>
         </member>
         <member name="F:Genesis.Graphics.RenderDevice.GLRenderer.rot">
             <summary>

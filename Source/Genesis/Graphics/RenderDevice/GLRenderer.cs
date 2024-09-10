@@ -53,6 +53,9 @@ namespace Genesis.Graphics.RenderDevice
 
         private Viewport m_viewport;
 
+        private Framebuffer shadowmap;
+        private mat4 lightspacematrix;
+
         public GLRenderer(IntPtr hwnd, RenderSettings settings)
         {
             this.hwnd = hwnd;
@@ -1185,32 +1188,10 @@ namespace Genesis.Graphics.RenderDevice
         /// <param name="camera"></param>
         public void SetCamera(Viewport viewport, Camera camera)
         {
-            float correction = camera.CalculateScreenCorrection(viewport);
+            p_mat = camera.GetProjectionMatrix(viewport);
+            v_mat = camera.GetViewMatrix();
 
-            if (camera.Type == CameraType.Ortho)
-            {
-                float halfWidth = (viewport.Width / 2) / correction;
-                float halfHeight = (viewport.Height / 2) / correction;
-
-                float left = camera.Location.X - halfWidth;
-                float right = camera.Location.X + halfWidth;
-                float bottom = camera.Location.Y - halfHeight;
-                float top = camera.Location.Y + halfHeight;
-
-                p_mat = mat4.Ortho(left, right, bottom, top, 0.1f, 100.0f);
-                v_mat = mat4.LookAt(new vec3(0f, 0f, 1f), new vec3(0f, 0f, 0f), new vec3(0f, 1f, 0f));
-            }
-            else
-            {
-                float aspectRatio = (viewport.Width * correction) / (viewport.Height * correction);
-                vec3 cameraPosition = camera.Location.ToGlmVec3();
-                Vec3 cameraFront = Utils.CalculateCameraFront2(camera);
-
-                p_mat = mat4.Perspective(Utils.ToRadians(45.0f), aspectRatio, camera.Near, camera.Far);
-                v_mat =  mat4.LookAt(cameraPosition, cameraPosition + cameraFront.ToGlmVec3(), new vec3(0.0f, 1.0f, 0.0f));
-            }
-
-            if(this.camera == null || this.camera != camera)
+            if (this.camera == null || this.camera != camera)
             {
                 this.camera = camera;
             }
@@ -1656,6 +1637,18 @@ namespace Genesis.Graphics.RenderDevice
                     gl.ActiveTexture(OpenGL.Texture1);
                     gl.BindTexture(OpenGL.Texture2D, (int)material.Propeterys["normal_id"]);
                     gl.Uniform1I(gl.GetUniformLocation(elementShaderID, "normalMap"), 1);
+
+                    if (this.shadowmap != null)
+                    {
+                        gl.ActiveTexture(OpenGL.Texture2);
+                        gl.BindTexture(OpenGL.Texture2D, shadowmap.Texture);
+                        gl.Uniform1I(gl.GetUniformLocation(elementShaderID, "shadowMap"), 2);
+
+                        gl.UniformMatrix4fv(gl.GetUniformLocation(elementShaderID, "projection"), 1, false, p_mat.ToArray());
+                        gl.UniformMatrix4fv(gl.GetUniformLocation(elementShaderID, "view"), 1, false, v_mat.ToArray());
+                        gl.UniformMatrix4fv(gl.GetUniformLocation(elementShaderID, "model"), 1, false, m_mat.ToArray());
+                        gl.UniformMatrix4fv(gl.GetUniformLocation(elementShaderID, "lightSpaceMatrix"), 1, false, lightspacematrix.ToArray());
+                    }
 
                     gl.BindVertexArray((int)material.Propeterys["vao"]);
                     gl.DrawArrays(OpenGL.Triangles, 0, (int)material.Propeterys["tris"]);
@@ -2227,9 +2220,9 @@ namespace Genesis.Graphics.RenderDevice
 
         private void DrawModel(Core.GameElements.Model model)
         {
-            mat4 mt_mat = mat4.Translate(model.Location.ToGlmVec3());
-            mat4 mr_mat = mat4.RotateX(model.Rotation.X) * mat4.RotateY(model.Rotation.Y) * mat4.RotateZ(model.Rotation.Z);
-            mat4 ms_mat = mat4.Scale(model.Size.ToGlmVec3());
+            mat4 mt_mat = Utils.GetModelTransformation(model);
+            mat4 mr_mat = Utils.GetModelRotation(model);
+            mat4 ms_mat = Utils.GetModelScale(model);
             mat4 m_mat = mt_mat * mr_mat * ms_mat;
 
             foreach (var mesh in model.Meshes)
@@ -2489,6 +2482,109 @@ namespace Genesis.Graphics.RenderDevice
             gl.DeleteBuffers(1, vbo);
             gl.DeleteBuffers(1, tbo);
             Console.WriteLine("Disposed Light2D " + light2D.UUID + " with error " + gl.GetError());
+        }
+
+        public Framebuffer BuildShadowMap(int width, int height)
+        {
+            var framebuffer = new Framebuffer();
+            framebuffer.Propertys.Add("width", width);
+            framebuffer.Propertys.Add("height", height);
+            framebuffer.FramebufferID = gl.GenFramebuffers(1);
+            gl.BindFramebuffer(OpenGL.FrameBuffer, framebuffer.FramebufferID);
+            gl.ClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+            framebuffer.Texture = gl.GenTextures(1);
+            gl.BindTexture(OpenGL.Texture2D, framebuffer.Texture);
+            gl.TexImage2D(OpenGL.Texture2D, 0, OpenGL.DepthComponent, width, height, 0, OpenGL.DepthComponent, OpenGL.Float);
+            gl.TexParameteri(NetGL.OpenGL.Texture2D, NetGL.OpenGL.TextureMinFilter, NetGL.OpenGL.Nearest);
+            gl.TexParameteri(NetGL.OpenGL.Texture2D, NetGL.OpenGL.TextureMagFilter, NetGL.OpenGL.Nearest);
+            gl.TexParameteri(NetGL.OpenGL.Texture2D, OpenGL.TextureWrapS, OpenGL.Repeate);
+            gl.TexParameteri(NetGL.OpenGL.Texture2D, OpenGL.TextureWrapT, OpenGL.Repeate);
+            gl.FrameBufferTexture2D(OpenGL.FrameBuffer, OpenGL.DepthAttachment, OpenGL.Texture2D, framebuffer.Texture, 0);
+            gl.DrawBuffer(OpenGL.None);
+            gl.ReadBuffer(OpenGL.None);
+            gl.BindFramebuffer(OpenGL.FrameBuffer, 0);
+
+            return framebuffer;
+        }
+
+        public mat4 GenerateLightspaceMatrix(Camera camera, Viewport viewport, Light lightSource)
+        {
+            var cam = (PerspectiveCamera)camera;
+
+            mat4 lightView = mat4.LookAt(lightSource.Location.ToGlmVec3(), new vec3(0), new vec3(0.0f, 1.0f, 0.0f));
+            var frustumCorners = cam.GetFrustum(viewport).ToList(lightView);
+
+            vec3 min = new vec3();
+            vec3 max = new vec3();
+
+            for (int i = 0; i < frustumCorners.Count; i++)
+            {
+                if (frustumCorners[i].x < min.x)
+                    min.x = frustumCorners[i].x;
+                if (frustumCorners[i].y < min.y)
+                    min.y = frustumCorners[i].y;
+                if (frustumCorners[i].z < min.z)
+                    min.z = frustumCorners[i].z;
+
+                if (frustumCorners[i].x > max.x)
+                    max.x = frustumCorners[i].x;
+                if (frustumCorners[i].y > max.y)
+                    max.y = frustumCorners[i].y;
+                if (frustumCorners[i].z > max.z)
+                    max.z = frustumCorners[i].z;
+            }
+
+            float l = min.x - 10f;
+            float r = max.x + 10f;
+            float b = min.y - 10f;
+            float t = max.y + 10f;
+
+            float n = -max.z;
+            float f = -min.z;
+
+            mat4 lightProjection = mat4.Ortho(l, r, b, t, n, f);
+            return lightProjection * lightView;
+        }
+
+        public void PrepareShadowPass(Framebuffer shadowmap, mat4 lightspaceMatrix)
+        {
+            int width = (int)shadowmap.Propertys["width"];
+            int height = (int)shadowmap.Propertys["height"];
+
+            this.shadowmap = shadowmap;
+            this.lightspacematrix = lightspaceMatrix;
+
+            gl.Viewport(0, 0, width, height);
+            gl.BindFramebuffer(OpenGL.FrameBuffer, shadowmap.FramebufferID);
+            gl.Clear(NetGL.OpenGL.DepthBufferBit);
+        }
+
+        public void RenderShadowmap(Framebuffer shadowmap, mat4 lightspaceMatrix, Scene3D scene)
+        {
+            foreach (var layer in scene.Layer)
+            {
+                foreach (var item in layer.Elements)
+                {
+                    item.OnRender(null, this);
+                }
+            }
+        }
+
+        public void FinishShadowPass(Viewport viewport)
+        {
+            this.SetViewport(viewport);
+            gl.BindFramebuffer(OpenGL.FrameBuffer, 0);
+        }
+
+        public void SetProjectionMatrix(mat4 projectionMatrix)
+        {
+            p_mat = projectionMatrix;
+        }
+
+        public void SetViewMatrix(mat4 viewMatrix)
+        {
+            v_mat = viewMatrix;
         }
     }
 }
