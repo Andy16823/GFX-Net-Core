@@ -4009,6 +4009,25 @@
             <param name="t">the time</param>
             <returns></returns>
         </member>
+        <member name="M:Genesis.Core.Utils.NormalizeAngle(System.Single)">
+            <summary>
+            Normalizes an angle to be within the range of -180 to 180 degrees.
+            </summary>
+            <param name="angle">The angle in degrees to normalize.</param>
+            <returns>The normalized angle within the range -180 to 180.</returns>
+        </member>
+        <member name="M:Genesis.Core.Utils.GetTransformedForwardVector(Genesis.Math.Vec3,System.Single)">
+            <summary>
+            Calculates the transformed forward vector based on the given rotation and distance, 
+            using quaternion rotation to avoid gimbal lock issues.
+            </summary>
+            <param name="rotation">The rotation in degrees, specified as Euler angles (Pitch, Yaw, Roll).</param>
+            <param name="dist">The distance by which the forward vector is scaled.</param>
+            <returns>Returns the calculated forward vector as a <see cref="T:Genesis.Math.Vec3"/>, transformed according to the rotation and scaled by the specified distance.</returns>
+            <remarks>
+            This function is currently under testing and should be used if the original <c>ForwardVector</c> method causes gimbal lock issues.
+            </remarks>
+        </member>
         <member name="T:Genesis.Core.Window">
             <summary>
             Represents a window with specified properties and events.
@@ -4072,6 +4091,11 @@
         <member name="M:Genesis.Core.Window.CloseWindow">
             <summary>
             Closes the window and stops the associated game.
+            </summary>
+        </member>
+        <member name="M:Genesis.Core.Window.RequestClose">
+            <summary>
+            Requests the window to close by posting WM_QUIT message.
             </summary>
         </member>
         <member name="M:Genesis.Core.Window.GetClientSize">
@@ -4912,6 +4936,12 @@
             <summary>
             Initializes a sprite for rendering.
             </summary>
+        </member>
+        <member name="M:Genesis.Graphics.IRenderDevice.InitMaterial(Genesis.Graphics.Material)">
+            <summary>
+            Initialize a material for rendering
+            </summary>
+            <param name="material"></param>
         </member>
         <member name="M:Genesis.Graphics.IRenderDevice.InitElement3D(Genesis.Core.GameElements.Element3D)">
             <summary>
@@ -7972,6 +8002,45 @@
             Sets the linear velocity of the rigid body.
             </summary>
             <param name="value">Linear velocity vector.</param>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior3D.GetLinearVelocity">
+            <summary>
+            Gets the current linear velocity of the rigid body.
+            </summary>
+            <returns>A vector representing the linear velocity.</returns>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior3D.GetRotation">
+            <summary>
+            Gets the current rotation of the rigid body as a quaternion.
+            </summary>
+            <returns>The quaternion representing the rotation of the rigid body.</returns>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior3D.GetLocation">
+            <summary>
+            Gets the current location of the rigid body.
+            </summary>
+            <returns>A vector representing the position of the rigid body.</returns>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior3D.CalculateForwardVector(System.Single)">
+            <summary>
+            Calculates the forward vector of the rigid body based on its rotation and a specified distance.
+            </summary>
+            <param name="distance">The distance to scale the forward vector.</param>
+            <returns>The forward vector scaled by the specified distance.</returns>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior3D.CalculateRightVector(System.Single)">
+            <summary>
+            Calculates the right vector of the rigid body based on its rotation and a specified distance.
+            </summary>
+            <param name="distance">The distance to scale the right vector.</param>
+            <returns>The right vector scaled by the specified distance.</returns>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior3D.CalculateUpVector(System.Single)">
+            <summary>
+            Calculates the up vector of the rigid body based on its rotation and a specified distance.
+            </summary>
+            <param name="distance">The distance to scale the up vector.</param>
+            <returns>The up vector scaled by the specified distance.</returns>
         </member>
         <member name="M:Genesis.Physics.RigidBodyBehavior3D.OnUpdate(Genesis.Core.Game,Genesis.Core.GameElement)">
             <summary>

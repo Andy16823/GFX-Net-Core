@@ -96,6 +96,7 @@ namespace Genesis.Graphics.RenderDevice
             this.ShaderPrograms.Add("Light2DShader", new Light2DShader());
             this.ShaderPrograms.Add("SolidShapeShader", new SolidShapeShader());
             this.ShaderPrograms.Add("BorderCircleShader", new BorderCircleShader());
+            this.ShaderPrograms.Add("Element3DShader", new Element3DShader());
 
             foreach (KeyValuePair<string, ShaderProgram> item in this.ShaderPrograms)
             {
@@ -404,8 +405,7 @@ namespace Genesis.Graphics.RenderDevice
             cube.Propertys.Add("ShaderID", this.InitShader(cube.Shader));
 
             // 2. Init the texures
-            cube.Material.Propeterys.Add("tex_id", this.InitTexture(cube.Material.DiffuseTexture));
-            cube.Material.Propeterys.Add("normal_id", this.InitNormalMap(cube.Material.NormalTexture));
+            this.InitMaterial(cube.Material);
 
             int VAO = gl.GenVertexArrays(1);
             gl.BindVertexArray(VAO);
@@ -429,7 +429,7 @@ namespace Genesis.Graphics.RenderDevice
             cube.Propertys.Add("cbo", cbo);
 
             // 4. Load the texcoords
-            float[] texCords = cube.Shape.GetTextureCoordinates();
+            float[] texCords = Qube.GetTextureCoordinates(cube.Size.X, cube.Size.Y, cube.Size.Z);
             int tbo = gl.GenBuffer(1);
             gl.BindBuffer(OpenGL.ArrayBuffer, tbo);
             gl.BufferData(OpenGL.ArrayBuffer, texCords.Length * sizeof(float), texCords, OpenGL.DynamicDraw);
@@ -460,7 +460,7 @@ namespace Genesis.Graphics.RenderDevice
 
             if(element.Shader == null)
             {
-                element.Propertys.Add("ShaderID", ShaderPrograms["DiffuseShader"].ProgramID);
+                element.Propertys.Add("ShaderID", ShaderPrograms["Element3DShader"].ProgramID);
             }
             else
             {
@@ -1982,6 +1982,9 @@ namespace Genesis.Graphics.RenderDevice
                 gl.UniformMatrix4fv(gl.GetUniformLocation(shaderID, "model"), 1, false, m_mat.ToArray());
             }
 
+            var materialColor = Utils.ConvertColor(cube.Material.DiffuseColor, true);
+            gl.Uniform4f(gl.GetUniformLocation(shaderID, "materialColor"), materialColor[0], materialColor[1], materialColor[2], materialColor[3]);
+
             if (this.lightSource != null)
             {
                 Vec3 ligtDirection = lightSource.GetLightDirection(camera);
@@ -2585,6 +2588,19 @@ namespace Genesis.Graphics.RenderDevice
         public void SetViewMatrix(mat4 viewMatrix)
         {
             v_mat = viewMatrix;
+        }
+
+        public void InitMaterial(Material material)
+        {
+            if (!material.Propeterys.ContainsKey("tex_id"))
+            {
+                material.Propeterys.Add("tex_id", this.InitTexture(material.DiffuseTexture));
+            }
+
+            if (!material.Propeterys.ContainsKey("normal_id"))
+            {
+                material.Propeterys.Add("normal_id", this.InitNormalMap(material.NormalTexture));
+            }
         }
     }
 }

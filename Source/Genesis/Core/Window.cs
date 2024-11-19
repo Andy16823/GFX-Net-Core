@@ -64,6 +64,12 @@ namespace Genesis.Core
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool GetMessage(out MSG lpMsg, IntPtr hWnd, uint wMsgFilterMin, uint wMsgFilterMax);
 
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
+
+        [DllImport("user32.dll")]
+        private static extern bool PostMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
+
         [DllImport("user32.dll")]
         private static extern IntPtr DispatchMessage(ref MSG lpmsg);
 
@@ -155,7 +161,7 @@ namespace Genesis.Core
                     {
                         m_game.Viewport.Width = width;
                         m_game.Viewport.Height = height;
-                        if(m_game.SelectedScene != null)
+                        if (m_game.SelectedScene != null)
                         {
                             m_game.SelectedScene.ResizeScene(m_game.Viewport);
                         }
@@ -256,6 +262,15 @@ namespace Genesis.Core
         }
 
         /// <summary>
+        /// Requests the window to close by posting WM_QUIT message.
+        /// </summary>
+        public void RequestClose()
+        {
+            m_isWindowClosed = true; // Set flag to indicate closing
+            PostMessage(Handle, WM_QUIT, IntPtr.Zero, IntPtr.Zero);
+        }
+
+        /// <summary>
         /// Returns an vector with the window client size
         /// </summary>
         /// <returns></returns>
@@ -278,6 +293,27 @@ namespace Genesis.Core
             int height = btmRight.Y - topLeft.Y;
 
             return new Vec3(width, height);
+        }
+
+        public static Vec3 GetClientLocation(IntPtr handle)
+        {
+            WindowUtilities.RECT rect;
+            WindowUtilities.GetClientRect(handle, out rect);
+
+            WindowUtilities.POINT topLeft;
+            topLeft.X = rect.Left;
+            topLeft.Y = rect.Top;
+            WindowUtilities.ClientToScreen(handle, ref topLeft);
+
+            var x = topLeft.X;
+            var y = topLeft.Y;
+
+            return new Vec3(x, y);
+        }
+
+        public Vec3 GetClientLocation()
+        {
+            return Window.GetClientLocation(Handle);
         }
 
     }

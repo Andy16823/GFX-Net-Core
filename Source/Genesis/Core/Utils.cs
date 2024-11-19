@@ -1033,5 +1033,45 @@ namespace Genesis.Core
         {
             return lightProjection * lightView;
         }
+
+        /// <summary>
+        /// Normalizes an angle to be within the range of -180 to 180 degrees.
+        /// </summary>
+        /// <param name="angle">The angle in degrees to normalize.</param>
+        /// <returns>The normalized angle within the range -180 to 180.</returns>
+        public static float NormalizeAngle(float angle)
+        {
+            angle %= 360;
+            if (angle > 180)
+            {
+                angle -= 360;
+            }
+            else if (angle < -180)
+            {
+                angle += 360;
+            }
+            return angle;
+        }
+
+        /// <summary>
+        /// Calculates the transformed forward vector based on the given rotation and distance, 
+        /// using quaternion rotation to avoid gimbal lock issues.
+        /// </summary>
+        /// <param name="rotation">The rotation in degrees, specified as Euler angles (Pitch, Yaw, Roll).</param>
+        /// <param name="dist">The distance by which the forward vector is scaled.</param>
+        /// <returns>Returns the calculated forward vector as a <see cref="Vec3"/>, transformed according to the rotation and scaled by the specified distance.</returns>
+        /// <remarks>
+        /// This function is currently under testing and should be used if the original <c>ForwardVector</c> method causes gimbal lock issues.
+        /// </remarks>
+        public static Vec3 GetTransformedForwardVector(Vec3 rotation, float dist)
+        {
+            mat4 rotMat = mat4.RotateX(glm.Radians(rotation.X)) * mat4.RotateY(glm.Radians(rotation.Y)) * mat4.RotateZ(glm.Radians(rotation.Z));
+            quat rotationQuat = rotMat.ToQuaternion;
+
+            vec3 forward = new vec3(0, 0, -1);
+            forward = rotationQuat * forward;
+            forward *= dist;
+            return new Vec3(forward);
+        }
     }
 }

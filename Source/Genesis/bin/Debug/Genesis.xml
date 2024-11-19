@@ -4074,6 +4074,11 @@
             Closes the window and stops the associated game.
             </summary>
         </member>
+        <member name="M:Genesis.Core.Window.RequestClose">
+            <summary>
+            Requests the window to close by posting WM_QUIT message.
+            </summary>
+        </member>
         <member name="M:Genesis.Core.Window.GetClientSize">
             <summary>
             Returns an vector with the window client size
@@ -7972,6 +7977,45 @@
             Sets the linear velocity of the rigid body.
             </summary>
             <param name="value">Linear velocity vector.</param>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior3D.GetLinearVelocity">
+            <summary>
+            Gets the current linear velocity of the rigid body.
+            </summary>
+            <returns>A vector representing the linear velocity.</returns>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior3D.GetRotation">
+            <summary>
+            Gets the current rotation of the rigid body as a quaternion.
+            </summary>
+            <returns>The quaternion representing the rotation of the rigid body.</returns>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior3D.GetLocation">
+            <summary>
+            Gets the current location of the rigid body.
+            </summary>
+            <returns>A vector representing the position of the rigid body.</returns>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior3D.CalculateForwardVector(System.Single)">
+            <summary>
+            Calculates the forward vector of the rigid body based on its rotation and a specified distance.
+            </summary>
+            <param name="distance">The distance to scale the forward vector.</param>
+            <returns>The forward vector scaled by the specified distance.</returns>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior3D.CalculateRightVector(System.Single)">
+            <summary>
+            Calculates the right vector of the rigid body based on its rotation and a specified distance.
+            </summary>
+            <param name="distance">The distance to scale the right vector.</param>
+            <returns>The right vector scaled by the specified distance.</returns>
+        </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior3D.CalculateUpVector(System.Single)">
+            <summary>
+            Calculates the up vector of the rigid body based on its rotation and a specified distance.
+            </summary>
+            <param name="distance">The distance to scale the up vector.</param>
+            <returns>The up vector scaled by the specified distance.</returns>
         </member>
         <member name="M:Genesis.Physics.RigidBodyBehavior3D.OnUpdate(Genesis.Core.Game,Genesis.Core.GameElement)">
             <summary>
