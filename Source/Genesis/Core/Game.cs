@@ -329,7 +329,7 @@ namespace Genesis.Core
                     return new Vec3(X, Y, 0f);
                 }
             }
-            return null;
+            return new Vec3();
         }
 
         /// <summary>
@@ -349,7 +349,7 @@ namespace Genesis.Core
                     return new Vec3(X, Y, 0f);
                 }
             }
-            return null;
+            return new Vec3();
         }
 
         /// <summary>

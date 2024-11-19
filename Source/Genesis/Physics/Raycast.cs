@@ -30,9 +30,11 @@ namespace Genesis.Physics
     /// </summary>
     public struct HitResult
     {
-        public Vec3 rayStart; 
+        public bool hit;
+        public Vec3 rayStart;
         public Vec3 rayEnd;
-        public RigidBody rigidBody;
+        public CollisionObject collisionObject;
+        public GameElement hitElement;
         public Vec3 hitLocation;
     }
 
@@ -126,10 +128,47 @@ namespace Genesis.Physics
         /// <param name="posX">X-coordinate of the mouse cursor.</param>
         /// <param name="posY">Y-coordinate of the mouse cursor.</param>
         /// <returns>HitResult containing information about the raycasting hit.</returns>
-        public HitResult PerformCast(PhysicHandler physicHandler, int posX, int posY)
+        public HitResult PerformRaycastFromScreen(PhysicHandler physicHandler, int posX, int posY)
         {
-            return PerformCast(this.Camera, this.Viewport, physicHandler, posX, posY);
+            return PerformRaycastFromScreen(this.Camera, this.Viewport, physicHandler, posX, posY);
         }
+
+        /// <summary>
+        /// Performs a raycast between two 3D points to detect collisions within the physics world.
+        /// </summary>
+        /// <param name="start">The starting point of the ray in world space.</param>
+        /// <param name="end">The ending point of the ray in world space.</param>
+        /// <param name="physicHandler">The <see cref="PhysicHandler"/> responsible for physics simulation and raycasting.</param>
+        /// <returns>
+        /// A <see cref="HitResult"/> object containing information about whether a hit occurred,
+        /// the collided game element, and the collision details (e.g., location of the hit and collision object).
+        /// </returns>
+        /// <remarks>
+        /// The method casts a ray from the <paramref name="start"/> position to the <paramref name="end"/> position.
+        /// If the ray intersects any object within the physics world, the <see cref="HitResult"/> will contain details 
+        /// about the hit, including the element hit and the collision object.
+        /// </remarks>
+        public static HitResult PerformRaycast(Vec3 start, Vec3 end, PhysicHandler physicHandler)
+        {
+            var result = new HitResult();
+            var btStart = start.ToVector3();
+            var btEnd = end.ToVector3();
+
+            PhysicsHandler3D physicsHandler3D = (PhysicsHandler3D)physicHandler;
+            using (var cb = new ClosestRayResultCallback(ref btStart, ref btEnd))
+            {
+                physicsHandler3D.PhysicsWorld.RayTest(btStart, btEnd, cb);
+                if (cb.HasHit)
+                {
+                    result.hit = true;
+                    result.hitElement = (GameElement)cb.CollisionObject.UserObject;
+                    result.collisionObject = cb.CollisionObject;
+                    result.hitLocation = new Vec3(cb.HitPointWorld.X, cb.HitPointWorld.Y, cb.HitPointWorld.Z);
+                }
+                return result;
+            }
+        }
+
 
         /// <summary>
         /// Performs a raycast and returns the hit result based on the mouse cursor position.
@@ -140,7 +179,7 @@ namespace Genesis.Physics
         /// <param name="posX">X-coordinate of the mouse cursor.</param>
         /// <param name="posY">Y-coordinate of the mouse cursor.</param>
         /// <returns>HitResult containing information about the raycasting hit.</returns>
-        public static HitResult PerformCast(Camera camera, Viewport viewport, PhysicHandler physicHandler, int posX, int posY)
+        public static HitResult PerformRaycastFromScreen(Camera camera, Viewport viewport, PhysicHandler physicHandler, int posX, int posY)
         {
             HitResult result = new HitResult();
             var btStart = Raycast.GetStartVec(camera, viewport, posX, posY);
@@ -160,14 +199,16 @@ namespace Genesis.Physics
                 physics.PhysicsWorld.RayTest(_start, _end, cb);
                 if (cb.HasHit)
                 {
-                    result.rigidBody = (RigidBody) cb.CollisionObject;
+                    result.hit = true;
+                    result.collisionObject = cb.CollisionObject;
                     result.hitLocation = new Vec3(cb.HitPointWorld.X, cb.HitPointWorld.Y, cb.HitPointWorld.Z);
+                    result.hitElement = (GameElement)cb.CollisionObject.UserObject;
                 }
             }
             return result;
         }
 
-        public static HitResult PerformCastFiltered(Camera camera, Viewport viewport, PhysicHandler physicHandler, int posX, int posY, int collisionGroup = -1, int collisionMask = -1)
+        public static HitResult PerformRaycastFromScreenFiltered(Camera camera, Viewport viewport, PhysicHandler physicHandler, int posX, int posY, int collisionGroup = -1, int collisionMask = -1)
         {
             HitResult result = new HitResult();
             var btStart = Raycast.GetStartVec(camera, viewport, posX, posY);
@@ -190,14 +231,16 @@ namespace Genesis.Physics
                 physics.PhysicsWorld.RayTest(_start, _end, cb);
                 if (cb.HasHit)
                 {
-                    result.rigidBody = (RigidBody)cb.CollisionObject;
+                    result.hit = true;
+                    result.collisionObject = cb.CollisionObject;
                     result.hitLocation = new Vec3(cb.HitPointWorld.X, cb.HitPointWorld.Y, cb.HitPointWorld.Z);
+                    result.hitElement = (GameElement)cb.CollisionObject.UserObject;
                 }
             }
             return result;
         }
 
-        public static List<HitResult> PerformCastAll(Camera camera, Viewport viewport, PhysicHandler physicHandler, int posX, int posY)
+        public static List<HitResult> PerformRaycastFromScreenAll(Camera camera, Viewport viewport, PhysicHandler physicHandler, int posX, int posY)
         {
             var results = new List<HitResult>();
 
@@ -220,13 +263,15 @@ namespace Genesis.Physics
                     for (int i = 0; i < cb.CollisionObjects.Count; i++)
                     {
                         Vector3 location = cb.HitPointWorld[i];
-                        RigidBody rigidBody = (RigidBody)cb.CollisionObjects[i];
+                        var collisionObject = cb.CollisionObjects[i];
 
                         HitResult result = new HitResult();
+                        result.hit = true;
                         result.rayStart = new Vec3(btStart.xyz);
                         result.rayEnd = new Vec3(out_end.xyz);
                         result.hitLocation = new Vec3(location.X, location.Y, location.Z);
-                        result.rigidBody = rigidBody;
+                        result.collisionObject = collisionObject;
+                        result.hitElement = (GameElement)collisionObject.UserObject;
                         results.Add(result);
                     }
                 }

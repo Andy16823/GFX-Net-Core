@@ -191,18 +191,17 @@ namespace Genesis.Core.Behaviors._3D
             Vec3 diff = currentCursoPos - Input.GetMousePos();
             if (this.InvertMouse)
             {
-                model.Rotation.Y += (diff.X / 100);
+                model.Rotation = model.Rotation.AddY(diff.X / 100);
             }
             else
             {
-                model.Rotation.Y -= (diff.X / 100);
-
+                model.Rotation = model.Rotation.SubY((diff.X / 100));
             }
 
             // Let the camera follow the player
             PerspectiveCamera camera = (PerspectiveCamera)game.SelectedScene.Camera;
             camera.Location = Utils.GetRelativePosition(model, new Vec3(0f, 2.5f, -4f));
-            camera.Rotation.X = -20f;
+            camera.Rotation = camera.Rotation.AddX(-20f);
             camera.LookAt(model.Location + new Vec3(0, 1, 0));
 
 
@@ -289,11 +288,7 @@ namespace Genesis.Core.Behaviors._3D
             }
 
             // Add the input vector to the velocity
-            if(this.inputVector != null)
-            {
-                velocity += inputVector.ToVector3();
-                inputVector = null;
-            }
+            velocity += inputVector.ToVector3();
 
             // Set data for the next frame
             Collider.RigidBody.Activate(true);

@@ -508,8 +508,10 @@ namespace Genesis.Core
         /// <param name="targetPosition">The target position.</param>
         public static void LookAt(Camera camera, Vec3 targetPosition)
         {
-            camera.Rotation.Y = Utils.CalculateYaw(camera.Location, targetPosition);
-            camera.Rotation.X = Utils.CalculatePitch(camera.Location, targetPosition);
+            float y = Utils.CalculateYaw(camera.Location, targetPosition);
+            float x = Utils.CalculatePitch(camera.Location, targetPosition);
+            float z = camera.Rotation.Z;
+            camera.Rotation = new Vec3(x, y, z);
         }
 
         /// <summary>
@@ -519,8 +521,11 @@ namespace Genesis.Core
         /// <param name="targetPosition">The position to look at.</param>
         public static void LookAtX(Camera camera, Vec3 targetPosition)
         {
-            //camera.Rotation.Y = Utils.CalculateYaw(camera.Location, targetPosition);
-            camera.Rotation.X = Utils.CalculatePitch(camera.Location, targetPosition);
+            float x = Utils.CalculatePitch(camera.Location, targetPosition);
+            float y = camera.Rotation.Y;
+            float z = camera.Rotation.Z;
+
+            camera.Rotation = new Vec3(x, y, z);
         }
 
         /// <summary>
@@ -530,8 +535,10 @@ namespace Genesis.Core
         /// <param name="targetPosition">The position to look at.</param>
         public static void LookAtY(Camera camera, Vec3 targetPosition)
         {
-            camera.Rotation.Y = Utils.CalculateYaw(camera.Location, targetPosition);
-            //camera.Rotation.X = Utils.CalculatePitch(camera.Location, targetPosition);
+            float y = Utils.CalculateYaw(camera.Location, targetPosition);
+            float x = camera.Rotation.X;
+            float z = camera.Rotation.Z;
+            camera.Rotation = new Vec3(x, y, z);
         }
 
         /// <summary>
@@ -716,7 +723,7 @@ namespace Genesis.Core
                     return new Vec3(worldPosition.x, worldPosition.y, worldPosition.z);
                 }
             }
-            return null;
+            return new Vec3();
         }
 
         /// <summary>
