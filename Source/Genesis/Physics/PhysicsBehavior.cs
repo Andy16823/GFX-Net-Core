@@ -13,8 +13,8 @@ namespace Genesis.Physics
     /// </summary>
     /// <param name="scene">The scene involved in the physics behavior event</param>
     /// <param name="game">The game involved in the physics behavior event</param>
-    /// <param name="collision">The collision object involved in the physics behavior event</param>
-    public delegate void PhysicsBehaviorEvent(Scene scene, Game game, GameElement collision);
+    /// <param name="collision">The information from the collision</param>
+    public delegate void PhysicsBehaviorEvent(Scene scene, Game game, Collision collision);
 
     /// <summary>
     /// Represents an abstract class for defining physics behavior in the game.
@@ -31,12 +31,12 @@ namespace Genesis.Physics
         /// </summary>
         /// <param name="scene">The scene where the collision occurred</param>
         /// <param name="game">The game associated with the collision</param>
-        /// <param name="element">The collision object involved in the event</param>
-        public virtual void Collide(Scene scene, Game game, GameElement element)
+        /// <param name="collision">The information from the collision</param>
+        public virtual void Collide(Scene scene, Game game, Collision collision)
         {
             if(this.OnCollide != null)
             {
-                this.OnCollide(scene, game, element);
+                this.OnCollide(scene, game, collision);
             }
         }
 

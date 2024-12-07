@@ -121,9 +121,9 @@ namespace Genesis.Core.Behaviors._3D
             this.Parent.AddBehavior(this.Collider);
             this.Collider.CreateRigidBody(radius, height, mass, offset);
             this.Collider.RigidBody.AngularFactor = System.Numerics.Vector3.Zero;
-            Collider.OnCollide += (sce, game, co) =>
+            Collider.OnCollide += (sce, game, collision) =>
             {
-                var physicsBehavior = co.GetBehavior<PhysicsBehavior>();
+                var physicsBehavior = collision.collidingElement.GetBehavior<PhysicsBehavior>();
                 var btCollisionObject = (CollisionObject)physicsBehavior.GetPhysicsObject();
                 if (btCollisionObject.GetType() != typeof(GhostObject))
                 {
