@@ -23,6 +23,8 @@ namespace Genesis.Graphics
         /// </summary>
         void Init();
 
+        void InitInstance(RenderInstanceContainer element);
+
         /// <summary>
         /// Initializes a game element for rendering.
         /// </summary>
@@ -32,6 +34,8 @@ namespace Genesis.Graphics
         /// Initializes a sprite for rendering.
         /// </summary>
         void InitSprite(Sprite sprite);
+
+        bool IsMaterialLoaded(Material material);
 
         /// <summary>
         /// Initialize a material for rendering
@@ -53,6 +57,8 @@ namespace Genesis.Graphics
         /// Ends the rendering process.
         /// </summary>
         void End();
+
+        void EditBufferSubData(int bufferId, int offset, float[] data);
 
         /// <summary>
         /// Creates a dynamic vertex buffer with the specified float array.
@@ -262,6 +268,8 @@ namespace Genesis.Graphics
         /// <param name="element">The game element to draw.</param>
         void DrawGameElement(GameElement element);
 
+        void DrawInstance(RenderInstanceContainer element);
+
         /// <summary>
         /// Draws a sprite in the current rendering context.
         /// </summary>
@@ -413,6 +421,8 @@ namespace Genesis.Graphics
         /// </summary>
         /// <param name="font">The font to dispose.</param>
         void DisposeFont(Font font);
+
+        void DisposeInstance(RenderInstanceContainer element);
 
         /// <summary>
         /// Disposes the game element

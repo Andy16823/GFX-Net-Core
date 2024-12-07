@@ -12,24 +12,18 @@ using System.Threading.Tasks;
 namespace Genesis.Core.Behaviors.Physics3D
 {
     /// <summary>
-    /// Represents a sphere trigger behavior for 3D physics.
+    /// Represents a Sphere trigger behavior for 3D physics.
     /// </summary>
-    /// <remarks>
-    /// Provides functionality to create and manage a sphere-shaped trigger for detecting collisions in a 3D physics world.
-    /// </remarks>
     public class SphereTrigger : TriggerBehavior3D
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SphereTrigger"/> class with the specified physics handler.
-        /// </summary>
-        /// <param name="handler">The physics handler to associate with this sphere trigger.</param>
-        public SphereTrigger(PhysicHandler handler) : base(handler)
+        public SphereTrigger(PhysicHandler physicHandler) : base(physicHandler)
         {
         }
 
         /// <summary>
         /// Creates a trigger with a sphere shape using the default radius (half of the parent's size).
         /// </summary>
+        /// <param name="physicHandler">The physics handler to manage this element.</param>
         public override void CreateTrigger(int collisionGroup = -1, int collisionMask = -1)
         {
             this.CreateTrigger(this.Parent.Size.X / 2, collisionGroup, collisionMask);
@@ -55,13 +49,7 @@ namespace Genesis.Core.Behaviors.Physics3D
 
             var element = this.Parent;
             SphereShape sphereShape = new SphereShape(radius);
-
-            Vec3 location = Utils.GetElementWorldLocation(element) + Offset;
-            Vec3 rotation = Utils.GetElementWorldRotation(element);
-
-            var btTranslation = System.Numerics.Matrix4x4.CreateTranslation(location.ToVector3());
-            var btRotation = System.Numerics.Matrix4x4.CreateRotationX(rotation.X) * System.Numerics.Matrix4x4.CreateRotationY(rotation.Y) * System.Numerics.Matrix4x4.CreateRotationZ(rotation.Z);
-            var btStartTransform = btTranslation * btRotation;
+            var btStartTransform = Utils.GetBtTransform(element, Offset);
 
             Trigger = new GhostObject();
             Trigger.UserObject = element;

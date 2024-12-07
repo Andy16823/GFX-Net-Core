@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace Genesis.Core.Behaviors.Physics3D
 {
+
     /// <summary>
     /// Defines a box collider behavior for 3D physics simulations.
     /// </summary>
@@ -19,17 +20,18 @@ namespace Genesis.Core.Behaviors.Physics3D
         /// <summary>
         /// Initializes a new instance of the <see cref="BoxCollider"/> class with the specified physics handler.
         /// </summary>
-        /// <param name="handler">The physics handler to associate with this box collider.</param>
-        public BoxCollider(PhysicHandler handler) : base(handler)
+        /// <param name="physicHandler">The physics handler to associate with this box collider.</param>
+        public BoxCollider(PhysicHandler physicHandler) : base(physicHandler)
         {
         }
 
         /// <summary>
         /// Creates a box collider with default half extends.
         /// </summary>
+        /// <param name="handler">The physics handler to manage this collider.</param>
         public override void CreateCollider(int collisionGroup = -1, int collisionMask = -1)
         {
-            this.CreateCollider(this.Parent.Size.Half(), collisionGroup, collisionMask);
+            this.CreateCollider(new Vec3(0.5f, 0.5f, 0.5f), collisionGroup, collisionMask);
         }
 
         /// <summary>
@@ -40,18 +42,13 @@ namespace Genesis.Core.Behaviors.Physics3D
         {
             var element = this.Parent;
             BoxShape boxShape = new BoxShape(boxHalfExtends.ToVector3());
-
-            Vec3 location = Utils.GetElementWorldLocation(element) + Offset;
-            Vec3 rotation = Utils.GetElementWorldRotation(element);
-
-            var btTranslation = System.Numerics.Matrix4x4.CreateTranslation(location.ToVector3());
-            var btRotation = System.Numerics.Matrix4x4.CreateRotationX(rotation.X) * System.Numerics.Matrix4x4.CreateRotationY(rotation.Y) * System.Numerics.Matrix4x4.CreateRotationZ(rotation.Z);
-            var btStartTransform = btTranslation * btRotation;
+            var btStartTransform = Utils.GetBtTransform(element, Offset);
 
             Collider = new CollisionObject();
             Collider.UserObject = element;
             Collider.CollisionShape = boxShape;
             Collider.WorldTransform = btStartTransform;
+            Collider.CollisionShape.LocalScaling = element.Size.ToVector3();
 
             PhysicHandler.ManageElement(this, collisionGroup, collisionMask);
         }

@@ -604,6 +604,27 @@ namespace Genesis.Core
             return new float[] { r, g, b, a };
         }
 
+
+        /// <summary>
+        /// Generates an array with vertex colors
+        /// </summary>
+        /// <param name="vertexCount"></param>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public static float[] CreateVertexColors(int vertexCount, Color color)
+        {
+            float[] result = new float[vertexCount * 3];
+            float[] c = Utils.ConvertColor(color);
+
+            for (int i = 0; i < vertexCount; i++)
+            {
+                result[i * 3] = c[0];
+                result[i * 3 + 1] = c[1];
+                result[i * 3 + 2] = c[2];
+            }
+            return result;
+        }
+
         /// <summary>
         /// Generates an random color
         /// </summary>
@@ -1079,6 +1100,21 @@ namespace Genesis.Core
             forward = rotationQuat * forward;
             forward *= dist;
             return new Vec3(forward);
+        }
+
+        public static System.Numerics.Matrix4x4 GetBtTransform(GameElement element, Vec3 offsetLocation = default)
+        {
+            var location = Utils.GetElementWorldLocation(element) + offsetLocation;
+            var rotation = Utils.GetElementWorldRotation(element);
+            var scale = Utils.GetElementWorldScale(element);
+
+            quat quat = new quat(new vec3(Utils.ToRadians(rotation.X), Utils.ToRadians(rotation.Y), Utils.ToRadians(rotation.Z)));
+            mat4 rotMat = new mat4(quat);
+
+            System.Numerics.Matrix4x4 btTranslation = System.Numerics.Matrix4x4.CreateTranslation(location.X, location.Y, location.Z);
+            System.Numerics.Matrix4x4 btRotation = Utils.ConvertToMatrix4x4(rotMat);
+
+            return btRotation * btTranslation;
         }
     }
 }

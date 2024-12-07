@@ -14,7 +14,7 @@
           "System.Data.DataSetExtensions": "4.5.0",
           "BulletSharp": "1.0.0.0",
           "GlmSharp": "0.0.0.0",
-          "NetGL": "1.0.8951.3108"
+          "NetGL": "1.0.9107.20460"
         },
         "runtime": {
           "Genesis.dll": {}
@@ -745,10 +745,10 @@
           }
         }
       },
-      "NetGL/1.0.8951.3108": {
+      "NetGL/1.0.9107.20460": {
         "runtime": {
           "NetGL.dll": {
-            "assemblyVersion": "1.0.8951.3108",
+            "assemblyVersion": "1.0.9107.20460",
             "fileVersion": "0.0.0.0"
           }
         }
@@ -1310,7 +1310,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "NetGL/1.0.8951.3108": {
+    "NetGL/1.0.9107.20460": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

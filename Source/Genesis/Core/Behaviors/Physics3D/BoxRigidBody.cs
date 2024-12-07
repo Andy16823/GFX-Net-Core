@@ -18,9 +18,9 @@ namespace Genesis.Core.Behaviors.Physics3D
     public class BoxRigidBody : RigidBodyBehavior3D
     {
         /// <summary>
-        /// Constructs a BoxRigidBody instance.
+        /// Constructor for creating a BoxRigidBody behavior.
         /// </summary>
-        /// <param name="handler">The physics handler to manage this rigid body.</param>
+        /// <param name="handler">The physics handler managing this rigid body.</param>
         public BoxRigidBody(PhysicHandler handler) : base(handler)
         {
         }
@@ -28,17 +28,15 @@ namespace Genesis.Core.Behaviors.Physics3D
         /// <summary>
         /// Creates a box-shaped rigid body using the parent's size and the specified mass.
         /// </summary>
-        /// <param name="physicHandler">The physics handler to manage this rigid body.</param>
         /// <param name="mass">The mass of the rigid body.</param>
         public override void CreateRigidBody(float mass, int collisionGroup = -1, int collisionMask = -1)
         {
-            this.CreateRigidBody(this.Parent.Size.Half(), mass, collisionGroup, collisionMask);
+            this.CreateRigidBody(new Vec3(0.5f, 0.5f, 0.5f), mass, collisionGroup, collisionMask);
         }
 
         /// <summary>
         /// Creates a box-shaped rigid body with the specified half extends, mass, and physics handler.
         /// </summary>
-        /// <param name="handler">The physics handler to manage this rigid body.</param>
         /// <param name="boxHalfExtends">Half extends of the box rigid body.</param>
         /// <param name="mass">Mass of the rigid body.</param>
         public void CreateRigidBody(Vec3 boxHalfExtends, float mass, int collisionGroup = -1, int collisionMask = -1)
@@ -46,19 +44,14 @@ namespace Genesis.Core.Behaviors.Physics3D
             var element = this.Parent;
             BoxShape boxShape = new BoxShape(boxHalfExtends.ToVector3());
             RigidBodyConstructionInfo info = new RigidBodyConstructionInfo(mass, null, boxShape, boxShape.CalculateLocalInertia(mass));
-
-            Vec3 location = Utils.GetElementWorldLocation(element) + Offset;
-            Vec3 rotation = Utils.GetElementWorldRotation(element);
-
-            var btTranslation = System.Numerics.Matrix4x4.CreateTranslation(location.ToVector3());
-            var btRotation = System.Numerics.Matrix4x4.CreateRotationX(rotation.X) * System.Numerics.Matrix4x4.CreateRotationY(rotation.Y) * System.Numerics.Matrix4x4.CreateRotationZ(rotation.Z);
-            var btStartTransform = btTranslation * btRotation;
+            var btStartTransform = Utils.GetBtTransform(element, Offset);
 
             info.MotionState = new DefaultMotionState(btStartTransform);
             RigidBody = new RigidBody(info);
             RigidBody.UserObject = element;
             RigidBody.ApplyGravity();
-            
+            RigidBody.CollisionShape.LocalScaling = element.Size.ToVector3();
+
             PhysicHandler.ManageElement(this, collisionGroup, collisionMask);
         }
     }

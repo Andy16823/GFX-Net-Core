@@ -18,20 +18,12 @@ namespace Genesis.Core
         /// <summary>
         /// Gets or sets the light source (sun) in the scene.
         /// </summary>
-        public Light Sun { get; set; }
+        public DirectionalLight Sun { get; set; }
 
         /// <summary>
         /// Gets or sets the skybox used in the scene (optional).
         /// </summary>
         public Skybox Skybox { get; set; }
-
-        /// <summary>
-        /// Gets or sets the framebuffer used for storing the shadow map.
-        /// </summary>
-        /// <value>
-        /// The framebuffer object that holds the shadow map texture. This is used during the shadow mapping process to store depth information from the perspective of the light source.
-        /// </value>
-        public Framebuffer ShadowMap { get; set; }
 
         /// <summary>
         /// Gets or sets the resolution of the shadow map.
@@ -47,7 +39,7 @@ namespace Genesis.Core
         /// </summary>
         /// <param name="name">The name of the scene.</param>
         /// <param name="sun">The light source (sun) in the scene.</param>
-        public Scene3D(String name, Light sun)
+        public Scene3D(String name, DirectionalLight sun)
         {
             this.Sun = sun;
             this.Name = name;
@@ -61,13 +53,13 @@ namespace Genesis.Core
         public override void Init(Game game, IRenderDevice renderDevice)
         {
             base.Init(game, renderDevice);
+            this.Sun.Init(game, renderDevice);
             renderDevice.SetLightSource(this.Sun);
-            if(this.Skybox != null)
+            if (this.Skybox != null)
             {
                 Skybox.Init(game, renderDevice);
             }
-            ShadowMap = renderDevice.BuildShadowMap((int)ShadowResolution.X, (int)ShadowResolution.Y);
-            Debug.WriteLine("Shadowmap created with error " + renderDevice.GetError());
+            //Debug.WriteLine("Shadowmap created with error " + renderDevice.GetError());
         }
 
         /// <summary>
@@ -94,32 +86,10 @@ namespace Genesis.Core
             // Shadowpass
             renderDevice.SetCamera(game.Viewport, this.Camera);
 
-            var lightProjectionMatrix = Light.GetLightProjectionMatrix(Sun, (PerspectiveCamera)Camera, game.Viewport);
-            var lightViewMatrix = Light.GetLightViewMatrix(Sun);
-            var lightSpaceMatrix = Utils.CalculateLightspaceMatrix(lightProjectionMatrix, lightViewMatrix);
+            this.RenderShadowMap(Sun, game, renderDevice);
 
-            renderDevice.PrepareShadowPass(ShadowMap, lightSpaceMatrix);
-            renderDevice.SetProjectionMatrix(lightProjectionMatrix);
-            renderDevice.SetViewMatrix(lightViewMatrix);
-
-            if (this.Sun.CastShadows)
-            {
-                foreach (var layer in this.Layer)
-                {
-                    foreach (var item in layer.Elements)
-                    {
-                        if (item.Enabled && item.CastShadows)
-                        {
-                            item.OnRender(game, renderDevice);
-                        }
-                    }
-                }
-            }
-            renderDevice.FinishShadowPass(game.Viewport);
-            Debug.WriteLine($"Rendered Shadowmap with error: {renderDevice.GetError()}");
-
-            if (this.Camera != null)
-               renderDevice.SetCamera(game.Viewport, this.Camera);
+            // Normal Pass (Set Camera needs to set again for the new matrices!
+            renderDevice.SetCamera(game.Viewport, this.Camera);
 
             if (this.Skybox != null)
                 renderDevice.DrawSkyBox(this.Skybox);
@@ -166,6 +136,33 @@ namespace Genesis.Core
             renderDevice.FinishCanvasRendering(this, null);
         }
 
+        public void RenderShadowMap(Light light, Game game, IRenderDevice renderDevice)
+        {
+            var lightProjectionMatrix = light.GetLightProjectionMatrix((PerspectiveCamera)Camera, game.Viewport);
+            var lightViewMatrix = light.GetLightViewMatrix();
+            var lightSpaceMatrix = Utils.CalculateLightspaceMatrix(lightProjectionMatrix, lightViewMatrix);
+
+            renderDevice.PrepareShadowPass(light.Shadowmap, lightSpaceMatrix);
+            renderDevice.SetProjectionMatrix(lightProjectionMatrix);
+            renderDevice.SetViewMatrix(lightViewMatrix);
+
+            if (this.Sun.CastShadows)
+            {
+                foreach (var layer in this.Layer)
+                {
+                    foreach (var item in layer.Elements)
+                    {
+                        if (item.Enabled && item.CastShadows)
+                        {
+                            item.OnRender(game, renderDevice);
+                        }
+                    }
+                }
+            }
+            renderDevice.FinishShadowPass(game.Viewport);
+            Debug.WriteLine($"Rendered Shadowmap with error: {renderDevice.GetError()}");
+        }
+
         /// <summary>
         /// Called when the scene is destroyed.
         /// </summary>
@@ -173,10 +170,11 @@ namespace Genesis.Core
         public override void OnDestroy(Game game)
         {
             base.OnDestroy(game);
-            if(this.Skybox != null)
+            if (this.Skybox != null)
             {
                 this.Skybox.OnDestroy(game);
             }
         }
     }
+
 }

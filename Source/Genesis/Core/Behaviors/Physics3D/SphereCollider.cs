@@ -19,14 +19,15 @@ namespace Genesis.Core.Behaviors.Physics3D
         /// <summary>
         /// Initializes a new instance of the <see cref="SphereCollider"/> class with the specified physics handler.
         /// </summary>
-        /// <param name="handler">The physics handler to associate with this sphere collider.</param>
-        public SphereCollider(PhysicHandler handler) : base(handler)
+        /// <param name="physicHandler">The physics handler to associate with this sphere collider.</param>
+        public SphereCollider(PhysicHandler physicHandler) : base(physicHandler)
         {
         }
 
         /// <summary>
         /// Creates a collider with a sphere shape using the default radius (half of the parent's size).
         /// </summary>
+        /// <param name="physicHandler">The physics handler to manage this element.</param>
         public override void CreateCollider(int collisionGroup = -1, int collisionMask = -1)
         {
             this.CreateCollider(this.Parent.Size.X / 2, collisionGroup, collisionMask);
@@ -35,6 +36,7 @@ namespace Genesis.Core.Behaviors.Physics3D
         /// <summary>
         /// Creates a collider with a sphere shape at the origin.
         /// </summary>
+        /// <param name="handler">The physics handler to manage this element.</param>
         /// <param name="radius">The radius of the sphere.</param>
         public void CreateCollider(float radius, int collisionGroup = -1, int collisionMask = -1)
         {
@@ -44,6 +46,7 @@ namespace Genesis.Core.Behaviors.Physics3D
         /// <summary>
         /// Creates a collider with a sphere shape at the specified offset.
         /// </summary>
+        /// <param name="handler">The physics handler to manage this element.</param>
         /// <param name="offset">The offset from the parent element's location.</param>
         /// <param name="radius">The radius of the sphere.</param>
         public void CreateCollider(Vec3 offset, float radius, int collisionGroup = -1, int collisionMask = -1)
@@ -52,13 +55,7 @@ namespace Genesis.Core.Behaviors.Physics3D
 
             var element = this.Parent;
             SphereShape sphereShape = new SphereShape(radius);
-
-            Vec3 location = Utils.GetElementWorldLocation(element) + Offset;
-            Vec3 rotation = Utils.GetElementWorldRotation(element);
-
-            var btTranslation = System.Numerics.Matrix4x4.CreateTranslation(location.ToVector3());
-            var btRotation = System.Numerics.Matrix4x4.CreateRotationX(rotation.X) * System.Numerics.Matrix4x4.CreateRotationY(rotation.Y) * System.Numerics.Matrix4x4.CreateRotationZ(rotation.Z);
-            var btStartTransform = btTranslation * btRotation;
+            var btStartTransform = Utils.GetBtTransform(element, Offset);
 
             Collider = new CollisionObject();
             Collider.UserObject = element;

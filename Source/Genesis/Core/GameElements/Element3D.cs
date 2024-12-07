@@ -13,6 +13,7 @@ using System.Xml.Linq;
 using System.Drawing;
 using System.Reflection;
 using Genesis.Graphics.Animation3D;
+using Genesis.Graphics.Shaders.OpenGL;
 
 namespace Genesis.Core.GameElements
 {
@@ -62,8 +63,7 @@ namespace Genesis.Core.GameElements
 
             Assimp.AssimpContext importer = new Assimp.AssimpContext();
             //importer.SetConfig(new Assimp.Configs.NormalSmoothingAngleConfig(66.0f));
-            //var model = importer.ImportFile(path, Assimp.PostProcessPreset.TargetRealTimeQuality | Assimp.PostProcessSteps.PreTransformVertices);
-            var model = importer.ImportFile(path, Assimp.PostProcessPreset.TargetRealTimeQuality | Assimp.PostProcessSteps.Triangulate);
+            var model = importer.ImportFile(path, Assimp.PostProcessPreset.TargetRealTimeQuality | Assimp.PostProcessSteps.PreTransformVertices);
 
             foreach (var material in model.Materials)
             {
@@ -71,11 +71,11 @@ namespace Genesis.Core.GameElements
                 gMaterial.Opacity = material.Opacity;
                 gMaterial.DiffuseColor = Utils.ConvertDrawingColor(material.ColorDiffuse.A, material.ColorDiffuse.R, material.ColorDiffuse.G, material.ColorDiffuse.B);
                 gMaterial.DiffuseTexture = material.TextureDiffuse.FilePath;
-                if(material.HasTextureNormal)
+                if (material.HasTextureNormal)
                 {
                     gMaterial.NormalTexture = material.TextureNormal.FilePath;
                 }
-                else if(material.HasTextureHeight)
+                else if (material.HasTextureHeight)
                 {
                     gMaterial.NormalTexture = material.TextureHeight.FilePath;
                 }
@@ -90,7 +90,7 @@ namespace Genesis.Core.GameElements
                 gMesh.Indicies.AddRange(mesh.GetIndices());
                 foreach (var face in mesh.Faces)
                 {
-                    foreach(var faceindices in face.Indices)
+                    foreach (var faceindices in face.Indices)
                     {
                         gMesh.Faces.Add(mesh.Vertices[faceindices].X);
                         gMesh.Faces.Add(mesh.Vertices[faceindices].Y);
@@ -211,7 +211,7 @@ namespace Genesis.Core.GameElements
 
             foreach (var mesh in this.Meshes)
             {
-                if(mesh.Material.Equals(material))
+                if (mesh.Material.Equals(material))
                 {
                     verticies.AddRange(mesh.Vericies);
                     normals.AddRange(mesh.Normals);
@@ -220,7 +220,8 @@ namespace Genesis.Core.GameElements
             }
 
             var buffer = new MaterialBuffer();
-            if(verticies.Count > 0) {
+            if (verticies.Count > 0)
+            {
                 buffer.HasData = true;
             }
             else
@@ -232,6 +233,31 @@ namespace Genesis.Core.GameElements
             buffer.Texcords = texCords.ToArray();
 
             return buffer;
+        }
+
+        public RenderInstanceContainer ToRenderInstance()
+        {
+            return Element3D.CreateInstanceContainer(this);
+        }
+
+        public static RenderInstanceContainer CreateInstanceContainer(Element3D element, bool updateInstances = false)
+        {
+            var renderInstance = new RenderInstanceContainer(new InstancedShader());
+            renderInstance.UpdateInstances = updateInstances;
+            foreach (var material in element.Materials)
+            {
+                var buffers = element.GetMaterialBuffers(material);
+                InstancedMesh mesh = new InstancedMesh();
+                mesh.Vertices = buffers.Verticies;
+                mesh.VertexColors = Utils.CreateVertexColors(mesh.Vertices.Length / 3, Color.White);
+                mesh.TextureCords = buffers.Texcords;
+                mesh.Normals = buffers.Normals;
+                mesh.Material = material;
+                material.Propeterys.Add("Path", element.Propertys["path"]);
+
+                renderInstance.Meshes.Add(mesh);
+            }
+            return renderInstance;
         }
     }
 }

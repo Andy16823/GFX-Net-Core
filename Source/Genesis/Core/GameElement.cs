@@ -28,17 +28,17 @@ namespace Genesis.Core
         /// <summary>
         /// Gets or sets the 3D coordinates of the game element.
         /// </summary>
-        public Vec3 Location { get; set; }
+        public virtual Vec3 Location { get; set; }
 
         /// <summary>
         /// Gets or sets the 3D rotation of the game element.
         /// </summary>
-        public Vec3 Rotation { get; set; }
+        public virtual Vec3 Rotation { get; set; }
 
         /// <summary>
         /// Gets or sets the 3D size of the game element.
         /// </summary>
-        public Vec3 Size { get; set; }
+        public virtual Vec3 Size { get; set; }
 
         /// <summary>
         /// Gets or sets the list of behaviors associated with the game element.

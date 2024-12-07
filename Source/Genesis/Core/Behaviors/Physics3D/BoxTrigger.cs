@@ -12,48 +12,40 @@ namespace Genesis.Core.Behaviors.Physics3D
     /// <summary>
     /// Defines a box trigger behavior for 3D physics simulations.
     /// </summary>
-    /// <remarks>
-    /// Provides functionality to create and manage a box-shaped trigger for detecting collisions in a 3D physics world.
-    /// </remarks>
     public class BoxTrigger : TriggerBehavior3D
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="BoxTrigger"/> class with the specified physics handler.
         /// </summary>
-        /// <param name="handler">The physics handler to associate with this box trigger.</param>
-        public BoxTrigger(PhysicHandler handler) : base(handler)
+        /// <param name="physicHandler">The physics handler to associate with this box trigger.</param>
+        public BoxTrigger(PhysicHandler physicHandler) : base(physicHandler)
         {
         }
 
         /// <summary>
-        /// Creates a box trigger with the default half extends (half of the parent's size).
+        /// Creates the trigger using the parent's size half extents.
         /// </summary>
         public override void CreateTrigger(int collisionGroup = -1, int collisionMask = -1)
         {
-            this.CreateTrigger(Parent.Size.Half(), collisionGroup, collisionMask);
+            this.CreateTrigger(new Vec3(0.5f, 0.5f, 0.5f), collisionGroup, collisionMask);
         }
 
         /// <summary>
-        /// Creates a box trigger with the specified half extends.
+        /// Creates a box trigger with the specified parameters.
         /// </summary>
         /// <param name="boxHalfExtends">The half extends of the box trigger.</param>
         public void CreateTrigger(Vec3 boxHalfExtends, int collisionGroup = -1, int collisionMask = -1)
         {
             var element = this.Parent;
             BoxShape boxShape = new BoxShape(boxHalfExtends.ToVector3());
-
-            Vec3 location = Utils.GetElementWorldLocation(element) + Offset;
-            Vec3 rotation = Utils.GetElementWorldRotation(element);
-
-            var btTranslation = System.Numerics.Matrix4x4.CreateTranslation(location.ToVector3());
-            var btRotation = System.Numerics.Matrix4x4.CreateRotationX(rotation.X) * System.Numerics.Matrix4x4.CreateRotationY(rotation.Y) * System.Numerics.Matrix4x4.CreateRotationZ(rotation.Z);
-            var btStartTransform = btTranslation * btRotation;
+            var btStartTransform = Utils.GetBtTransform(element, Offset);
 
             Trigger = new GhostObject();
             Trigger.UserObject = element;
             Trigger.CollisionShape = boxShape;
             Trigger.WorldTransform = btStartTransform;
             Trigger.CollisionFlags = CollisionFlags.NoContactResponse;
+            Trigger.CollisionShape.LocalScaling = element.Size.ToVector3();
 
             PhysicHandler.ManageElement(this, collisionGroup, collisionMask);
         }

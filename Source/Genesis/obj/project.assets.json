@@ -4777,23 +4777,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Andy\\.nuget\\packages\\": {},
+    "C:\\Users\\andy1\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Genesis.csproj",
+      "projectUniqueName": "C:\\Users\\andy1\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Genesis.csproj",
       "projectName": "Genesis",
-      "projectPath": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Genesis.csproj",
-      "packagesPath": "C:\\Users\\Andy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Andy\\Documents\\GFX - Net 8\\Genesis\\Genesis\\obj\\",
+      "projectPath": "C:\\Users\\andy1\\Documents\\GFX - Net 8\\Genesis\\Genesis\\Genesis.csproj",
+      "packagesPath": "C:\\Users\\andy1\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\andy1\\Documents\\GFX - Net 8\\Genesis\\Genesis\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Andy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\andy1\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4818,8 +4818,9 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "direct"
-      }
+        "auditMode": "all"
+      },
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net8.0-windows7.0": {
@@ -4861,8 +4862,30 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Das Paket \"System.Net.Http\" 4.3.0 weist eine bekannte Hoch Schweregrad-Sicherheitsanfälligkeit auf, https://github.com/advisories/GHSA-7jgj-8wvc-jh57.",
+      "libraryId": "System.Net.Http",
+      "targetGraphs": [
+        "net8.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Das Paket \"System.Text.RegularExpressions\" 4.3.0 weist eine bekannte Hoch Schweregrad-Sicherheitsanfälligkeit auf, https://github.com/advisories/GHSA-cmhx-cq75-c4mj.",
+      "libraryId": "System.Text.RegularExpressions",
+      "targetGraphs": [
+        "net8.0-windows7.0"
+      ]
+    }
+  ]
 }

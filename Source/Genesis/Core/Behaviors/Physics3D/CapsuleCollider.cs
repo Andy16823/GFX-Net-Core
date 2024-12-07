@@ -18,8 +18,8 @@ namespace Genesis.Core.Behaviors.Physics3D
         /// <summary>
         /// Initializes a new instance of the <see cref="CapsuleCollider"/> class with the specified physics handler.
         /// </summary>
-        /// <param name="handler">The physics handler to associate with this capsule collider.</param>
-        public CapsuleCollider(PhysicHandler handler) : base(handler)
+        /// <param name="physicHandler">The physics handler to associate with this capsule collider.</param>
+        public CapsuleCollider(PhysicHandler physicHandler) : base(physicHandler)
         {
         }
 
@@ -30,7 +30,6 @@ namespace Genesis.Core.Behaviors.Physics3D
         {
             this.CreateCollider(1.0f, 2.0f, collisionGroup, collisionMask);
         }
-
         /// <summary>
         /// Creates a collider with a capsule shape at the origin.
         /// </summary>
@@ -52,19 +51,12 @@ namespace Genesis.Core.Behaviors.Physics3D
             this.Offset = offset;
             var element = this.Parent;
             CapsuleShape capsuleShape = new CapsuleShape(radius, height);
-
-            Vec3 location = Utils.GetElementWorldLocation(element) + Offset;
-            Vec3 rotation = Utils.GetElementWorldRotation(element);
-
-            var btTranslation = System.Numerics.Matrix4x4.CreateTranslation(location.ToVector3());
-            var btRotation = System.Numerics.Matrix4x4.CreateRotationX(rotation.X) * System.Numerics.Matrix4x4.CreateRotationY(rotation.Y) * System.Numerics.Matrix4x4.CreateRotationZ(rotation.Z);
-            var btStartTransform = btTranslation * btRotation;
+            var btStartTransform = Utils.GetBtTransform(element, Offset);
 
             Collider = new CollisionObject();
             Collider.UserObject = element;
             Collider.CollisionShape = capsuleShape;
             Collider.WorldTransform = btStartTransform;
-
             PhysicHandler.ManageElement(this, collisionGroup, collisionMask);
         }
     }

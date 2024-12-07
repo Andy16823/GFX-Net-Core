@@ -17,7 +17,7 @@ namespace Genesis.Core.Behaviors.Physics3D
     public class SphereRigidBody : RigidBodyBehavior3D
     {
         /// <summary>
-        /// Constructor for SphereRigidBody.
+        /// Constructor for creating a SphereRigidBody behavior.
         /// </summary>
         /// <param name="handler">The physics handler managing this rigid body.</param>
         public SphereRigidBody(PhysicHandler handler) : base(handler)
@@ -55,14 +55,8 @@ namespace Genesis.Core.Behaviors.Physics3D
 
             var element = this.Parent;
             SphereShape sphereShape = new SphereShape(radius);
-            RigidBodyConstructionInfo constructionInfo = new RigidBodyConstructionInfo(mass, null, sphereShape);
-
-            Vec3 location = Utils.GetElementWorldLocation(element) + Offset;
-            Vec3 rotation = Utils.GetElementWorldRotation(element);
-
-            var btTranslation = System.Numerics.Matrix4x4.CreateTranslation(location.ToVector3());
-            var btRotation = System.Numerics.Matrix4x4.CreateRotationX(rotation.X) * System.Numerics.Matrix4x4.CreateRotationY(rotation.Y) * System.Numerics.Matrix4x4.CreateRotationZ(rotation.Z);
-            var btStartTransform = btTranslation * btRotation;
+            RigidBodyConstructionInfo constructionInfo = new RigidBodyConstructionInfo(mass, null, sphereShape, sphereShape.CalculateLocalInertia(mass));
+            var btStartTransform = Utils.GetBtTransform(element, Offset);
 
             constructionInfo.MotionState = new DefaultMotionState(btStartTransform);
 

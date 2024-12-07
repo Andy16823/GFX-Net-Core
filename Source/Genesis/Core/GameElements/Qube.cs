@@ -231,5 +231,24 @@ namespace Genesis.Core.GameElements
             base.OnDestroy(game);
             game.RenderDevice.DisposeElement(this);
         }
+
+        public RenderInstanceContainer ToRenderInstance()
+        {
+            return Qube.CreateInstanceContainer(this.Material);
+        }
+
+        public static RenderInstanceContainer CreateInstanceContainer(Material material, bool updateInstances = false)
+        {
+            QubeShape qubeShape = new QubeShape();
+            InstancedMesh mesh = new InstancedMesh();
+            mesh.Vertices = qubeShape.GetShape();
+            mesh.VertexColors = Qube.GetColors(material.DiffuseColor);
+            mesh.TextureCords = qubeShape.GetTextureCoordinates();
+            mesh.Normals = qubeShape.GetNormals();
+            mesh.Material = material;
+            RenderInstanceContainer instanceContainer = new RenderInstanceContainer(mesh, new InstancedShader());
+            instanceContainer.UpdateInstances = updateInstances;
+            return instanceContainer;
+        }
     }
 }

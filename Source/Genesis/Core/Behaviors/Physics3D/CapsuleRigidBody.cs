@@ -17,7 +17,7 @@ namespace Genesis.Core.Behaviors.Physics3D
     public class CapsuleRigidBody : Physics.RigidBodyBehavior3D
     {
         /// <summary>
-        /// Constructor for CapsuleRigidBody.
+        /// Constructor for creating a CapsuleRigidBody behavior.
         /// </summary>
         /// <param name="handler">The physics handler managing this rigid body.</param>
         public CapsuleRigidBody(PhysicHandler handler) : base(handler)
@@ -44,14 +44,8 @@ namespace Genesis.Core.Behaviors.Physics3D
         {
             this.Offset = offset;
             CapsuleShape capsuleShape = new CapsuleShape(radius, height);
-            RigidBodyConstructionInfo constructionInfo = new RigidBodyConstructionInfo(mass, null, capsuleShape);
-            
-            var loaction = Utils.GetElementWorldLocation(Parent) + Offset;
-            var rotation = Utils.GetElementWorldRotation(Parent);
-
-            var btTranslation = System.Numerics.Matrix4x4.CreateTranslation(loaction.ToVector3());
-            var btRotation = System.Numerics.Matrix4x4.CreateRotationX(rotation.X) * System.Numerics.Matrix4x4.CreateRotationY(rotation.Y) * System.Numerics.Matrix4x4.CreateRotationZ(rotation.Z);
-            var btTransform = btTranslation * btRotation;
+            RigidBodyConstructionInfo constructionInfo = new RigidBodyConstructionInfo(mass, null, capsuleShape, capsuleShape.CalculateLocalInertia(mass));
+            var btTransform = Utils.GetBtTransform(Parent, Offset);
 
             constructionInfo.MotionState = new DefaultMotionState(btTransform);
 
