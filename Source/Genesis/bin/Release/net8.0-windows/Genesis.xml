@@ -579,16 +579,6 @@
             </summary>
             <param name="halfExtends">The half extents of the box trigger.</param>
         </member>
-        <member name="T:Genesis.Core.Behaviors.Physics2D.BufferedSpriteCollider">
-            <summary>
-            Represents a behavior for creating a physics collider for 2D sprites using BulletSharp.
-            </summary>
-        </member>
-        <member name="M:Genesis.Core.Behaviors.Physics2D.BufferedSpriteCollider.CreateCollider(System.Int32,System.Int32)">
-            <summary>
-            Creates a rigid body for the collider.
-            </summary>
-        </member>
         <member name="P:Genesis.Core.Behaviors.Physics2D.PhysicsBox2D.RigidBody">
             <summary>
             Gets or sets the RigidBody associated with this 2D physics behavior.
@@ -1638,63 +1628,10 @@
             <c>true</c> if the current object's tag matches the specified value (case-insensitive); otherwise, <c>false</c>.
             </returns>
         </member>
-        <member name="T:Genesis.Core.GameElements.SpriteShapeDeffinition">
-            <summary>
-            Represents the definition of the shape for a sprite, including its location and size.
-            </summary>
-        </member>
         <member name="T:Genesis.Core.GameElements.BufferedSprite">
             <summary>
             Represents a game element that creates a buffered sprite with vertices, colors, and texture coordinates.
             </summary>
-        </member>
-        <member name="P:Genesis.Core.GameElements.BufferedSprite.Verticies">
-            <summary>
-            Gets or sets the list of vertices for the sprite.
-            </summary>
-        </member>
-        <member name="P:Genesis.Core.GameElements.BufferedSprite.Colors">
-            <summary>
-            Gets or sets the list of colors for the sprite.
-            </summary>
-        </member>
-        <member name="P:Genesis.Core.GameElements.BufferedSprite.TexCoords">
-            <summary>
-            Gets or sets the list of texture coordinates for the sprite.
-            </summary>
-        </member>
-        <member name="P:Genesis.Core.GameElements.BufferedSprite.ShapeDeffinitions">
-            <summary>
-            Gets or sets the list of shape definitions for the sprite.
-            </summary>
-        </member>
-        <member name="P:Genesis.Core.GameElements.BufferedSprite.Texture">
-            <summary>
-            Gets or sets the texture applied to the sprite.
-            </summary>
-        </member>
-        <member name="M:Genesis.Core.GameElements.BufferedSprite.#ctor(System.String,Genesis.Math.Vec3,Genesis.Graphics.Texture)">
-            <summary>
-            Creates a new buffered sprite with the specified name, location, and texture.
-            </summary>
-            <param name="name">The name of the game element.</param>
-            <param name="location">The location of the game element.</param>
-            <param name="texture">The texture applied to the sprite.</param>
-        </member>
-        <member name="M:Genesis.Core.GameElements.BufferedSprite.AddShape(Genesis.Math.Vec3,Genesis.Math.Vec3)">
-            <summary>
-            Adds a new rectangular shape at the given location and with the given size to the sprite.
-            </summary>
-            <param name="location">The location for the sprite.</param>
-            <param name="size">The size for the sprite.</param>
-        </member>
-        <member name="M:Genesis.Core.GameElements.BufferedSprite.AddShape(Genesis.Math.Vec3,Genesis.Math.Vec3,Genesis.Graphics.TexCoords)">
-            <summary>
-            Adds a new rectangular shape at the given location, size, and texture coordinates to the sprite.
-            </summary>
-            <param name="location">The location for the sprite.</param>
-            <param name="size">The size for the sprite.</param>
-            <param name="texCoords">The texture coordinates for the sprite.</param>
         </member>
         <member name="M:Genesis.Core.GameElements.BufferedSprite.Init(Genesis.Core.Game,Genesis.Graphics.IRenderDevice)">
             <summary>
@@ -3519,13 +3456,6 @@
             Resizes the scene by invoking the event handler for scene resize.
             </summary>
             <param name="viewport">The viewport containing information about the new dimensions.</param>
-        </member>
-        <member name="M:Genesis.Core.Scene.ImportScene2D(System.String,Genesis.Core.AssetManager)">
-            <summary>
-            Loads the given scene file into this scene
-            </summary>
-            <param name="filename">The file name</param>
-            <param name="assetManager">The asset manager</param>
         </member>
         <member name="M:Genesis.Core.Scene.GetSceneFilePropetery(Newtonsoft.Json.Linq.JArray,System.String)">
             <summary>

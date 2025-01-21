@@ -1,192 +1,103 @@
 ﻿using Genesis.Graphics;
 using Genesis.Math;
+using GlmSharp;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using static Genesis.Core.WindowUtilities;
 
 namespace Genesis.Core.GameElements
 {
-    /// <summary>
-    /// Represents the definition of the shape for a sprite, including its location and size.
-    /// </summary>
-    public struct SpriteShapeDeffinition
-    {    
-        public SpriteShapeDeffinition(Vec3 loc, Vec3 size)
+    public class BufferedSpriteInstance : GameElement
+    {
+        public Vec3 Location { get; set; }
+        public Vec3 Rotation { get; set; }
+        public Vec3 Size { get; set; }
+        public Color Color { get; set; }
+        public Vector4 UVTransform { get; set; }
+        public bool Visible { get; set; }
+
+        public float[] GetMatrixArray()
         {
-            this.locX = loc.X;
-            this.locY = loc.Y;
-            this.sizeX = size.X;
-            this.sizeY = size.Y;
+            var t_mat = mat4.Translate(Location.ToGlmVec3());
+            var r_mat = mat4.RotateX(Utils.ToRadians(Rotation.X)) * mat4.RotateY(Utils.ToRadians(Rotation.Y)) * mat4.RotateZ(Utils.ToRadians(Rotation.Z));
+            var s_mat = mat4.Scale(Size.ToGlmVec3());
+
+            var matrix = t_mat * r_mat * s_mat;
+            return matrix.ToArray();
         }
 
-        public float locX;
-        public float locY;
-        public float sizeX;
-        public float sizeY;
-    }
+        public BufferedSpriteInstance()
+        {
+            this.Location = new Vec3(0.0f, 0.0f, 0.0f);
+            this.Rotation = new Vec3(0.0f, 0.0f, 0.0f);
+            this.Size = new Vec3(1.0f, 1.0f, 1.0f);
+            this.Color = Color.White;
+            this.UVTransform = DefaultUVTransform();
+            this.Visible = false;
+        }
 
+        public static Vector4 DefaultUVTransform()
+        {
+            return new Vector4(1.0f, 1.0f, 0.0f, 0.0f);
+        }
+
+        public float[] GetColorArray()
+        {
+            return Utils.ConvertColor(Color);
+        }
+
+        public float[] GetUVTransformArray()
+        {
+            return [UVTransform.X, UVTransform.Y, UVTransform.Z, UVTransform.W];
+        }
+
+        public float[] GetExtrasArray()
+        {
+            return [this.Visible ? 1.0f : 0.0f, 0.0f, 0.0f, 0.0f];
+        }
+    }
 
     /// <summary>
     /// Represents a game element that creates a buffered sprite with vertices, colors, and texture coordinates.
     /// </summary>
     public class BufferedSprite : GameElement
     {
-        /// <summary>
-        /// Gets or sets the list of vertices for the sprite.
-        /// </summary>
-        public List<float> Verticies { get; set; }
-
-        /// <summary>
-        /// Gets or sets the list of colors for the sprite.
-        /// </summary>
-        public List<float> Colors { get; set; }
-
-        /// <summary>
-        /// Gets or sets the list of texture coordinates for the sprite.
-        /// </summary>
-        public List<float> TexCoords { get; set; }
-
-        /// <summary>
-        /// Gets or sets the list of shape definitions for the sprite.
-        /// </summary>
-        public List<SpriteShapeDeffinition> ShapeDeffinitions { get; set; }
-
-        /// <summary>
-        /// Gets or sets the texture applied to the sprite.
-        /// </summary>
+        public List<BufferedSpriteInstance> Instances { get; set; }
         public Texture Texture { get; set; }
 
-        /// <summary>
-        /// Creates a new buffered sprite with the specified name, location, and texture.
-        /// </summary>
-        /// <param name="name">The name of the game element.</param>
-        /// <param name="location">The location of the game element.</param>
-        /// <param name="texture">The texture applied to the sprite.</param>
-        public BufferedSprite(String name, Vec3 location, Texture texture)
+
+        public BufferedSprite()
         {
-            this.Name = name;
-            this.Location = location;
-            this.Texture = texture;
-            this.Verticies = new List<float>();
-            this.Colors = new List<float>();
-            this.TexCoords = new List<float>();
-            this.ShapeDeffinitions = new List<SpriteShapeDeffinition>();
+            this.Instances = new List<BufferedSpriteInstance>();
         }
 
-        /// <summary>
-        /// Adds a new rectangular shape at the given location and with the given size to the sprite.
-        /// </summary>
-        /// <param name="location">The location for the sprite.</param>
-        /// <param name="size">The size for the sprite.</param>
-        public void AddShape(Vec3 location, Vec3 size)
+        public void BakeInstances(int count)
         {
-            float LeftX = location.X - (size.X / 2);
-            float RightX = location.X + (size.X / 2);
-            float top = location.Y + (size.Y / 2);
-            float bottom = location.Y - (size.Y / 2);
-
-            float[] verticies =
+            for (int i = 0; i < count; i++)
             {
-                LeftX, bottom, 0.0f,
-                LeftX, top, 0.0f,
-                RightX, top, 0.0f,
-
-                LeftX, bottom, 0.0f,
-                RightX, top, 0.0f,
-                RightX, bottom, 0.0f
-            };
-            this.Verticies.AddRange(verticies);
-
-            float[] color =
-            {
-                1f, 1f, 1f,
-                1f, 1f, 1f,
-                1f, 1f, 1f,
-
-                1f, 1f, 1f,
-                1f, 1f, 1f,
-                1f, 1f, 1f
-            };
-            this.Colors.AddRange(color);
-            
-            float[] textCoordsf =
-            {
-                0.0f, 1.0f,
-                0.0f, 0.0f,
-                1.0f, 0.0f,
-
-                0.0f, 1.0f,
-                1.0f, 0.0f,
-                1.0f, 1.0f
-            };
-            this.TexCoords.AddRange(textCoordsf);
-
-            SpriteShapeDeffinition deffinition = new SpriteShapeDeffinition();
-            deffinition.locX = location.X;
-            deffinition.locY = location.Y;
-            deffinition.sizeX = size.X;
-            deffinition.sizeY = size.Y;
-            this.ShapeDeffinitions.Add(deffinition);
+                this.Instances.Add(new BufferedSpriteInstance());
+            }
         }
 
-        /// <summary>
-        /// Adds a new rectangular shape at the given location, size, and texture coordinates to the sprite.
-        /// </summary>
-        /// <param name="location">The location for the sprite.</param>
-        /// <param name="size">The size for the sprite.</param>
-        /// <param name="texCoords">The texture coordinates for the sprite.</param>
-        public void AddShape(Vec3 location, Vec3 size, TexCoords texCoords)
+        public int CreateInstance(Vec3 location, Vec3 rotation, Vec3 size, Color color)
         {
-            float LeftX = location.X - (size.X / 2);
-            float RightX = location.X + (size.X / 2);
-            float top = location.Y + (size.Y / 2);
-            float bottom = location.Y - (size.Y / 2);
-
-            float[] verticies =
+            this.Instances.Add(new BufferedSpriteInstance
             {
-                LeftX, bottom, 0.0f,
-                LeftX, top, 0.0f,
-                RightX, top, 0.0f,
-
-                LeftX, bottom, 0.0f,
-                RightX, top, 0.0f,
-                RightX, bottom, 0.0f
-            };
-            this.Verticies.AddRange(verticies);
-
-            float[] color =
-            {
-                1f, 1f, 1f,
-                1f, 1f, 1f,
-                1f, 1f, 1f,
-
-                1f, 1f, 1f,
-                1f, 1f, 1f,
-                1f, 1f, 1f
-            };
-            this.Colors.AddRange(color);
-
-            float[] textCoordsf =
-            {
-                texCoords.BottomLeft.X, texCoords.BottomLeft.Y, // Left bottom
-                texCoords.TopLeft.X, texCoords.TopLeft.Y,
-                texCoords.TopRight.X, texCoords.TopRight.Y,
-               
-                texCoords.BottomLeft.X, texCoords.BottomLeft.Y,
-                texCoords.TopRight.X, texCoords.TopRight.Y,
-                texCoords.BottomRight.X,texCoords.BottomRight.Y
-            };
-            this.TexCoords.AddRange(textCoordsf);
-
-            SpriteShapeDeffinition deffinition = new SpriteShapeDeffinition();
-            deffinition.locX = location.X;
-            deffinition.locY = location.Y;
-            deffinition.sizeX = size.X;
-            deffinition.sizeY = size.Y;
-            this.ShapeDeffinitions.Add(deffinition);
+                Location = location,
+                Rotation = rotation,
+                Size = size,
+                Color = color,
+                UVTransform = BufferedSpriteInstance.DefaultUVTransform(),
+                Visible = true
+            });
+            return this.Instances.Count;
         }
 
         /// <summary>
@@ -196,7 +107,8 @@ namespace Genesis.Core.GameElements
         /// <param name="renderDevice">The render device used for rendering.</param>
         public override void Init(Game game, IRenderDevice renderDevice)
         {
-            base.Init(game, renderDevice);  
+            Debug.WriteLine("Initializing BufferedSprite"); 
+            base.Init(game, renderDevice);
         }
 
         /// <summary>
@@ -228,6 +140,35 @@ namespace Genesis.Core.GameElements
         {
             base.OnDestroy(game);
             game.RenderDevice.DisposeElement(this);
+        }
+
+        public static float[] GetVertexBuffer()
+        {
+            return
+            [
+                -0.5f, -0.5f, 0.0f,
+                -0.5f, 0.5f, 0.0f,
+                0.5f, 0.5f, 0.0f,
+                0.5f, -0.5f, 0.0f
+            ];
+        }
+
+        public static int[] GetIndexBuffer()
+        {
+            return [
+                0, 1, 3,
+                3, 1, 2
+            ];
+        }
+
+        public static float[] GetUVBuffer()
+        {
+            return [
+                0.0f, 0.0f,
+                0.0f, 1.0f,
+                1.0f, 1.0f,
+                1.0f, 0.0f
+            ];
         }
     }
 }
