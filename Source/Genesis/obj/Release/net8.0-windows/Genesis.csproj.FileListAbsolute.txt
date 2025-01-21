@@ -1,0 +1,94 @@
+E:\Conversion\Genesis\Genesis\obj\Release\net8.0-windows\Genesis.csproj.AssemblyReference.cache
+E:\Conversion\Genesis\Genesis\obj\Release\net8.0-windows\Genesis.GeneratedMSBuildEditorConfig.editorconfig
+E:\Conversion\Genesis\Genesis\obj\Release\net8.0-windows\Genesis.csproj.CoreCompileInputs.cache
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\Licences\AssimpNet.txt
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\Licences\BulletSharp.txt
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\Licences\GlmSharp.txt
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\Licences\NetGL.txt
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\Licences\NewtonsoftJson.txt
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\Licences\OpenObjectLoader.txt
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\Genesis.deps.json
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\Genesis.dll
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\Genesis.pdb
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\Genesis.xml
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\BulletSharp.dll
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\GlmSharp.dll
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\NetGL.dll
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\BulletSharp.pdb
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\GlmSharp.pdb
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\GlmSharp.xml
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\NetGL.pdb
+E:\Conversion\Genesis\Genesis\obj\Release\net8.0-windows\Genesis.csproj.CopyComplete
+E:\Conversion\Genesis\Genesis\obj\Release\net8.0-windows\Genesis.dll
+E:\Conversion\Genesis\Genesis\obj\Release\net8.0-windows\refint\Genesis.dll
+E:\Conversion\Genesis\Genesis\obj\Release\net8.0-windows\Genesis.pdb
+E:\Conversion\Genesis\Genesis\obj\Release\net8.0-windows\ref\Genesis.dll
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\libbulletc-windows-x64.dll
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\libbulletc-windows-x86.dll
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\libbulletc.dll
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\Ijwhost.dll
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\System.Drawing.Common.dll
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\AssimpNet.pdb
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\AssimpNet.xml
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\assimp.dll
+E:\Conversion\Genesis\Genesis\bin\Release\net8.0-windows\AssimpNet.dll
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Licences\AssimpNet.txt
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Licences\BulletSharp.txt
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Licences\GlmSharp.txt
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Licences\NetGL.txt
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Licences\NewtonsoftJson.txt
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Licences\OpenObjectLoader.txt
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Genesis.deps.json
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Genesis.dll
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Genesis.pdb
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Genesis.xml
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\BulletSharp.dll
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\GlmSharp.dll
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\NetGL.dll
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\BulletSharp.pdb
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\GlmSharp.pdb
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\GlmSharp.xml
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\NetGL.pdb
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\obj\Release\net8.0-windows\Genesis.csproj.AssemblyReference.cache
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\obj\Release\net8.0-windows\Genesis.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\obj\Release\net8.0-windows\Genesis.csproj.CoreCompileInputs.cache
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\obj\Release\net8.0-windows\Genesis.csproj.Up2Date
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\obj\Release\net8.0-windows\Genesis.dll
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\obj\Release\net8.0-windows\refint\Genesis.dll
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\obj\Release\net8.0-windows\Genesis.pdb
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\obj\Release\net8.0-windows\ref\Genesis.dll
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Native\Ijwhost.dll
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Native\libbulletc-windows-x64.dll
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Native\libbulletc-windows-x86.dll
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Native\libbulletc.dll
+C:\Users\Andy\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Native\System.Drawing.Common.dll
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Licences\AssimpNet.txt
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Licences\BulletSharp.txt
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Licences\GlmSharp.txt
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Licences\NetGL.txt
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Licences\NewtonsoftJson.txt
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Licences\OpenObjectLoader.txt
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Native\Ijwhost.dll
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Native\libbulletc-windows-x64.dll
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Native\libbulletc-windows-x86.dll
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Native\libbulletc.dll
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Native\System.Drawing.Common.dll
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Genesis.deps.json
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Genesis.dll
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Genesis.pdb
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\Genesis.xml
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\BulletSharp.dll
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\GlmSharp.dll
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\NetGL.dll
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\BulletSharp.pdb
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\GlmSharp.pdb
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\GlmSharp.xml
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\bin\Release\net8.0-windows\NetGL.pdb
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\obj\Release\net8.0-windows\Genesis.csproj.AssemblyReference.cache
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\obj\Release\net8.0-windows\Genesis.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\obj\Release\net8.0-windows\Genesis.csproj.CoreCompileInputs.cache
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\obj\Release\net8.0-windows\Genesis.csproj.Up2Date
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\obj\Release\net8.0-windows\Genesis.dll
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\obj\Release\net8.0-windows\refint\Genesis.dll
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\obj\Release\net8.0-windows\Genesis.pdb
+C:\Users\andy1\Documents\GFX - Net 8\Genesis\Genesis\obj\Release\net8.0-windows\ref\Genesis.dll
