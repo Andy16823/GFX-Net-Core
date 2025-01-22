@@ -48,15 +48,9 @@ namespace Genesis.Core.Behaviors.Physics2D
         /// <param name="halfextends">The half extents of the box shape.</param>
         public void CreateRigidBody(float mass, Vec3 halfextends, int collisionGroup = -1, int collisionMask = -1)
         {
-            //var capsuleShape = new CapsuleShape(Parent.Size.X / 2, 1.1f);
             var boxShape = new Box2DShape(halfextends.ToVector3());
-            //var shape = new Box2DShape(Parent.Size.ToVector3() / 2);
             RigidBodyConstructionInfo info = new RigidBodyConstructionInfo(mass, null, boxShape, boxShape.CalculateLocalInertia(mass));
-
-
-            System.Numerics.Matrix4x4 transform = System.Numerics.Matrix4x4.CreateTranslation(Parent.Location.ToVector3() + this.Offset.ToVector3());
-            System.Numerics.Matrix4x4 rotationMatrix = System.Numerics.Matrix4x4.CreateFromYawPitchRoll(Parent.Rotation.X, Parent.Rotation.Y, Parent.Rotation.Z);
-            System.Numerics.Matrix4x4 startTransform = transform * rotationMatrix;
+            var startTransform = Utils.GetBtTransform(this.Parent, Offset);
 
             info.MotionState = new DefaultMotionState(startTransform);
             RigidBody = new BulletSharp.RigidBody(info);

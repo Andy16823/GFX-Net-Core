@@ -1,4 +1,5 @@
 ﻿using BulletSharp;
+using BulletSharp.SoftBody;
 using Genesis.Math;
 using Genesis.Physics;
 using System;
@@ -47,11 +48,7 @@ namespace Genesis.Core.Behaviors.Physics2D
         public void CreateCollider(Vec3 halfextends, int collisionGroup = -1, int collisionMask = -1)
         {
             var shape = new Box2DShape(halfextends.ToVector3());
-
-            Vec3 rotation = this.Parent.Rotation;
-            System.Numerics.Matrix4x4 transformMatrix = System.Numerics.Matrix4x4.CreateTranslation(Parent.Location.ToVector3() + Offset.ToVector3());
-            System.Numerics.Matrix4x4 rotationMatrix = System.Numerics.Matrix4x4.CreateFromYawPitchRoll(rotation.X, rotation.Y, rotation.Z);
-            System.Numerics.Matrix4x4 startTransform = transformMatrix * rotationMatrix;
+            var startTransform = Utils.GetBtTransform(this.Parent, Offset);
 
             Collider = new BulletSharp.CollisionObject();
             Collider.CollisionShape = shape;

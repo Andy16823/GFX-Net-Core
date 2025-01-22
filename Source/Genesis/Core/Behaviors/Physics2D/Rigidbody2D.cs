@@ -50,17 +50,10 @@ namespace Genesis.Core.Behaviors.Physics2D
         /// <param name="capsuleHeight">The height of the capsule shape of the RigidBody.</param>
         public void CreateRigidbody(float mass, float capsuleRadius, float capsuleHeight, int collisionGroup = -1, int collisionMask = -1)
         {
-            //var capsuleShape = new CapsuleShape(Parent.Size.X / 2, 1.1f);
             var capsuleShape = new CapsuleShape(capsuleRadius, capsuleHeight);
             var shape = new Convex2DShape(capsuleShape);
-            //var shape = new Box2DShape(Parent.Size.ToVector3() / 2);
             RigidBodyConstructionInfo info = new RigidBodyConstructionInfo(mass, null, shape, shape.CalculateLocalInertia(mass));
-
-            //Create the start matrix
-            //Vec3 rotation = Utils.GetElementWorldRotation(this.Parent);
-            System.Numerics.Matrix4x4 transform = System.Numerics.Matrix4x4.CreateTranslation(Parent.Location.ToVector3());
-            //BulletSharp.Math.Matrix rotMat = BulletSharp.Math.Matrix.RotationX(rotation.X) * BulletSharp.Math.Matrix.RotationY(rotation.Y) * BulletSharp.Math.Matrix.RotationZ(rotation.Z);
-            System.Numerics.Matrix4x4 startTransform = transform;
+            var startTransform = Utils.GetBtTransform(this.Parent, Offset);
 
             info.MotionState = new DefaultMotionState(startTransform);
             RigidBody = new BulletSharp.RigidBody(info);
