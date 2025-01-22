@@ -1628,10 +1628,136 @@
             <c>true</c> if the current object's tag matches the specified value (case-insensitive); otherwise, <c>false</c>.
             </returns>
         </member>
+        <member name="T:Genesis.Core.GameElements.BufferedSpriteInstance">
+            <summary>
+            Represents a buffered sprite instance used in graphics rendering.
+            </summary>
+        </member>
+        <member name="P:Genesis.Core.GameElements.BufferedSpriteInstance.Location">
+            <summary>
+            Gets or sets the location of the buffered sprite instance.
+            </summary>
+        </member>
+        <member name="P:Genesis.Core.GameElements.BufferedSpriteInstance.Rotation">
+            <summary>
+            Gets or sets the rotation of the buffered sprite instance.
+            </summary>
+        </member>
+        <member name="P:Genesis.Core.GameElements.BufferedSpriteInstance.Size">
+            <summary>
+            Gets or sets the size of the buffered sprite instance.
+            </summary>
+        </member>
+        <member name="P:Genesis.Core.GameElements.BufferedSpriteInstance.Visible">
+            <summary>
+            Gets or sets a value indicating whether the buffered sprite instance is visible.
+            </summary>
+        </member>
+        <member name="P:Genesis.Core.GameElements.BufferedSpriteInstance.Color">
+            <summary>
+            Gets or sets the color of the buffered sprite instance.
+            </summary>
+        </member>
+        <member name="P:Genesis.Core.GameElements.BufferedSpriteInstance.UVTransform">
+            <summary>
+            Gets or sets the UV transform of the buffered sprite instance.
+            </summary>
+        </member>
+        <member name="P:Genesis.Core.GameElements.BufferedSpriteInstance.InstanceID">
+            <summary>
+            Gets or sets the instance ID of the buffered sprite instance.
+            </summary>
+        </member>
+        <member name="M:Genesis.Core.GameElements.BufferedSpriteInstance.#ctor">
+            <summary>
+            Constructor for the BufferedSpriteInstance class that initializes the buffered sprite instance.
+            </summary>
+        </member>
+        <member name="M:Genesis.Core.GameElements.BufferedSpriteInstance.GetMatrixArray">
+            <summary>
+            Gets the matrix array of the buffered sprite instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Genesis.Core.GameElements.BufferedSpriteInstance.DefaultUVTransform">
+            <summary>
+            Gets the default UV transform of the buffered sprite instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Genesis.Core.GameElements.BufferedSpriteInstance.GetColorArray">
+            <summary>
+            Gets the color array of the buffered sprite instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Genesis.Core.GameElements.BufferedSpriteInstance.GetUVTransformArray">
+            <summary>
+            Gets the UV transform array of the buffered sprite instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Genesis.Core.GameElements.BufferedSpriteInstance.GetExtrasArray">
+            <summary>
+            Gets the extras array of the buffered sprite instance.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Genesis.Core.GameElements.BufferedSprite">
             <summary>
-            Represents a game element that creates a buffered sprite with vertices, colors, and texture coordinates.
+            Represents a buffered sprite used in graphics rendering.
             </summary>
+        </member>
+        <member name="P:Genesis.Core.GameElements.BufferedSprite.Instances">
+            <summary>
+            Gets or sets the list of buffered sprite instances.
+            </summary>
+        </member>
+        <member name="P:Genesis.Core.GameElements.BufferedSprite.Texture">
+            <summary>
+            Gets or sets the texture of the buffered sprite.
+            </summary>
+        </member>
+        <member name="M:Genesis.Core.GameElements.BufferedSprite.#ctor(Genesis.Graphics.Texture)">
+            <summary>
+            Constructor for the BufferedSprite class that initializes the buffered sprite with a texture.
+            </summary>
+            <param name="texture"></param>
+        </member>
+        <member name="M:Genesis.Core.GameElements.BufferedSprite.#ctor(Genesis.Graphics.SpriteSheet)">
+            <summary>
+            Constructor for the BufferedSprite class that initializes the buffered sprite with a sprite sheet.
+            </summary>
+            <param name="spriteSheet"></param>
+        </member>
+        <member name="M:Genesis.Core.GameElements.BufferedSprite.BakeInstances(System.Int32)">
+            <summary>
+            Bakes the instances for the buffered sprite.
+            </summary>
+            <param name="count"></param>
+        </member>
+        <member name="M:Genesis.Core.GameElements.BufferedSprite.CreateInstance(Genesis.Math.Vec3,Genesis.Math.Vec3,Genesis.Math.Vec3,System.Drawing.Color,Genesis.Math.Vec4,System.Boolean)">
+            <summary>
+            Creates a new instance of the buffered sprite.
+            </summary>
+            <param name="location"></param>
+            <param name="rotation"></param>
+            <param name="size"></param>
+            <param name="color"></param>
+            <param name="visible"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Genesis.Core.GameElements.BufferedSprite.UpdateInstance(Genesis.Core.GameElements.BufferedSpriteInstance)">
+            <summary>
+            Updates the instance of the buffered sprite.
+            </summary>
+            <param name="instance"></param>
+        </member>
+        <member name="M:Genesis.Core.GameElements.BufferedSprite.FindHiddenInstance">
+            <summary>
+            Finds a hidden instance of the buffered sprite.
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:Genesis.Core.GameElements.BufferedSprite.Init(Genesis.Core.Game,Genesis.Graphics.IRenderDevice)">
             <summary>
@@ -1659,6 +1785,24 @@
             Clears the GPU memory
             </summary>
             <param name="game"></param>
+        </member>
+        <member name="M:Genesis.Core.GameElements.BufferedSprite.GetVertexBuffer">
+            <summary>
+            Gets the vertex buffer for the buffered sprite.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Genesis.Core.GameElements.BufferedSprite.GetIndexBuffer">
+            <summary>
+            Gets the index buffer for the buffered sprite.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Genesis.Core.GameElements.BufferedSprite.GetUVBuffer">
+            <summary>
+            Gets the uv buffer for the buffered sprite.
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Genesis.Core.GameElements.CameraElement">
             <summary>

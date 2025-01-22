@@ -26,7 +26,7 @@ namespace Genesis.Core.GameElements
         private Vec3 m_size;
         private bool m_visible;
         private Color m_color;
-        private Vector4 m_uvTransform;
+        private Vec4 m_uvTransform;
 
         /// <summary>
         /// Gets or sets the location of the buffered sprite instance.
@@ -111,7 +111,7 @@ namespace Genesis.Core.GameElements
         /// <summary>
         /// Gets or sets the UV transform of the buffered sprite instance.
         /// </summary>
-        public Vector4 UVTransform
+        public Vec4 UVTransform
         {
             get => m_uvTransform;
             set
@@ -160,9 +160,9 @@ namespace Genesis.Core.GameElements
         /// Gets the default UV transform of the buffered sprite instance.
         /// </summary>
         /// <returns></returns>
-        public static Vector4 DefaultUVTransform()
+        public static Vec4 DefaultUVTransform()
         {
-            return new Vector4(1.0f, 1.0f, 0.0f, 0.0f);
+            return new Vec4(1.0f, 1.0f, 0.0f, 0.0f);
         }
 
         /// <summary>
@@ -255,7 +255,7 @@ namespace Genesis.Core.GameElements
         /// <param name="color"></param>
         /// <param name="visible"></param>
         /// <returns></returns>
-        public BufferedSpriteInstance CreateInstance(Vec3 location, Vec3 rotation, Vec3 size, Color color, Vector4 uvTransform, bool visible = true)
+        public BufferedSpriteInstance CreateInstance(Vec3 location, Vec3 rotation, Vec3 size, Color color, Vec4 uvTransform, bool visible = true)
         {
             var instance = new BufferedSpriteInstance
             {

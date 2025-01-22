@@ -93,7 +93,7 @@ namespace Genesis.Graphics
             return new Rect(x, y, cellWidth, cellHeight);
         }
 
-        public Vector4 CalculateUVTransform(int col, int row)
+        public Vec4 CalculateUVTransform(int col, int row)
         {
             var textureWidth = (float)Texture.Bitnmap.Width;
             var textureHeight = (float)Texture.Bitnmap.Height;

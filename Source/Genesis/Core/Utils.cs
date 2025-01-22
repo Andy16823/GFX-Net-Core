@@ -1117,14 +1117,14 @@ namespace Genesis.Core
             return btRotation * btTranslation;
         }
 
-        public static Vector4 CalculateUVTransform(float textureWidth, float textureHeight, float clipX, float clipY, float clipWidth, float clipHeight)
+        public static Vec4 CalculateUVTransform(float textureWidth, float textureHeight, float clipX, float clipY, float clipWidth, float clipHeight)
         {
             float scaleX = clipWidth / textureWidth;
             float scaleY = clipHeight / textureHeight;
             float offsetX = clipX / textureWidth;
             float offsetY = clipY / textureHeight;
 
-            return new Vector4(scaleX, scaleY, offsetX, offsetY);
+            return new Vec4(scaleX, scaleY, offsetX, offsetY);
         }
     }
 }
