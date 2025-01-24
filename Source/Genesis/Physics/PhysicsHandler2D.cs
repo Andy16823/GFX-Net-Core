@@ -2,6 +2,7 @@
 using Genesis.Core;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -110,7 +111,17 @@ namespace Genesis.Physics
         public override void RemoveElement(PhysicsBehavior physicsBehavior)
         {
             base.RemoveElement(physicsBehavior);
-            PhysicsWorld.RemoveCollisionObject((CollisionObject)physicsBehavior.GetPhysicsObject());
+            var element = physicsBehavior.GetPhysicsObject();
+            if (element.GetType() == typeof(RigidBody))
+            {
+                Debug.WriteLine("Removing Rigidbody");
+                PhysicsWorld.RemoveRigidBody((RigidBody)element);
+            }
+            else
+            {
+                Debug.WriteLine("Removing Other");
+                PhysicsWorld.RemoveCollisionObject((CollisionObject)element);
+            }
         }
     }
 }

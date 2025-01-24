@@ -60,5 +60,13 @@ namespace Genesis.Core.Behaviors.Physics2D
             this.RigidBody.ApplyGravity();
             PhysicHandler.ManageElement(this, collisionGroup, collisionMask);
         }
+
+        public void RemoveRigidBody()
+        {
+            this.PhysicHandler.RemoveElement(this);
+            this.RigidBody.UserObject = null;
+            this.RigidBody = null;
+        }
+
     }
 }

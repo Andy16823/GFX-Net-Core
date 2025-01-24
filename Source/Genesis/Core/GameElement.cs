@@ -1,5 +1,6 @@
 ﻿using Genesis.Graphics;
 using Genesis.Math;
+using Genesis.Physics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -161,6 +162,11 @@ namespace Genesis.Core
             {
                 element.OnDestroy(game);
             }
+        }
+
+        public virtual void OnCollide(Collision collision)
+        {
+            
         }
 
         /// <summary>
