@@ -145,9 +145,9 @@ namespace Genesis.Physics
         /// </summary>
         public virtual void RemoveTrigger()
         {
+            this.PhysicHandler.RemoveElement(this);
             this.Trigger.CollisionShape.Dispose();
             this.Trigger.Dispose();
-            this.PhysicHandler.RemoveElement(this);
         }
 
         /// <summary>

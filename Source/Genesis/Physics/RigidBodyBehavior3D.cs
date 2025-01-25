@@ -265,9 +265,10 @@ namespace Genesis.Physics
         /// </summary>
         public virtual void RemoveRigidBody()
         {
+            this.PhysicHandler.RemoveElement(this);
             this.RigidBody.CollisionShape.Dispose();
             this.RigidBody.MotionState.Dispose();
-            this.PhysicHandler.RemoveElement(this);
+            this.RigidBody.Dispose();
         }
 
         /// <summary>

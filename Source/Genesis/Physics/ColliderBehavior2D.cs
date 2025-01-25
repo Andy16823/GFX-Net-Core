@@ -140,9 +140,9 @@ namespace Genesis.Physics
         /// </summary>
         public virtual void RemoveCollider()
         {
+            this.PhysicHandler.RemoveElement(this);
             this.Collider.CollisionShape.Dispose();
             this.Collider.Dispose();
-            this.PhysicHandler.RemoveElement(this);
         }
 
         /// <summary>
