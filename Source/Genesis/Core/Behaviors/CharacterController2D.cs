@@ -223,13 +223,6 @@ namespace Genesis.Core.Behaviors
             this.Rigidbody.AngularFactor = angularFactor;
             this.Rigidbody.EnablePhysic = enablePhysics;
             Rigidbody.CreateRigidbody(this.Mass, ColliderRadius, ColliderHeight);
-            Rigidbody.OnCollide += (s, g, objB) =>
-            {
-                if (!m_collide)
-                {
-                    m_collide = true;
-                }
-            };
         }
 
         /// <summary>
@@ -367,6 +360,14 @@ namespace Genesis.Core.Behaviors
         public override void OnRender(Game game, GameElement parent)
         {
 
+        }
+
+        public override void OnCollide(Collision collision, GameElement parent)
+        {
+            if (!m_collide)
+            {
+                m_collide = true;
+            }
         }
     }
 }

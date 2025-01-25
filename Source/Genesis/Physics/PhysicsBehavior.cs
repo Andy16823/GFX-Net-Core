@@ -22,25 +22,6 @@ namespace Genesis.Physics
     public abstract class PhysicsBehavior : IGameBehavior
     {
         /// <summary>
-        /// Event triggered when a collision occurs.
-        /// </summary>
-        public event PhysicsBehaviorEvent OnCollide;
-
-        /// <summary>
-        /// Handles the collision event, invoking the OnCollide event if subscribed.
-        /// </summary>
-        /// <param name="scene">The scene where the collision occurred</param>
-        /// <param name="game">The game associated with the collision</param>
-        /// <param name="collision">The information from the collision</param>
-        public virtual void Collide(Scene scene, Game game, Collision collision)
-        {
-            if(this.OnCollide != null)
-            {
-                this.OnCollide(scene, game, collision);
-            }
-        }
-
-        /// <summary>
         /// Gets the physics object associated with this behavior.
         /// </summary>
         /// <returns>The physics object</returns>
@@ -52,5 +33,10 @@ namespace Genesis.Physics
         /// <typeparam name="T">Type to cast the physics object to</typeparam>
         /// <returns>The physics object cast to type T</returns>
         public abstract T GetPhysicsObject<T>();
+
+        public override void OnCollide(Collision collision, GameElement parent)
+        {
+            
+        }
     }
 }

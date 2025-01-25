@@ -7688,6 +7688,11 @@
             <param name="game">The game instance.</param>
             <param name="parent">The parent game element.</param>
         </member>
+        <member name="M:Genesis.Physics.ColliderBehavior2D.RemoveCollider">
+            <summary>
+            Removes the collision element from the physics world
+            </summary>
+        </member>
         <member name="M:Genesis.Physics.ColliderBehavior2D.OnInit(Genesis.Core.Game,Genesis.Core.GameElement)">
             <summary>
             Initializes the collider behavior.
@@ -7792,6 +7797,11 @@
             </summary>
             <param name="game">The game instance.</param>
             <param name="parent">The parent game element.</param>
+        </member>
+        <member name="M:Genesis.Physics.ColliderBehavior3D.RemoveCollider">
+            <summary>
+            Removes the collision element from the physics world
+            </summary>
         </member>
         <member name="M:Genesis.Physics.ColliderBehavior3D.OnInit(Genesis.Core.Game,Genesis.Core.GameElement)">
             <summary>
@@ -7930,16 +7940,6 @@
             Represents an abstract class for handling physics interactions.
             </summary>
         </member>
-        <member name="M:Genesis.Physics.PhysicHandler.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:Genesis.Physics.PhysicHandler"/> class.
-            </summary>
-        </member>
-        <member name="P:Genesis.Physics.PhysicHandler.Callbacks">
-            <summary>
-            Gets or sets the dictionary of physics callbacks.
-            </summary>
-        </member>
         <member name="M:Genesis.Physics.PhysicHandler.Process(Genesis.Core.Scene,Genesis.Core.Game)">
             <summary>
             Processes physics interactions for a given scene and game.
@@ -7974,19 +7974,6 @@
             <summary>
             Represents an abstract class for defining physics behavior in the game.
             </summary>
-        </member>
-        <member name="E:Genesis.Physics.PhysicsBehavior.OnCollide">
-            <summary>
-            Event triggered when a collision occurs.
-            </summary>
-        </member>
-        <member name="M:Genesis.Physics.PhysicsBehavior.Collide(Genesis.Core.Scene,Genesis.Core.Game,Genesis.Physics.Collision)">
-            <summary>
-            Handles the collision event, invoking the OnCollide event if subscribed.
-            </summary>
-            <param name="scene">The scene where the collision occurred</param>
-            <param name="game">The game associated with the collision</param>
-            <param name="collision">The information from the collision</param>
         </member>
         <member name="M:Genesis.Physics.PhysicsBehavior.GetPhysicsObject">
             <summary>
@@ -8354,6 +8341,11 @@
             <param name="game">The game instance.</param>
             <param name="parent">The parent game element.</param>
         </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior2D.RemoveRigidBody">
+            <summary>
+            Removes the collision element from the physics world
+            </summary>
+        </member>
         <member name="M:Genesis.Physics.RigidBodyBehavior2D.OnInit(Genesis.Core.Game,Genesis.Core.GameElement)">
             <summary>
             Destroys the physics behavior for the specified game and parent element.
@@ -8524,6 +8516,11 @@
             <param name="game">The game instance.</param>
             <param name="parent">The parent game element.</param>
         </member>
+        <member name="M:Genesis.Physics.RigidBodyBehavior3D.RemoveRigidBody">
+            <summary>
+            Removes the collision element from the physics world
+            </summary>
+        </member>
         <member name="M:Genesis.Physics.RigidBodyBehavior3D.OnInit(Genesis.Core.Game,Genesis.Core.GameElement)">
             <summary>
             Initialization method called when the behavior is initialized.
@@ -8620,6 +8617,11 @@
             </summary>
             <param name="game">The game instance.</param>
             <param name="parent">The parent game element.</param>
+        </member>
+        <member name="M:Genesis.Physics.TriggerBehavior2D.RemoveTrigger">
+            <summary>
+            Removes the collision element from the physics world
+            </summary>
         </member>
         <member name="M:Genesis.Physics.TriggerBehavior2D.OnInit(Genesis.Core.Game,Genesis.Core.GameElement)">
             <summary>
@@ -8724,6 +8726,11 @@
             </summary>
             <param name="game">The game instance.</param>
             <param name="parent">The parent game element.</param>
+        </member>
+        <member name="M:Genesis.Physics.TriggerBehavior3D.RemoveTrigger">
+            <summary>
+            Removes the collision element from the physics world
+            </summary>
         </member>
         <member name="M:Genesis.Physics.TriggerBehavior3D.OnInit(Genesis.Core.Game,Genesis.Core.GameElement)">
             <summary>

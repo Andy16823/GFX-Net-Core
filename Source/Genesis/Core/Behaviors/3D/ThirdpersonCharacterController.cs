@@ -121,15 +121,6 @@ namespace Genesis.Core.Behaviors._3D
             this.Parent.AddBehavior(this.Collider);
             this.Collider.CreateRigidBody(radius, height, mass, offset);
             this.Collider.RigidBody.AngularFactor = System.Numerics.Vector3.Zero;
-            Collider.OnCollide += (sce, game, collision) =>
-            {
-                var physicsBehavior = collision.collidingElement.GetBehavior<PhysicsBehavior>();
-                var btCollisionObject = (CollisionObject)physicsBehavior.GetPhysicsObject();
-                if (btCollisionObject.GetType() != typeof(GhostObject))
-                {
-                    IsColliding = true;
-                }
-            };
         }
 
         /// <summary>
@@ -308,6 +299,16 @@ namespace Genesis.Core.Behaviors._3D
                 return false;
             }
             return true;
+        }
+
+        public override void OnCollide(Collision collision, GameElement parent)
+        {
+            var physicsBehavior = collision.collidingElement.GetBehavior<PhysicsBehavior>();
+            var btCollisionObject = (CollisionObject)physicsBehavior.GetPhysicsObject();
+            if (btCollisionObject.GetType() != typeof(GhostObject))
+            {
+                IsColliding = true;
+            }
         }
     }
 }

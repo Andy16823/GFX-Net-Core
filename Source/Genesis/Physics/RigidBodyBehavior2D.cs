@@ -4,6 +4,7 @@ using Genesis.Math;
 using GlmSharp;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -166,7 +167,18 @@ namespace Genesis.Physics
         /// <param name="parent">The parent game element.</param>
         public override void OnDestroy(Game game, GameElement parent)
         {
-            PhysicHandler.RemoveElement(this);
+            this.RemoveRigidBody();
+        }
+
+        /// <summary>
+        /// Removes the collision element from the physics world
+        /// </summary>
+        public virtual void RemoveRigidBody()
+        {
+            this.RigidBody.CollisionShape.Dispose();
+            this.RigidBody.MotionState.Dispose();
+            this.RigidBody.Dispose();
+            this.PhysicHandler.RemoveElement(this);
         }
 
         /// <summary>
@@ -187,6 +199,11 @@ namespace Genesis.Physics
         public override void OnRender(Game game, GameElement parent)
         {
 
+        }
+
+        public override void OnCollide(Collision collision, GameElement parent)
+        {
+            
         }
     }
 }

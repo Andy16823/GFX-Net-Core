@@ -2,6 +2,7 @@
 using Genesis.Core;
 using System;
 using System.Collections.Generic;
+using System.DirectoryServices;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -67,28 +68,28 @@ namespace Genesis.Physics
                 for (int i = 0; i < numManifolds; i++)
                 {
                     PersistentManifold contactManifold = PhysicsWorld.Dispatcher.GetManifoldByIndexInternal(i);
+
                     CollisionObject obA = contactManifold.Body0 as CollisionObject;
+                    var elementA = (GameElement)obA.UserObject;
+
                     CollisionObject obB = contactManifold.Body1 as CollisionObject;
+                    var elementB = (GameElement)obB.UserObject;
 
-                    if(Callbacks.ContainsKey(obA))
+                    Collision collisionA = new Collision()
                     {
-                        Collision collision = new Collision();
-                        collision.collidingElement = (GameElement)obB.UserObject;
-                        collision.initiator = (GameElement)obA.UserObject;
-                        collision.contacts = contactManifold.NumContacts;
+                        collidingElement = elementB,
+                        initiator = elementA,
+                        contacts = contactManifold.NumContacts
+                    };
+                    elementA.OnCollide(collisionA);
 
-                        Callbacks[obA](scene, game, collision);
-                    }
-
-                    if (Callbacks.ContainsKey(obB))
+                    Collision collisionB = new Collision()
                     {
-                        Collision collision = new Collision();
-                        collision.collidingElement = (GameElement) obA.UserObject;
-                        collision.initiator = (GameElement) obB.UserObject;
-                        collision.contacts = contactManifold.NumContacts;
-
-                        Callbacks[obB](scene, game, collision);
-                    }
+                        collidingElement = elementA,
+                        initiator = elementB,
+                        contacts = contactManifold.NumContacts
+                    };
+                    elementB.OnCollide(collisionB);
                 }
             }
         }
@@ -99,7 +100,6 @@ namespace Genesis.Physics
         /// <param name="collisionObjec">The PhysicsBehavior representing the rigid body element.</param>
         public override void ManageElement(PhysicsBehavior collisionObjec, int collisionGroup = -1, int collisionMask = -1)
         {
-            base.ManageElement(collisionObjec);
             PhysicsWorld.AddCollisionObject((CollisionObject)collisionObjec.GetPhysicsObject(), collisionGroup, collisionMask);
         }
 
@@ -112,7 +112,6 @@ namespace Genesis.Physics
         /// </remarks>
         public override void RemoveElement(PhysicsBehavior physicsBehavior)
         {
-            base.RemoveElement(physicsBehavior);
             PhysicsWorld.RemoveCollisionObject((CollisionObject)physicsBehavior.GetPhysicsObject());
         }
     }

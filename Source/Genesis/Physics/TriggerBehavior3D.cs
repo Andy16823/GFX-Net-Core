@@ -141,7 +141,17 @@ namespace Genesis.Physics
         /// <param name="parent">The parent game element.</param>
         public override void OnDestroy(Game game, GameElement parent)
         {
-            PhysicHandler.RemoveElement(this);
+            this.RemoveTrigger();
+        }
+
+        /// <summary>
+        /// Removes the collision element from the physics world
+        /// </summary>
+        public virtual void RemoveTrigger()
+        {
+            this.Trigger.CollisionShape.Dispose();
+            this.Trigger.Dispose();
+            this.PhysicHandler.RemoveElement(this);
         }
 
         /// <summary>
@@ -160,6 +170,11 @@ namespace Genesis.Physics
         /// <param name="game">The game instance.</param>
         /// <param name="parent">The parent game element.</param>
         public override void OnRender(Game game, GameElement parent)
+        {
+            
+        }
+
+        public override void OnCollide(Collision collision, GameElement parent)
         {
             
         }

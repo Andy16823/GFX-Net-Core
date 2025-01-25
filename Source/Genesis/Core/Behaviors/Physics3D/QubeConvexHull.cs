@@ -49,6 +49,7 @@ namespace Genesis.Core.Behaviors.Physics3D
                 //Scale it
                 this.RigidBody.CollisionShape.LocalScaling = new System.Numerics.Vector3(scale.X, scale.Y, scale.Z);
                 handler.ManageElement(this);
+                info.Dispose();
             }
             else
             {

@@ -49,24 +49,17 @@ namespace Genesis.Core.Behaviors.Physics2D
         public void CreateRigidBody(float mass, Vec3 halfextends, int collisionGroup = -1, int collisionMask = -1)
         {
             var boxShape = new Box2DShape(halfextends.ToVector3());
-            RigidBodyConstructionInfo info = new RigidBodyConstructionInfo(mass, null, boxShape, boxShape.CalculateLocalInertia(mass));
+            var constructionInfo = new RigidBodyConstructionInfo(mass, null, boxShape, boxShape.CalculateLocalInertia(mass));
             var startTransform = Utils.GetBtTransform(this.Parent, Offset);
 
-            info.MotionState = new DefaultMotionState(startTransform);
-            RigidBody = new BulletSharp.RigidBody(info);
+            constructionInfo.MotionState = new DefaultMotionState(startTransform);
+            RigidBody = new BulletSharp.RigidBody(constructionInfo);
             RigidBody.LinearFactor = this.LinearFactor.ToVector3();
             RigidBody.AngularFactor = this.AngularFactor.ToVector3();
             RigidBody.UserObject = this.Parent;
             this.RigidBody.ApplyGravity();
             PhysicHandler.ManageElement(this, collisionGroup, collisionMask);
+            constructionInfo.Dispose();
         }
-
-        public void RemoveRigidBody()
-        {
-            this.PhysicHandler.RemoveElement(this);
-            this.RigidBody.UserObject = null;
-            this.RigidBody = null;
-        }
-
     }
 }

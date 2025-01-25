@@ -164,9 +164,18 @@ namespace Genesis.Core
             }
         }
 
+
         public virtual void OnCollide(Collision collision)
         {
-            
+            foreach (var item in this.Behaviors)
+            {
+                item.OnCollide(collision, this);
+            }
+
+            foreach (var element in this.Children)
+            {
+                element.OnCollide(collision);
+            }
         }
 
         /// <summary>
