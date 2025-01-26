@@ -42,6 +42,7 @@ namespace Genesis.Core
             {
                 if(!element.Enabled)
                 {
+                    element.OnDestroy(game);
                     element.Behaviors.Clear();
                     scene.RemoveElement(element);
                     etd.Add(element);

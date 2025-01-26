@@ -110,16 +110,7 @@ namespace Genesis.Physics
         public override void RemoveElement(PhysicsBehavior physicsBehavior)
         {
             var element = physicsBehavior.GetPhysicsObject();
-            if (element.GetType() == typeof(RigidBody))
-            {
-                Debug.WriteLine("Removing Rigidbody");
-                PhysicsWorld.RemoveRigidBody((RigidBody)element);
-            }
-            else
-            {
-                Debug.WriteLine("Removing Other");
-                PhysicsWorld.RemoveCollisionObject((CollisionObject)element);
-            }
+            PhysicsWorld.RemoveCollisionObject((CollisionObject)element);
         }
     }
 }
